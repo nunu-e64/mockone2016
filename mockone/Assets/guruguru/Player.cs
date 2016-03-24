@@ -10,7 +10,10 @@ public class Player : MonoBehaviour {
 	private GameObject activeStar;
 
 	private float power;
-	public float cameraSpeed;
+	private float cameraSpeed = 0.5f;
+
+	public bool furiko = false;
+	private float gravity = 10f;
 
 	// Use this for initialization
 	void Start () {
@@ -36,7 +39,13 @@ public class Player : MonoBehaviour {
 		}
 
 		if (Input.GetMouseButton (0)) {
-			playerRigidbody.AddForce ((activeStar.transform.position - transform.position).normalized * power);
+			if (furiko) {
+				Vector3 nowPower = (activeStar.transform.position - transform.position).normalized * power
+				                   + Vector3.down * gravity / playerRigidbody.mass;
+				playerRigidbody.AddForce (nowPower);
+			} else {
+				playerRigidbody.AddForce ((activeStar.transform.position - transform.position).normalized * power);
+			}
 		} else {
 			var cameraLocalPosition = playerCamera.transform.localPosition;
 			var cameraLocalPositionZ = cameraLocalPosition.z;
