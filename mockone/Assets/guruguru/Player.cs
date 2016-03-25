@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if (Input.GetMouseButtonDown(0)) {
 			var mouseScreenPos = Input.mousePosition;
 			mouseScreenPos.z = 30.0f;
