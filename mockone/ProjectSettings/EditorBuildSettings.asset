@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/furiko/furiko.unity
+    path: Assets/Sample/furiko/furiko.unity
   - enabled: 1
-    path: Assets/guruguru/guruguru.unity
+    path: Assets/Sample/guruguru/guruguru.unity
   - enabled: 1
-    path: Assets/yudo/yudo.unity
+    path: Assets/Sample/yudo/yudo.unity
