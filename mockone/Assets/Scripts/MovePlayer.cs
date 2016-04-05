@@ -52,7 +52,7 @@ public class MovePlayer : MonoBehaviour {
 		}
 
 		if (_actionState == ActionState.AROUND) {
-			mainCamera.SendMessage ("SetAction", _touchObjectPos);
+			mainCamera.GetComponent<MainCamera>().SetAction(_touchObjectPos);
 		}
 	}
 
@@ -72,11 +72,11 @@ public class MovePlayer : MonoBehaviour {
 		}
 		this.actionState = ActionState.NONE;
 	}
-
+		
 	private void SetRelease (Vector3 _touchObjectPos) {
 		GameObject[] touchObjects = GameObject.FindGameObjectsWithTag("TouchObject");
 		foreach (GameObject touchObject in touchObjects) {
-			touchObject.SendMessage ("Reset");
+			touchObject.GetComponent<TouchObject> ().Reset();
 		}
 		this.actionState = ActionState.NONE;
 	}

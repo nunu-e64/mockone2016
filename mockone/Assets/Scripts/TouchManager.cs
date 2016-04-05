@@ -35,13 +35,14 @@ public class TouchManager : MonoBehaviour {
 	}
 
 	void SetAction (TouchState _touchState) {
+		//タッチ座標の取得と変換
 		Vector3 mouseScreenPos = Input.mousePosition;
 		mouseScreenPos.z = -mainCamera.transform.position.z;
 		Vector3 touchObjectPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
 		if (_touchState == TouchState.PRESS) {
 			MovePlayer.ActionState nowState = movePlayer.GetComponent<MovePlayer> ().GetActionState ();
 			if (nowState != MovePlayer.ActionState.MOVE && nowState != MovePlayer.ActionState.AROUND) {
-				GameObject obj = Instantiate (touchObject, touchObjectPos, Quaternion.identity) as GameObject;
+				Instantiate (touchObject, touchObjectPos, Quaternion.identity);
 				movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.MOVE, touchObjectPos);
 			}
 		} else if (_touchState == TouchState.RELEASE) {

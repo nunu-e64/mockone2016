@@ -29,7 +29,7 @@ public class TouchObject : MonoBehaviour {
 		}
 	}
 
-	void Reset () {
+	public void Reset () {
 		if (GetComponent<FixedJoint> ()) {
 			Destroy (GetComponent<FixedJoint> ());
 		}
