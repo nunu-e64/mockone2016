@@ -33,5 +33,12 @@ public class TouchObject : MonoBehaviour {
 		if (GetComponent<FixedJoint> ()) {
 			Destroy (GetComponent<FixedJoint> ());
 		}
+		Destroy (gameObject); //TODO: アニメーション再生->アニメーション終了時にDestroy
+	}
+
+	public void Init(float _radius) {
+		//出現時に軌道半径を設定
+		float ratio = transform.GetChild(0).localScale.magnitude / transform.localScale.magnitude;
+		transform.localScale = Vector3.one * _radius / ratio * 2;
 	}
 }

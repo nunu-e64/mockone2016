@@ -8,25 +8,58 @@ public class MainCamera : MonoBehaviour {
 
 	private Vector3 startPosition;
 	private Vector3 startRotation;
-	private Vector3 offset;
+	private Vector3 defaultOffset;
+
+	private CameraState cameraState;
+	public enum CameraState {
+		FOLLOWING,
+		FIXED,
+		CHAISING
+	}
 
 	// Use this for initialization
 	void Start () {
 		this.startPosition = transform.position;
 		this.startRotation = transform.localEulerAngles;
-		this.offset = transform.position - movePlayer.transform.position;
+		this.defaultOffset = transform.position - movePlayer.transform.position;
+		cameraState = CameraState.FOLLOWING;
 	}
 
 	// Update is called once per frame
 	void Update () {
-
+		switch (cameraState){
+		case CameraState.FOLLOWING:
+			transform.position = movePlayer.transform.position + this.defaultOffset;
+			break;
+		}
 	}
 
-	public void SetAction (Vector3 _touchObjectPos) {
+	public void SetState(CameraState _state) {
+		cameraState = _state;
+
+		switch (cameraState) {
+		case CameraState.CHAISING:
+			ChasePlayer ();
+			break;
+		case CameraState.FIXED:
+			iTween.Stop ();
+			break;
+		}
+	}
+
+	public void ChasePlayer () {
 		Hashtable table = new Hashtable ();
-		table.Add ("position", _touchObjectPos + this.offset); 
+		table.Add ("from", transform.position - movePlayer.transform.position); 
+		table.Add ("to", defaultOffset); 
 		table.Add ("time", 0.8f);
-		table.Add ("easeType", "easeInOutCirc");
-		iTween.MoveTo(gameObject, table);
+		table.Add ("onupdate", "SetPosition");
+		table.Add ("oncomplete", "SetState");
+		table.Add ("oncompletetarget", gameObject);
+		table.Add ("oncompleteparams", CameraState.FOLLOWING);
+		iTween.ValueTo(gameObject, table);
+	}
+
+	void SetPosition(Vector3 _offset) {
+		transform.position = movePlayer.transform.position + _offset;
 	}
 }
