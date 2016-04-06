@@ -44,8 +44,6 @@ public class MovePlayer : MonoBehaviour {
 		case ActionState.MOVE:
 			this.playerRigidbody.velocity = (_touchObjectPos - this.transform.position).normalized * this.playerRigidbody.velocity.magnitude;
 			break;
-		case ActionState.AROUND:
-			break;
 		case ActionState.RELEASE:
 			this.actionState = ActionState.NONE;
 			break;

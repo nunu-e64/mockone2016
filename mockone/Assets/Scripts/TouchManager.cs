@@ -49,7 +49,6 @@ public class TouchManager : MonoBehaviour {
 				&& (touchPos - movePlayer.transform.position).sqrMagnitude > touchObjectRadius*touchObjectRadius) {
 				//タップ時はタップポイント作成し自機進行方向をタップポイントへ
 				mainCamera.GetComponent<MainCamera>().SetState(MainCamera.CameraState.FIXED);
-				var nowState = movePlayer.GetComponent<MovePlayer> ().GetActionState ();
 				GameObject obj = Instantiate (touchObject, touchPos, Quaternion.identity) as GameObject;
 				obj.GetComponent<TouchObject> ().Init (touchObjectRadius);
 				movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.MOVE, touchPos);
