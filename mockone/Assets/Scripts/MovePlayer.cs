@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MovePlayer : MonoBehaviour {
  
-	private const float movePower = 500;
+	private const float GRAVITY_POWER = 500;
 
 	private Rigidbody playerRigidbody;
 	private Vector3 touchObjectPos;
@@ -42,6 +42,7 @@ public class MovePlayer : MonoBehaviour {
 
 		switch (this.actionState) {
 		case ActionState.MOVE:
+			//タップポイントに方向転換
 			this.playerRigidbody.velocity = (_touchObjectPos - this.transform.position).normalized * this.playerRigidbody.velocity.magnitude;
 			break;
 		case ActionState.RELEASE:
@@ -57,14 +58,16 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	private void SetMove (Vector3 _touchObjectPos) {
-		this.playerRigidbody.AddForce (_touchObjectPos - transform.position);
+		this.playerRigidbody.AddForce ((_touchObjectPos - transform.position).normalized * GRAVITY_POWER);
 	}
 
 	private void SetAround (Vector3 _touchObjectPos){
+		Debug.Log (this.moveDirectionState);
+		return;
 		if (this.moveDirectionState == MoveDirectionState.RIGHT) {
-			this.playerRigidbody.AddForce (new Vector3(-movePower, 0, 0));
+			this.playerRigidbody.AddForce (new Vector3(-GRAVITY_POWER, 0, 0));
 		} else {
-			this.playerRigidbody.AddForce (new Vector3(movePower, 0, 0));
+			this.playerRigidbody.AddForce (new Vector3(GRAVITY_POWER, 0, 0));
 		}
 		this.actionState = ActionState.NONE;
 	}
