@@ -3,10 +3,7 @@ using System.Collections;
 
 public class MovePlayer : MonoBehaviour {
  
-	[SerializeField]
-	private GameObject mainCamera;
-
-	private const float movePower = 500;
+	private const float GRAVITY_POWER = 500;
 
 	private Rigidbody playerRigidbody;
 	private Vector3 touchObjectPos;
@@ -14,10 +11,10 @@ public class MovePlayer : MonoBehaviour {
 	private MoveDirectionState moveDirectionState;
 
 	public enum ActionState {
-		NONE,
-		RELEASE,
-		MOVE,
-		AROUND,
+		NONE,		//直線移動中
+		RELEASE,	//リリース瞬間
+		MOVE,		//軌道に向かって移動中
+		AROUND,		//周回中
 	}
 
 	private enum MoveDirectionState {
@@ -36,8 +33,6 @@ public class MovePlayer : MonoBehaviour {
 			this.SetMove (this.touchObjectPos);
 		} else if (this.actionState == ActionState.AROUND) {
 			this.SetAround (this.touchObjectPos);
-		} else if (this.actionState == ActionState.RELEASE){
-			this.SetRelease (this.touchObjectPos);
 		}
 	}
 		
@@ -45,14 +40,16 @@ public class MovePlayer : MonoBehaviour {
 		this.actionState = _actionState;
 		this.touchObjectPos = _touchObjectPos;
 
-		if (transform.position.x - _touchObjectPos.x > 0) {
-			this.moveDirectionState = MoveDirectionState.LEFT;
-		} else {
-			this.moveDirectionState = MoveDirectionState.RIGHT;
-		}
-
-		if (_actionState == ActionState.AROUND) {
-			mainCamera.SendMessage ("SetAction", _touchObjectPos);
+		switch (this.actionState) {
+		case ActionState.MOVE:
+			//タップポイントに方向転換
+			this.playerRigidbody.velocity = (_touchObjectPos - this.transform.position).normalized * this.playerRigidbody.velocity.magnitude;
+			break;
+		case ActionState.RELEASE:
+			this.actionState = ActionState.NONE;
+			break;
+		default:
+			break;
 		}
 	}
 
@@ -61,22 +58,16 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	private void SetMove (Vector3 _touchObjectPos) {
-		this.playerRigidbody.AddForce (_touchObjectPos - transform.position);
+		this.playerRigidbody.AddForce ((_touchObjectPos - transform.position).normalized * GRAVITY_POWER);
 	}
 
 	private void SetAround (Vector3 _touchObjectPos){
+		Debug.Log (this.moveDirectionState);
+		return;
 		if (this.moveDirectionState == MoveDirectionState.RIGHT) {
-			this.playerRigidbody.AddForce (new Vector3(-movePower, 0, 0));
+			this.playerRigidbody.AddForce (new Vector3(-GRAVITY_POWER, 0, 0));
 		} else {
-			this.playerRigidbody.AddForce (new Vector3(movePower, 0, 0));
-		}
-		this.actionState = ActionState.NONE;
-	}
-
-	private void SetRelease (Vector3 _touchObjectPos) {
-		GameObject[] touchObjects = GameObject.FindGameObjectsWithTag("TouchObject");
-		foreach (GameObject touchObject in touchObjects) {
-			touchObject.SendMessage ("Reset");
+			this.playerRigidbody.AddForce (new Vector3(GRAVITY_POWER, 0, 0));
 		}
 		this.actionState = ActionState.NONE;
 	}
