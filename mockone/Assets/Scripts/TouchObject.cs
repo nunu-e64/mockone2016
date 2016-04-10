@@ -21,10 +21,6 @@ public class TouchObject : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other) {
 		Debug.Log ("OnTriggerEnter:" + other.name);
 		if (this.isAvailable && other.CompareTag(PLAYER_TAG)) {
-			FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D> ();
-			joint.connectedBody = other.gameObject.GetComponent<Rigidbody2D> ();
-			this.touchObjectRigidbody.constraints = RigidbodyConstraints2D.FreezePosition;
-
 			other.gameObject.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.AROUND, transform.position);
 			this.isAvailable = false;
 		}
