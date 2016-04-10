@@ -27,24 +27,10 @@ public class MainCamera : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		switch (cameraState){
-		case CameraState.FOLLOWING:
-			transform.position = movePlayer.transform.position + this.defaultOffset;
-			break;
-		}
 	}
 
 	public void SetState(CameraState _state) {
 		cameraState = _state;
-
-		switch (cameraState) {
-		case CameraState.CHAISING:
-			ChasePlayer ();
-			break;
-		case CameraState.FIXED:
-			iTween.Stop ();
-			break;
-		}
 	}
 
 	void ChasePlayer () {
