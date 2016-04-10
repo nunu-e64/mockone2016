@@ -47,7 +47,7 @@ public class MainCamera : MonoBehaviour {
 		}
 	}
 
-	public void ChasePlayer () {
+	void ChasePlayer () {
 		Hashtable table = new Hashtable ();
 		table.Add ("from", transform.position - movePlayer.transform.position); 
 		table.Add ("to", defaultOffset); 

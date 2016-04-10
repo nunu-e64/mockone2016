@@ -32,23 +32,34 @@ public class MovePlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (this.actionState == ActionState.MOVE) {
-			this.SetMove (this.touchObjectPos);
 		} else if (this.actionState == ActionState.AROUND) {
-			this.SetAround (this.touchObjectPos);
+			this.GoAround ();
 		}
+		//速度方向に自機回転
+		if (this.playerRigidbody.velocity.sqrMagnitude > 0) {
+			this.transform.rotation = Quaternion.Euler (0, 0, -90 + Mathf.Rad2Deg * Mathf.Atan2 (playerRigidbody.velocity.y, playerRigidbody.velocity.x));
+		}
+		Debug.Log (this.playerRigidbody.velocity);
 	}
 		
 	public void SetActionState (ActionState _actionState, Vector3 _touchObjectPos) {
-		this.actionState = _actionState;
 		this.touchObjectPos = _touchObjectPos;
 
-		switch (this.actionState) {
+		switch (_actionState) {
 		case ActionState.MOVE:
 			//タップポイントに方向転換
 			this.playerRigidbody.velocity = (_touchObjectPos - this.transform.position).normalized * SPEED_LOW;
+			this.actionState = _actionState;
 			break;
 		case ActionState.RELEASE:
+			if (this.actionState == ActionState.MOVE) {
+				this.playerRigidbody.velocity = Vector2.zero;
+			}
 			this.actionState = ActionState.NONE;
+			break;
+		case ActionState.AROUND:
+			this.playerRigidbody.velocity = Vector2.zero;
+			this.actionState = _actionState;
 			break;
 		default:
 			break;
@@ -58,22 +69,17 @@ public class MovePlayer : MonoBehaviour {
 	public ActionState GetActionState () {
 		return this.actionState;
 	}
-
-	private void SetMove (Vector3 _touchObjectPos) {
-	}
-
-	private void SetAround (Vector3 _touchObjectPos){
-		Debug.Log (this.moveDirectionState);
-		return;
+		
+	void GoAround (){
 		if (this.moveDirectionState == MoveDirectionState.RIGHT) {
 			this.playerRigidbody.AddForce (new Vector3(-GRAVITY_POWER, 0, 0));
 		} else {
-			this.playerRigidbody.AddForce (new Vector3(GRAVITY_POWER, 0, 0));
+			var vec = (touchObjectPos - this.transform.position);
+			this.playerRigidbody.velocity = new Vector2 (1 * vec.y, -1 * vec.x).normalized * SPEED_LOW;
 		}
-		this.actionState = ActionState.NONE;
 	}
 		
-	private void Init () {
+	void Init () {
 		this.playerRigidbody.velocity = Vector3.zero;
 	}
 }
