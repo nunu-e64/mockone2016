@@ -5,6 +5,7 @@ public class TouchObject : MonoBehaviour {
 
 	private Rigidbody touchObjectRigidbody;
 	private	bool isAvailable = false;
+	private const string PLAYER_TAG = "Player";
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +19,7 @@ public class TouchObject : MonoBehaviour {
 	}
 		
 	void OnTriggerEnter (Collider other) {
-		if (this.isAvailable) {
+		if (this.isAvailable && other.CompareTag(PLAYER_TAG)) {
 			FixedJoint joint = gameObject.AddComponent<FixedJoint> ();
 			joint.connectedBody = other.gameObject.GetComponent<Rigidbody> ();
 			this.touchObjectRigidbody.constraints = RigidbodyConstraints.FreezePosition;

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MovePlayer : MonoBehaviour {
  
-	private const float GRAVITY_POWER = 500;
+	private const float GRAVITY_POWER = 10;
 
 	private Rigidbody playerRigidbody;
 	private Vector3 touchObjectPos;
@@ -58,7 +58,6 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	private void SetMove (Vector3 _touchObjectPos) {
-		this.playerRigidbody.AddForce ((_touchObjectPos - transform.position).normalized * GRAVITY_POWER);
 	}
 
 	private void SetAround (Vector3 _touchObjectPos){
