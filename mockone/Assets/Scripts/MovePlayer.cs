@@ -4,8 +4,10 @@ using System.Collections;
 public class MovePlayer : MonoBehaviour {
  
 	private const float GRAVITY_POWER = 10;
+	private const float SPEED_LOW = 4.0f;
+	private const float SPEED_HIGH = 8.0f;
 
-	private Rigidbody playerRigidbody;
+	private Rigidbody2D playerRigidbody;
 	private Vector3 touchObjectPos;
 	private ActionState actionState;
 	private MoveDirectionState moveDirectionState;
@@ -24,7 +26,7 @@ public class MovePlayer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.playerRigidbody = GetComponent<Rigidbody> ();
+		this.playerRigidbody = GetComponent<Rigidbody2D> ();
 	}
 	
 	// Update is called once per frame
@@ -43,7 +45,7 @@ public class MovePlayer : MonoBehaviour {
 		switch (this.actionState) {
 		case ActionState.MOVE:
 			//タップポイントに方向転換
-			this.playerRigidbody.velocity = (_touchObjectPos - this.transform.position).normalized * this.playerRigidbody.velocity.magnitude;
+			this.playerRigidbody.velocity = (_touchObjectPos - this.transform.position).normalized * SPEED_LOW;
 			break;
 		case ActionState.RELEASE:
 			this.actionState = ActionState.NONE;

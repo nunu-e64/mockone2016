@@ -22,16 +22,21 @@ public class TouchManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		if (GameObject.FindGameObjectsWithTag (TOUCH_OBJECT_TAG).Length > 0) {
+			Debug.Log (GameObject.FindGameObjectWithTag (TOUCH_OBJECT_TAG).name);
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonUp (0)) {
-			this.SetAction (TouchState.RELEASE);
-		}
 		if (Input.GetMouseButtonDown (0)) {
-			this.SetAction (TouchState.PRESS);
+			//引力点がある場合
+			Debug.Log(GameObject.FindGameObjectsWithTag (TOUCH_OBJECT_TAG).Length);
+			if (GameObject.FindGameObjectsWithTag (TOUCH_OBJECT_TAG).Length == 0) {
+				this.SetAction (TouchState.PRESS);
+			} else {
+				this.SetAction (TouchState.RELEASE);
+			}
 		}
 		if (Input.GetMouseButton (0)) {
 			this.SetAction (TouchState.PRESSING);
