@@ -12,13 +12,9 @@ public class TouchManager : MonoBehaviour {
 	[SerializeField]
 	private float touchObjectRadius;
 
-	private enum TouchState {
-		RELEASE,
-		PRESS,
-		PRESSING
-	}
-
 	private const string TOUCH_OBJECT_TAG = "TouchObject";
+	private const float TOUCH_INTERVAL = 1.0f;
+	private float interval;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +24,7 @@ public class TouchManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		interval += Time.deltaTime;
 		if (Input.GetMouseButtonDown (0)) {
 			//タップ座標の取得と変換
 			Vector3 mouseScreenPos = Input.mousePosition;
@@ -43,7 +40,7 @@ public class TouchManager : MonoBehaviour {
 	}
 
 	void CreateGravitation (Vector3 _touchPos) {
-		if ((_touchPos - movePlayer.transform.position).sqrMagnitude > touchObjectRadius*touchObjectRadius) {
+		if (interval > TOUCH_INTERVAL) {
 			GameObject obj = Instantiate (touchObject, _touchPos, Quaternion.identity) as GameObject;
 			obj.GetComponent<TouchObject> ().Init (touchObjectRadius);
 			movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.MOVE, obj);
@@ -51,6 +48,7 @@ public class TouchManager : MonoBehaviour {
 	}
 
 	void ReleaseGravitation (Vector3 _touchPos) {
+		interval = 0;
 		movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.RELEASE);
 		GameObject[] touchObjects = GameObject.FindGameObjectsWithTag (TOUCH_OBJECT_TAG);
 		foreach (GameObject touchObject in touchObjects) {
