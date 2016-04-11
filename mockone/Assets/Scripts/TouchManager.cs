@@ -22,9 +22,8 @@ public class TouchManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (GameObject.FindGameObjectsWithTag (TOUCH_OBJECT_TAG).Length > 0) {
-			Debug.Log (GameObject.FindGameObjectWithTag (TOUCH_OBJECT_TAG).name);
-		}
+		this.GetComponent<AudioManager> ();
+		AudioManager.Instance.PlayBGM ("stage");
 	}
 	
 	// Update is called once per frame

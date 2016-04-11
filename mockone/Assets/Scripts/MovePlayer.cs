@@ -39,7 +39,7 @@ public class MovePlayer : MonoBehaviour {
 		if (this.playerRigidbody.velocity.sqrMagnitude > 0) {
 			this.transform.rotation = Quaternion.Euler (0, 0, -90 + Mathf.Rad2Deg * Mathf.Atan2 (playerRigidbody.velocity.y, playerRigidbody.velocity.x));
 		}
-		Debug.Log (this.playerRigidbody.velocity);
+//		Debug.Log ("<color=blue>PlayerVelocity:</color>" + this.playerRigidbody.velocity);
 	}
 		
 	public void SetActionState (ActionState _actionState, GameObject _touchObject = null) {
