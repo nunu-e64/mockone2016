@@ -3,13 +3,11 @@ using System.Collections;
 
 public class TouchObject : MonoBehaviour {
 
-	private Rigidbody2D touchObjectRigidbody;
 	private	bool isAvailable = false;
 	private const string PLAYER_TAG = "Player";
 
 	// Use this for initialization
 	void Start () {
-		this.touchObjectRigidbody = GetComponent<Rigidbody2D> ();
 		this.isAvailable = true;
 	}
 	
