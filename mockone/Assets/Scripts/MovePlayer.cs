@@ -53,7 +53,7 @@ public class MovePlayer : MonoBehaviour {
 			break;
 		case ActionState.RELEASE:
 			if (this.actionState == ActionState.MOVE) {
-				this.playerRigidbody.velocity = Vector2.zero;
+				this.playerRigidbody.velocity = Vector2.zero;	//引力点に達する前にリリースされた場合その場停止
 			}
 			this.actionState = ActionState.NONE;
 			break;

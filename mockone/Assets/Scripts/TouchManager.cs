@@ -29,48 +29,35 @@ public class TouchManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
-			//引力点がある場合
-			Debug.Log(GameObject.FindGameObjectsWithTag (TOUCH_OBJECT_TAG).Length);
+			//タップ座標の取得と変換
+			Vector3 mouseScreenPos = Input.mousePosition;
+			mouseScreenPos.z = -mainCamera.transform.position.z;
+			Vector3 touchPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+
 			if (GameObject.FindGameObjectsWithTag (TOUCH_OBJECT_TAG).Length == 0) {
-				this.SetAction (TouchState.PRESS);
+				this.CreateGravitation (touchPos);
 			} else {
-				Debug.Log (GameObject.FindGameObjectWithTag (TOUCH_OBJECT_TAG).name);
-				this.SetAction (TouchState.RELEASE);
+				this.ReleaseGravitation (touchPos);
 			}
-		}
-		if (Input.GetMouseButton (0)) {
-			this.SetAction (TouchState.PRESSING);
 		}
 	}
 
-	void SetAction (TouchState _touchState) {
-		//タップ座標の取得と変換
-		Vector3 mouseScreenPos = Input.mousePosition;
-		mouseScreenPos.z = -mainCamera.transform.position.z;
-		Vector3 touchPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-		switch (_touchState) {
-		case TouchState.PRESS:
-			if (GameObject.FindGameObjectsWithTag(TOUCH_OBJECT_TAG).Length == 0
-				&& (touchPos - movePlayer.transform.position).sqrMagnitude > touchObjectRadius*touchObjectRadius) {
-				//タップ時はタップポイント作成し自機進行方向をタップポイントへ
-				GameObject obj = Instantiate (touchObject, touchPos, Quaternion.identity) as GameObject;
-				obj.GetComponent<TouchObject> ().Init (touchObjectRadius);
-				movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.MOVE, obj);
+	void CreateGravitation (Vector3 _touchPos) {
+		if ((_touchPos - movePlayer.transform.position).sqrMagnitude > touchObjectRadius*touchObjectRadius) {
+			GameObject obj = Instantiate (touchObject, _touchPos, Quaternion.identity) as GameObject;
+			obj.GetComponent<TouchObject> ().Init (touchObjectRadius);
+			movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.MOVE, obj);
+		}
+	}
+
+	void ReleaseGravitation (Vector3 _touchPos) {
+		movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.RELEASE);
+		GameObject[] touchObjects = GameObject.FindGameObjectsWithTag (TOUCH_OBJECT_TAG);
+		foreach (GameObject touchObject in touchObjects) {
+			var touchObjectClass = touchObject.GetComponent<TouchObject> ();
+			if (touchObjectClass) {
+				touchObjectClass.Reset ();
 			}
-			break;
-		case TouchState.RELEASE:
-			//リリース時には自機のリリースとタップポイントの消滅
-			movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.RELEASE);
-			GameObject[] touchObjects = GameObject.FindGameObjectsWithTag (TOUCH_OBJECT_TAG);
-			if (touchObjects.Length > 0) {
-				foreach (GameObject touchObject in touchObjects) {
-					var touchObjectClass = touchObject.GetComponent<TouchObject> ();
-					if (touchObjectClass) {
-						touchObjectClass.Reset ();
-					}
-				}
-			}
-			break;
 		}
 	}
 }
