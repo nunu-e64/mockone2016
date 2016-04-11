@@ -8,7 +8,7 @@ public class MovePlayer : MonoBehaviour {
 	private const float SPEED_HIGH = 8.0f;
 
 	private Rigidbody2D playerRigidbody;
-	private Vector3 touchObjectPos;
+	private GameObject touchObject;
 	private ActionState actionState;
 	private MoveDirectionState moveDirectionState;
 
@@ -42,13 +42,13 @@ public class MovePlayer : MonoBehaviour {
 		Debug.Log (this.playerRigidbody.velocity);
 	}
 		
-	public void SetActionState (ActionState _actionState, Vector3 _touchObjectPos) {
-		this.touchObjectPos = _touchObjectPos;
+	public void SetActionState (ActionState _actionState, GameObject _touchObject = null) {
+		this.touchObject = _touchObject;
 
 		switch (_actionState) {
 		case ActionState.MOVE:
 			//タップポイントに方向転換
-			this.playerRigidbody.velocity = (_touchObjectPos - this.transform.position).normalized * SPEED_LOW;
+			this.playerRigidbody.velocity = (this.touchObject.transform.position - this.transform.position).normalized * SPEED_LOW;
 			this.actionState = _actionState;
 			break;
 		case ActionState.RELEASE:
@@ -71,12 +71,15 @@ public class MovePlayer : MonoBehaviour {
 	}
 		
 	void GoAround (){
+		var vec = (touchObject.transform.position - this.transform.position);
+
 		if (this.moveDirectionState == MoveDirectionState.RIGHT) {
-			this.playerRigidbody.AddForce (new Vector3(-GRAVITY_POWER, 0, 0));
+			this.playerRigidbody.velocity = new Vector2 (-1 * vec.y, 1 * vec.x).normalized * SPEED_LOW;
 		} else {
-			var vec = (touchObjectPos - this.transform.position);
 			this.playerRigidbody.velocity = new Vector2 (1 * vec.y, -1 * vec.x).normalized * SPEED_LOW;
 		}
+
+		this.transform.position = this.touchObject.transform.position + -1 * vec.normalized * this.touchObject.transform.localScale.x / 2;
 	}
 		
 	void Init () {

@@ -35,6 +35,7 @@ public class TouchManager : MonoBehaviour {
 			if (GameObject.FindGameObjectsWithTag (TOUCH_OBJECT_TAG).Length == 0) {
 				this.SetAction (TouchState.PRESS);
 			} else {
+				Debug.Log (GameObject.FindGameObjectWithTag (TOUCH_OBJECT_TAG).name);
 				this.SetAction (TouchState.RELEASE);
 			}
 		}
@@ -53,19 +54,22 @@ public class TouchManager : MonoBehaviour {
 			if (GameObject.FindGameObjectsWithTag(TOUCH_OBJECT_TAG).Length == 0
 				&& (touchPos - movePlayer.transform.position).sqrMagnitude > touchObjectRadius*touchObjectRadius) {
 				//タップ時はタップポイント作成し自機進行方向をタップポイントへ
-				mainCamera.GetComponent<MainCamera>().SetState(MainCamera.CameraState.FIXED);
 				GameObject obj = Instantiate (touchObject, touchPos, Quaternion.identity) as GameObject;
 				obj.GetComponent<TouchObject> ().Init (touchObjectRadius);
-				movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.MOVE, touchPos);
+				movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.MOVE, obj);
 			}
 			break;
 		case TouchState.RELEASE:
 			//リリース時には自機のリリースとタップポイントの消滅
-			mainCamera.GetComponent<MainCamera>().SetState(MainCamera.CameraState.CHAISING);
-			movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.RELEASE, touchPos);
-			GameObject[] touchObjects = GameObject.FindGameObjectsWithTag(TOUCH_OBJECT_TAG);
-			foreach (GameObject touchObject in touchObjects) {
-				touchObject.GetComponent<TouchObject> ().Reset();
+			movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.RELEASE);
+			GameObject[] touchObjects = GameObject.FindGameObjectsWithTag (TOUCH_OBJECT_TAG);
+			if (touchObjects.Length > 0) {
+				foreach (GameObject touchObject in touchObjects) {
+					var touchObjectClass = touchObject.GetComponent<TouchObject> ();
+					if (touchObjectClass) {
+						touchObjectClass.Reset ();
+					}
+				}
 			}
 			break;
 		}

@@ -117,7 +117,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0.08, y: -0.21}
   serializedVersion: 2
-  m_Radius: 1.067217
+  m_Radius: 1
 --- !u!114 &180334950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,8 +183,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 180334948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2, y: -0.21, z: 0}
-  m_LocalScale: {x: 0.44730338, y: 0.44730338, z: 0.44730338}
+  m_LocalPosition: {x: -0.22, y: -0.39, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -293,7 +293,7 @@ MonoBehaviour:
   mainCamera: {fileID: 1705868372}
   movePlayer: {fileID: 180334948}
   touchObject: {fileID: 159720, guid: 5a3d2916048f544f6a7e1f818a4d0ba6, type: 2}
-  touchObjectRadius: 2
+  touchObjectRadius: 0.42
 --- !u!4 &840023724
 Transform:
   m_ObjectHideFlags: 0
