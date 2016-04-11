@@ -4,7 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	private float first_speed = 10.0f;
-	private Rigidbody playerRigidbody;
+	private Rigidbody2D playerRigidbody;
 	private GameObject playerCamera;
 	public GameObject star;
 	private GameObject activeStar;
@@ -17,7 +17,7 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		playerRigidbody = this.GetComponent<Rigidbody> ();
+		playerRigidbody = this.GetComponent<Rigidbody2D> ();
 		playerRigidbody.velocity = new Vector3 (0, first_speed, 0);
 		playerCamera = this.GetComponentInChildren<Camera> ().gameObject;
 	}

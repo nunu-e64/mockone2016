@@ -3,12 +3,11 @@ using System.Collections;
 
 public class TouchObject : MonoBehaviour {
 
-	private Rigidbody touchObjectRigidbody;
 	private	bool isAvailable = false;
+	private const string PLAYER_TAG = "Player";
 
 	// Use this for initialization
 	void Start () {
-		this.touchObjectRigidbody = GetComponent<Rigidbody> ();
 		this.isAvailable = true;
 	}
 	
@@ -17,15 +16,11 @@ public class TouchObject : MonoBehaviour {
 	
 	}
 		
-	void OnTriggerEnter (Collider other) {
-		if (this.isAvailable) {
-			FixedJoint joint = gameObject.AddComponent<FixedJoint> ();
-			joint.connectedBody = other.gameObject.GetComponent<Rigidbody> ();
-			this.touchObjectRigidbody.constraints = RigidbodyConstraints.FreezePosition;
-
-			other.gameObject.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.AROUND, transform.position);
+	void OnTriggerEnter2D (Collider2D other) {
+		Debug.Log ("OnTriggerEnter:" + other.name);
+		if (this.isAvailable && other.CompareTag(PLAYER_TAG)) {
+			other.gameObject.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.AROUND, this.gameObject);
 			this.isAvailable = false;
-			GetComponent<Renderer>().material.color = Color.blue;
 		}
 	}
 

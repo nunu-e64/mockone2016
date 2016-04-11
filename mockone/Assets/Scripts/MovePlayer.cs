@@ -3,10 +3,12 @@ using System.Collections;
 
 public class MovePlayer : MonoBehaviour {
  
-	private const float GRAVITY_POWER = 500;
+	private const float GRAVITY_POWER = 10;
+	private const float SPEED_LOW = 4.0f;
+	private const float SPEED_HIGH = 8.0f;
 
-	private Rigidbody playerRigidbody;
-	private Vector3 touchObjectPos;
+	private Rigidbody2D playerRigidbody;
+	private GameObject touchObject;
 	private ActionState actionState;
 	private MoveDirectionState moveDirectionState;
 
@@ -24,29 +26,40 @@ public class MovePlayer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.playerRigidbody = GetComponent<Rigidbody> ();
+		this.playerRigidbody = GetComponent<Rigidbody2D> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (this.actionState == ActionState.MOVE) {
-			this.SetMove (this.touchObjectPos);
 		} else if (this.actionState == ActionState.AROUND) {
-			this.SetAround (this.touchObjectPos);
+			this.GoAround ();
 		}
+		//速度方向に自機回転
+		if (this.playerRigidbody.velocity.sqrMagnitude > 0) {
+			this.transform.rotation = Quaternion.Euler (0, 0, -90 + Mathf.Rad2Deg * Mathf.Atan2 (playerRigidbody.velocity.y, playerRigidbody.velocity.x));
+		}
+		Debug.Log (this.playerRigidbody.velocity);
 	}
 		
-	public void SetActionState (ActionState _actionState, Vector3 _touchObjectPos) {
-		this.actionState = _actionState;
-		this.touchObjectPos = _touchObjectPos;
+	public void SetActionState (ActionState _actionState, GameObject _touchObject = null) {
+		this.touchObject = _touchObject;
 
-		switch (this.actionState) {
+		switch (_actionState) {
 		case ActionState.MOVE:
 			//タップポイントに方向転換
-			this.playerRigidbody.velocity = (_touchObjectPos - this.transform.position).normalized * this.playerRigidbody.velocity.magnitude;
+			this.playerRigidbody.velocity = (this.touchObject.transform.position - this.transform.position).normalized * SPEED_LOW;
+			this.actionState = _actionState;
 			break;
 		case ActionState.RELEASE:
+			if (this.actionState == ActionState.MOVE) {
+				this.playerRigidbody.velocity = Vector2.zero;
+			}
 			this.actionState = ActionState.NONE;
+			break;
+		case ActionState.AROUND:
+			this.playerRigidbody.velocity = Vector2.zero;
+			this.actionState = _actionState;
 			break;
 		default:
 			break;
@@ -56,23 +69,20 @@ public class MovePlayer : MonoBehaviour {
 	public ActionState GetActionState () {
 		return this.actionState;
 	}
+		
+	void GoAround (){
+		var vec = (touchObject.transform.position - this.transform.position);
 
-	private void SetMove (Vector3 _touchObjectPos) {
-		this.playerRigidbody.AddForce ((_touchObjectPos - transform.position).normalized * GRAVITY_POWER);
-	}
-
-	private void SetAround (Vector3 _touchObjectPos){
-		Debug.Log (this.moveDirectionState);
-		return;
 		if (this.moveDirectionState == MoveDirectionState.RIGHT) {
-			this.playerRigidbody.AddForce (new Vector3(-GRAVITY_POWER, 0, 0));
+			this.playerRigidbody.velocity = new Vector2 (-1 * vec.y, 1 * vec.x).normalized * SPEED_LOW;
 		} else {
-			this.playerRigidbody.AddForce (new Vector3(GRAVITY_POWER, 0, 0));
+			this.playerRigidbody.velocity = new Vector2 (1 * vec.y, -1 * vec.x).normalized * SPEED_LOW;
 		}
-		this.actionState = ActionState.NONE;
+
+		this.transform.position = this.touchObject.transform.position + -1 * vec.normalized * this.touchObject.transform.localScale.x / 2;
 	}
 		
-	private void Init () {
+	void Init () {
 		this.playerRigidbody.velocity = Vector3.zero;
 	}
 }
