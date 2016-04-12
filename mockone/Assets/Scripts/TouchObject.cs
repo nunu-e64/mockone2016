@@ -25,9 +25,6 @@ public class TouchObject : MonoBehaviour {
 	}
 
 	public void Reset () {
-		if (GetComponent<FixedJoint> ()) {
-			Destroy (GetComponent<FixedJoint> ());
-		}
 		Destroy (gameObject); //TODO: アニメーション再生->アニメーション終了時にDestroy
 	}
 

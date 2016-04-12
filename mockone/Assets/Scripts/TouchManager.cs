@@ -52,12 +52,5 @@ public class TouchManager : MonoBehaviour {
 	void ReleaseGravitation (Vector3 _touchPos) {
 		interval = 0;
 		movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.RELEASE);
-		GameObject[] touchObjects = GameObject.FindGameObjectsWithTag (TOUCH_OBJECT_TAG);
-		foreach (GameObject touchObject in touchObjects) {
-			var touchObjectClass = touchObject.GetComponent<TouchObject> ();
-			if (touchObjectClass) {
-				touchObjectClass.Reset ();
-			}
-		}
 	}
 }
