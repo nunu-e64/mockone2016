@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BackGround
   - TouchObject
+  - Star
   layers:
   - Default
   - TransparentFX
