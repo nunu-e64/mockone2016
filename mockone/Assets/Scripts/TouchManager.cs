@@ -22,11 +22,11 @@ public class TouchManager : MonoBehaviour {
 		AudioManager.Instance.PlayBGM ("stage");
 	}
 	
-	// Update is called once per frame
+	// タップで引力点の生成or消滅
 	void Update () {
 		interval += Time.deltaTime;
 		if (Input.GetMouseButtonDown (0)) {
-			if (!movePlayer.GetComponent<MovePlayer> ().alive) {
+			if (!movePlayer.GetComponent<MovePlayer> ().alive) {	//DEBUG: 死亡時にはリトライ
 				movePlayer.GetComponent<MovePlayer> ().Init();
 			}
 

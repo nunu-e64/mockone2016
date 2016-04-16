@@ -10,6 +10,9 @@ TagManager:
   - Meteo
   - Monster
   - Wall
+  - WallCameraUp
+  - WallCameraDown
+  - Goal
   layers:
   - Default
   - TransparentFX
