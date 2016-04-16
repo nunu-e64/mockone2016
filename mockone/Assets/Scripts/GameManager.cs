@@ -10,6 +10,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public const string METEO_TAG = "Meteo";
 	public const string MONSTER_TAG = "Monster";
 	public const string WALL_TAG = "Wall";
+	public const string WALL_CAMERA_UP_TAG = "WallCameraUp";
+	public const string WALL_CAMERA_DOWN_TAG = "WallCameraDown";
+	public const string GOAL_TAG = "Goal";
 		
 	void Awake() {
 		if(this != Instance) {
@@ -23,5 +26,5 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public void ChanageScene(string _name) {
 		SceneManager.LoadScene (_name);
 	}
-
+		
 }

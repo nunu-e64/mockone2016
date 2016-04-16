@@ -8,15 +8,16 @@ public class MovePlayer : MonoBehaviour {
 	private const float SPEED_HIGH = 8.0f;
 
 	private Rigidbody2D playerRigidbody;
-	private GameObject touchObject;
 	private ActionState actionState;
 	private MoveDirectionState moveDirectionState;	//右回転か左回転か
-
 	private float playerRadius;		//当たり判定半径
+
 	public bool alive{get; set;}
 
 	[SerializeField]
 	private GameObject explosion;
+	private GameObject mainCamera;
+	private GameObject touchObject;
 
 	public enum ActionState {
 		NONE,		//直線移動中
@@ -32,6 +33,7 @@ public class MovePlayer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		this.mainCamera = FindObjectOfType<MainCamera> ().gameObject;
 		this.playerRigidbody = GetComponent<Rigidbody2D> ();
 		this.playerRadius = this.gameObject.transform.localScale.x * this.gameObject.GetComponent<CircleCollider2D> ().radius / 2;
 		this.Init ();
@@ -112,6 +114,15 @@ public class MovePlayer : MonoBehaviour {
 			this.gameObject.SetActive (false);
 		} else if (other.CompareTag (GameManager.WALL_TAG)) {
 			this.playerRigidbody.velocity = Vector2.zero;
+		} else if (other.CompareTag (GameManager.WALL_CAMERA_UP_TAG)) {
+			this.mainCamera.GetComponent<MainCamera> ().Up();
+			this.transform.position = new Vector2 (this.transform.position.x, 8 + 2);
+		} else if (other.CompareTag (GameManager.WALL_CAMERA_DOWN_TAG)) {
+			this.mainCamera.GetComponent<MainCamera> ().Down();
+			this.transform.position = new Vector2 (this.transform.position.x, 8 - 2);
+		} else if (other.CompareTag(GameManager.GOAL_TAG)) {
+			this.playerRigidbody.velocity = Vector2.zero; //DEBUG
+			SetActionState (ActionState.RELEASE);
 		}
 	}
 }
