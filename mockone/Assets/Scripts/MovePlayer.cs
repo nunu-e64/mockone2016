@@ -15,6 +15,9 @@ public class MovePlayer : MonoBehaviour {
 	private float playerRadius;		//当たり判定半径
 	private bool alive;
 
+	[SerializeField]
+	private GameObject explosion;
+
 	public enum ActionState {
 		NONE,		//直線移動中
 		RELEASE,	//リリース瞬間
@@ -44,7 +47,6 @@ public class MovePlayer : MonoBehaviour {
 		if (this.playerRigidbody.velocity.sqrMagnitude > 0) {
 			this.transform.rotation = Quaternion.Euler (0, 0, -90 + Mathf.Rad2Deg * Mathf.Atan2 (playerRigidbody.velocity.y, playerRigidbody.velocity.x));
 		}
-//		Debug.Log ("<color=blue>PlayerVelocity:</color>" + this.playerRigidbody.velocity);
 	}
 		
 	public void SetActionState (ActionState _actionState, GameObject _touchObject = null) {
@@ -101,6 +103,9 @@ public class MovePlayer : MonoBehaviour {
 			this.playerRigidbody.velocity = Vector2.zero;
 			SetActionState (ActionState.RELEASE);
 		} else if (other.CompareTag (GameManager.METEO_TAG)) {
+			this.alive = false;
+			GameObject.Instantiate (explosion, this.transform.position, this.transform.localRotation);
+			this.gameObject.SetActive (false);
 		}
 	}
 

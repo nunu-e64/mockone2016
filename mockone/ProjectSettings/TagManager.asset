@@ -7,6 +7,7 @@ TagManager:
   - BackGround
   - TouchObject
   - Star
+  - Meteo
   layers:
   - Default
   - TransparentFX
