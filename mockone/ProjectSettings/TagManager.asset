@@ -7,6 +7,9 @@ TagManager:
   - BackGround
   - TouchObject
   - Star
+  - Meteo
+  - Monster
+  - Wall
   layers:
   - Default
   - TransparentFX
