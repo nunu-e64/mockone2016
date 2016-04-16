@@ -39,7 +39,7 @@ public class TouchManager : MonoBehaviour {
 			Collider2D touchedCollider = Physics2D.OverlapPoint(touchPos);
 			if (GameObject.FindGameObjectsWithTag (GameManager.TOUCH_OBJECT_TAG).Length == 0) {
 				
-				if ((touchedCollider && (!touchedCollider.ComparedTags (GameManager.STAR_TAG, GameManager.METEO_TAG, GameManager.MONSTER_TAG)))
+				if ((touchedCollider && (!touchedCollider.CompareTags (GameManager.STAR_TAG, GameManager.METEO_TAG, GameManager.MONSTER_TAG)))
 				    || !touchedCollider) {
 					this.CreateGravitation (touchPos);
 				}
