@@ -6,20 +6,20 @@ public class MovePlayer : MonoBehaviour {
 	private const float GRAVITY_POWER = 10;
 	private const float SPEED_LOW = 4.0f;
 	private const float SPEED_HIGH = 8.0f;
-	private const string STAR_TAG = "Star";
 
 	private Rigidbody2D playerRigidbody;
 	private GameObject touchObject;
 	private ActionState actionState;
-	private MoveDirectionState moveDirectionState;
+	private MoveDirectionState moveDirectionState;	//右回転か左回転か
 
-	private float playerRadius;
+	private float playerRadius;		//当たり判定半径
+	private bool alive;
 
 	public enum ActionState {
 		NONE,		//直線移動中
 		RELEASE,	//リリース瞬間
 		MOVE,		//軌道に向かって移動中
-		AROUND,		//周回中
+		AROUND		//周回中
 	}
 
 	private enum MoveDirectionState {
@@ -31,6 +31,7 @@ public class MovePlayer : MonoBehaviour {
 	void Start () {
 		this.playerRigidbody = GetComponent<Rigidbody2D> ();
 		this.playerRadius = this.gameObject.transform.localScale.x * this.gameObject.GetComponent<CircleCollider2D> ().radius / 2;
+		this.alive = true;
 	}
 	
 	// Update is called once per frame
@@ -95,10 +96,11 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-		if (other.CompareTag(STAR_TAG)) {
+		if (other.CompareTag (GameManager.STAR_TAG)) {
 			this.transform.position = other.transform.position + (this.transform.position - other.transform.position).normalized * ((other.transform.localScale.x / 2) + this.playerRadius);
 			this.playerRigidbody.velocity = Vector2.zero;
 			SetActionState (ActionState.RELEASE);
+		} else if (other.CompareTag (GameManager.METEO_TAG)) {
 		}
 	}
 

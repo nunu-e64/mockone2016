@@ -4,7 +4,6 @@ using System.Collections;
 public class TouchObject : MonoBehaviour {
 
 	private	bool isAvailable = false;
-	private const string PLAYER_TAG = "Player";
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +17,7 @@ public class TouchObject : MonoBehaviour {
 		
 	void OnTriggerEnter2D (Collider2D other) {
 		Debug.Log ("OnTriggerEnter:" + other.name);
-		if (this.isAvailable && other.CompareTag(PLAYER_TAG)) {
+		if (this.isAvailable && other.CompareTag(GameManager.PLAYER_TAG)) {
 			other.gameObject.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.AROUND, this.gameObject);
 			this.isAvailable = false;
 		}

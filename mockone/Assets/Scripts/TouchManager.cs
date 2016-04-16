@@ -12,7 +12,6 @@ public class TouchManager : MonoBehaviour {
 	[SerializeField]
 	private float touchObjectRadius;
 
-	private const string TOUCH_OBJECT_TAG = "TouchObject";
 	private const float TOUCH_INTERVAL = 1.0f;
 	private float interval;
 	private const float UNTAPABLE_EDGE_WIDTH = 1.0f;
@@ -32,7 +31,7 @@ public class TouchManager : MonoBehaviour {
 			mouseScreenPos.z = -mainCamera.transform.position.z;
 			Vector3 touchPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
 
-			if (GameObject.FindGameObjectsWithTag (TOUCH_OBJECT_TAG).Length == 0) {
+			if (GameObject.FindGameObjectsWithTag (GameManager.TOUCH_OBJECT_TAG).Length == 0) {
 				this.CreateGravitation (touchPos);
 			} else {
 				this.ReleaseGravitation (touchPos);
