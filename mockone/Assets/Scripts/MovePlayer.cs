@@ -47,7 +47,7 @@ public class MovePlayer : MonoBehaviour {
 	public void Init () {
 		this.gameObject.SetActive (true);
 		this.playerRigidbody.velocity = Vector2.zero;
-		this.transform.position = Vector2.zero;
+		this.transform.position = new Vector3(0.0f, -4.5f, 0.0f);
 		this.alive = true;
 		this.actionState = ActionState.NONE;
 		this.strong = false;
