@@ -13,7 +13,7 @@ public class MovePlayer : MonoBehaviour {
 	private MoveDirectionState moveDirectionState;	//右回転か左回転か
 
 	private float playerRadius;		//当たり判定半径
-	private bool alive;
+	public bool alive{get; set;}
 
 	[SerializeField]
 	private GameObject explosion;
@@ -34,9 +34,17 @@ public class MovePlayer : MonoBehaviour {
 	void Start () {
 		this.playerRigidbody = GetComponent<Rigidbody2D> ();
 		this.playerRadius = this.gameObject.transform.localScale.x * this.gameObject.GetComponent<CircleCollider2D> ().radius / 2;
-		this.alive = true;
+		this.Init ();
 	}
-	
+
+	public void Init () {
+		this.gameObject.SetActive (true);
+		this.playerRigidbody.velocity = Vector2.zero;
+		this.transform.position = Vector2.zero;
+		this.alive = true;
+		this.actionState = ActionState.NONE;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (this.actionState == ActionState.MOVE) {
@@ -45,7 +53,7 @@ public class MovePlayer : MonoBehaviour {
 		}
 		//速度方向に自機の画像を回転
 		if (this.playerRigidbody.velocity.sqrMagnitude > 0) {
-			this.transform.rotation = Quaternion.Euler (0, 0, -90 + Mathf.Rad2Deg * Mathf.Atan2 (playerRigidbody.velocity.y, playerRigidbody.velocity.x));
+			this.transform.rotation = Quaternion.Euler (0, 0, -90 + Mathf.Rad2Deg * Mathf.Atan2 (this.playerRigidbody.velocity.y, this.playerRigidbody.velocity.x));
 		}
 	}
 		
@@ -92,21 +100,18 @@ public class MovePlayer : MonoBehaviour {
 
 		this.transform.position = this.touchObject.transform.position + -1 * vec.normalized * ((this.touchObject.transform.localScale.x / 2) + this.playerRadius);
 	}
-		
-	void Init () {
-		this.playerRigidbody.velocity = Vector2.zero;
-	}
 
 	void OnTriggerEnter2D (Collider2D other) {
 		if (other.CompareTag (GameManager.STAR_TAG)) {
 			this.transform.position = other.transform.position + (this.transform.position - other.transform.position).normalized * ((other.transform.localScale.x / 2) + this.playerRadius);
 			this.playerRigidbody.velocity = Vector2.zero;
 			SetActionState (ActionState.RELEASE);
-		} else if (other.CompareTag (GameManager.METEO_TAG)) {
+		} else if (other.ComparedTags (GameManager.METEO_TAG, GameManager.MONSTER_TAG)) {
 			this.alive = false;
 			GameObject.Instantiate (explosion, this.transform.position, this.transform.localRotation);
 			this.gameObject.SetActive (false);
+		} else if (other.CompareTag (GameManager.WALL_TAG)) {
+			this.playerRigidbody.velocity = Vector2.zero;
 		}
 	}
-
 }

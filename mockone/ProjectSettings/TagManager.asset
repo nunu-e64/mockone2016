@@ -8,6 +8,8 @@ TagManager:
   - TouchObject
   - Star
   - Meteo
+  - Monster
+  - Wall
   layers:
   - Default
   - TransparentFX

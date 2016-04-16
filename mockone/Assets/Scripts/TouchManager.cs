@@ -26,15 +26,27 @@ public class TouchManager : MonoBehaviour {
 	void Update () {
 		interval += Time.deltaTime;
 		if (Input.GetMouseButtonDown (0)) {
+			if (!movePlayer.GetComponent<MovePlayer> ().alive) {
+				movePlayer.GetComponent<MovePlayer> ().Init();
+			}
+
 			//タップ座標の取得と変換
 			Vector3 mouseScreenPos = Input.mousePosition;
 			mouseScreenPos.z = -mainCamera.transform.position.z;
 			Vector3 touchPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
 
+			//タップ位置に障害物がなかった時だけ処理
+			Collider2D touchedCollider = Physics2D.OverlapPoint(touchPos);
 			if (GameObject.FindGameObjectsWithTag (GameManager.TOUCH_OBJECT_TAG).Length == 0) {
-				this.CreateGravitation (touchPos);
+				
+				if ((touchedCollider && (!touchedCollider.ComparedTags (GameManager.STAR_TAG, GameManager.METEO_TAG, GameManager.MONSTER_TAG)))
+				    || !touchedCollider) {
+					this.CreateGravitation (touchPos);
+				}
 			} else {
-				this.ReleaseGravitation (touchPos);
+				if ((touchedCollider && touchedCollider.CompareTag(GameManager.TOUCH_OBJECT_TAG))) {
+					this.ReleaseGravitation (touchPos);
+				}
 			}
 		}
 	}

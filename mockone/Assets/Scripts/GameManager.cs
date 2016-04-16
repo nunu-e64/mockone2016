@@ -8,7 +8,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public const string TOUCH_OBJECT_TAG = "TouchObject";
 	public const string STAR_TAG = "Star";				
 	public const string METEO_TAG = "Meteo";
-
+	public const string MONSTER_TAG = "Monster";
+	public const string WALL_TAG = "Wall";
+		
 	void Awake() {
 		if(this != Instance) {
 			Destroy(this);
