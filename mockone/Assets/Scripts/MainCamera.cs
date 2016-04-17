@@ -12,7 +12,7 @@ public class MainCamera : MonoBehaviour {
 	}
 
 	public void Up() {
-		iTween.MoveTo (this.gameObject, new Vector3 (0, 16, transform.position.z), 0.5f);
+		iTween.MoveTo (this.gameObject, new Vector3 (0, 19.2f, transform.position.z), 0.5f);
 	}
 
 	public void Down() {
