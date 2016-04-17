@@ -11,42 +11,41 @@ public class TouchManager : MonoBehaviour {
 	private GameObject touchObject;
 	[SerializeField]
 	private float touchObjectRadius;
-
 	private const float TOUCH_INTERVAL = 1.0f;
 	private float interval;
 	private const float UNTAPABLE_EDGE_WIDTH = 1.0f;
-
 	// Use this for initialization
 	void Start () {
 		this.GetComponent<AudioManager> ();
 		AudioManager.Instance.PlayBGM ("stage");
 	}
-	
 	// タップで引力点の生成or消滅
 	void Update () {
 		interval += Time.deltaTime;
 		if (Input.GetMouseButtonDown (0)) {
-			if (!movePlayer.GetComponent<MovePlayer> ().alive) {	//DEBUG: 死亡時にはリトライ
-				movePlayer.GetComponent<MovePlayer> ().Init();
-			}
+			if (GameManager.gameState == GameManager.GameState.GAME_START) {
+				CanvasManager.Instance.SetLogo (GameManager.GameState.PLAYING);
+			} else if (GameManager.gameState == GameManager.GameState.PLAYING) {
+				//タップ座標の取得と変換
+				Vector3 mouseScreenPos = Input.mousePosition;
+				mouseScreenPos.z = -mainCamera.transform.position.z;
+				Vector3 touchPos = Camera.main.ScreenToWorldPoint (mouseScreenPos);
 
-			//タップ座標の取得と変換
-			Vector3 mouseScreenPos = Input.mousePosition;
-			mouseScreenPos.z = -mainCamera.transform.position.z;
-			Vector3 touchPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-
-			//タップ位置に障害物がなかった時だけ処理
-			Collider2D touchedCollider = Physics2D.OverlapPoint(touchPos);
-			if (GameObject.FindGameObjectsWithTag (GameManager.TOUCH_OBJECT_TAG).Length == 0) {
+				//タップ位置に障害物がなかった時だけ処理
+				Collider2D touchedCollider = Physics2D.OverlapPoint (touchPos);
+				if (GameObject.FindGameObjectsWithTag (GameManager.TOUCH_OBJECT_TAG).Length == 0) {
 				
-				if ((touchedCollider && (!touchedCollider.CompareTags (GameManager.STAR_TAG, GameManager.METEO_TAG, GameManager.MONSTER_TAG)))
-				    || !touchedCollider) {
-					this.CreateGravitation (touchPos);
+					if ((touchedCollider && (!touchedCollider.CompareTags (GameManager.STAR_TAG, GameManager.METEO_TAG, GameManager.MONSTER_TAG)))
+					    || !touchedCollider) {
+						this.CreateGravitation (touchPos);
+					}
+				} else {
+					if ((touchedCollider && touchedCollider.CompareTag (GameManager.TOUCH_OBJECT_TAG))) {
+						this.ReleaseGravitation (touchPos);
+					}
 				}
 			} else {
-				if ((touchedCollider && touchedCollider.CompareTag(GameManager.TOUCH_OBJECT_TAG))) {
-					this.ReleaseGravitation (touchPos);
-				}
+				GameManager.Instance.ReloadScene ();
 			}
 		}
 	}

@@ -173,23 +173,25 @@ public class MovePlayer : MonoBehaviour {
 			}				
 
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_UP_TAG)) {
-			this.mainCamera.GetComponent<MainCamera> ().Up();
-			this.transform.position = new Vector2 (this.transform.position.x, 8 + 2);	//TODO: remove magic number
-
+			if (transform.position.y - other.gameObject.transform.position.y < 0) {
+				this.mainCamera.GetComponent<MainCamera> ().Up();
+			}
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_DOWN_TAG)) {
-			this.mainCamera.GetComponent<MainCamera> ().Down();
-			this.transform.position = new Vector2 (this.transform.position.x, 8 - 2);	//TODO  remove magic number
-
+			if (transform.position.y - other.gameObject.transform.position.y > 0) {
+				this.mainCamera.GetComponent<MainCamera> ().Down();
+			}
 		} else if (other.CompareTag(GameManager.GOAL_TAG)) {
 			this.playerRigidbody.velocity = Vector2.zero; //DEBUG
 			SetActionState (ActionState.RELEASE);
+			CanvasManager.Instance.SetLogo (GameManager.GameState.CLEAR);
 		}
 	}
 
-	void Dead() {
+	public void Dead() {
 		this.alive = false;
 		GameObject.Instantiate (explosion, this.transform.position, this.transform.localRotation);
 		this.gameObject.SetActive (false);
+		CanvasManager.Instance.SetLogo (GameManager.GameState.GAME_OVER);
 	}
 
 	void Reflect(Vector2 _normalVector) {
