@@ -3,6 +3,8 @@ using System.Collections;
 
 public class HpBar : MonoBehaviour {
 
+	private const float RECOVERY = 5.0f;
+
 	[SerializeField]
 	private float timeLimit;
 	[SerializeField]
@@ -31,6 +33,11 @@ public class HpBar : MonoBehaviour {
 		if (this.t <= 0) {
 			movePlayer.GetComponent<MovePlayer> ().Dead ();
 		}
+	}
+
+	public void Recover() {
+		this.t += RECOVERY / this.timeLimit;
+		this.t = Mathf.Min (this.t, 1.0f);
 	}
 		
 }

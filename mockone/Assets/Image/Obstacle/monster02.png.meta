@@ -1,0 +1,204 @@
+fileFormatVersion: 2
+guid: 6a48811615b274524a9b2bf4e7642357
+timeCreated: 1460907382
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: monster02_0
+    21300002: monster02_1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: monster02_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 181, y: -185}
+        - {x: 183, y: -130}
+        - {x: 201, y: -131}
+        - {x: 200, y: -102}
+        - {x: 214, y: -62}
+        - {x: 214, y: -3}
+        - {x: 203, y: 38}
+        - {x: 175, y: 81}
+        - {x: 176, y: 104}
+        - {x: 186, y: 144}
+        - {x: 169, y: 219}
+        - {x: 164, y: 228}
+        - {x: 147, y: 223}
+        - {x: 143, y: 171}
+        - {x: 117, y: 139}
+        - {x: 82, y: 163}
+        - {x: 93, y: 231}
+        - {x: 69, y: 242}
+        - {x: 19, y: 188}
+        - {x: 17, y: 207}
+        - {x: 1, y: 245}
+        - {x: -22, y: 245}
+        - {x: -31, y: 202}
+        - {x: -31, y: 164}
+        - {x: -81, y: 233}
+        - {x: -96, y: 234}
+        - {x: -102, y: 198}
+        - {x: -88, y: 154}
+        - {x: -131, y: 139}
+        - {x: -143, y: 184}
+        - {x: -156, y: 229}
+        - {x: -175, y: 219}
+        - {x: -179, y: 130}
+        - {x: -174, y: 115}
+        - {x: -166, y: 93}
+        - {x: -194, y: 61}
+        - {x: -208, y: 17}
+        - {x: -208, y: -59}
+        - {x: -187, y: -106}
+        - {x: -199, y: -110}
+        - {x: -207, y: -126}
+        - {x: -179, y: -136}
+        - {x: -174, y: -188}
+        - {x: -161, y: -212}
+        - {x: -177, y: -236}
+        - {x: -139, y: -242}
+        - {x: -133, y: -250}
+        - {x: -114, y: -250}
+        - {x: -100, y: -245}
+        - {x: -89, y: -249}
+        - {x: -87, y: -250}
+        - {x: -69, y: -250}
+        - {x: -33, y: -223}
+        - {x: -42, y: -180}
+        - {x: 43, y: -181}
+        - {x: 31, y: -211}
+        - {x: 40, y: -242}
+        - {x: 89, y: -250}
+        - {x: 169, y: -250}
+        - {x: 155, y: -226}
+        - {x: 172, y: -210}
+    - name: monster02_1
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 184, y: -138}
+        - {x: 201, y: -116}
+        - {x: 212, y: -79}
+        - {x: 214, y: -61}
+        - {x: 214, y: -1}
+        - {x: 212, y: 6}
+        - {x: 190, y: 60}
+        - {x: 174, y: 92}
+        - {x: 184, y: 111}
+        - {x: 174, y: 207}
+        - {x: 163, y: 216}
+        - {x: 146, y: 209}
+        - {x: 139, y: 140}
+        - {x: 116, y: 128}
+        - {x: 83, y: 143}
+        - {x: 95, y: 229}
+        - {x: 84, y: 238}
+        - {x: 60, y: 226}
+        - {x: 31, y: 160}
+        - {x: 4, y: 242}
+        - {x: -4, y: 245}
+        - {x: -17, y: 245}
+        - {x: -25, y: 232}
+        - {x: -38, y: 162}
+        - {x: -81, y: 236}
+        - {x: -101, y: 227}
+        - {x: -88, y: 142}
+        - {x: -133, y: 139}
+        - {x: -157, y: 217}
+        - {x: -173, y: 203}
+        - {x: -179, y: 163}
+        - {x: -175, y: 104}
+        - {x: -200, y: 44}
+        - {x: -208, y: 10}
+        - {x: -208, y: -51}
+        - {x: -206, y: -61}
+        - {x: -190, y: -106}
+        - {x: -208, y: -122}
+        - {x: -208, y: -130}
+        - {x: -177, y: -176}
+        - {x: -171, y: -222}
+        - {x: -164, y: -239}
+        - {x: -141, y: -236}
+        - {x: -133, y: -232}
+        - {x: -126, y: -229}
+        - {x: -124, y: -226}
+        - {x: -122, y: -226}
+        - {x: -124, y: -226}
+        - {x: -131, y: -233}
+        - {x: -130, y: -246}
+        - {x: -110, y: -248}
+        - {x: -75, y: -250}
+        - {x: -35, y: -225}
+        - {x: -42, y: -181}
+        - {x: 37, y: -177}
+        - {x: 35, y: -216}
+        - {x: 40, y: -234}
+        - {x: 77, y: -250}
+        - {x: 149, y: -250}
+        - {x: 167, y: -247}
+        - {x: 164, y: -226}
+        - {x: 183, y: -186}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
