@@ -14,7 +14,7 @@ public class HpBar : MonoBehaviour {
 	private GameObject canvas;
 
 	void Start () {
-		this.gageTransform = transform.FindChild ("Gage").gameObject.GetComponent<RectTransform> ();
+		this.gageTransform = gameObject.GetComponent<RectTransform> ();
 		this.maxValue = gageTransform.sizeDelta.x;
 		this.t = 1;
 	}
