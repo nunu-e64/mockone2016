@@ -11,9 +11,11 @@ public class TouchManager : MonoBehaviour {
 	private GameObject touchObject;
 	[SerializeField]
 	private float touchObjectRadius;
+
 	private const float TOUCH_INTERVAL = 1.0f;
 	private float interval;
 	private const float UNTAPABLE_EDGE_WIDTH = 1.0f;
+
 	// Use this for initialization
 	void Start () {
 		this.GetComponent<AudioManager> ();
