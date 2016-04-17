@@ -34,5 +34,10 @@ public class HpBar : MonoBehaviour {
 			movePlayer.GetComponent<MovePlayer> ().Dead ();
 		}
 	}
+
+	public void Recover() {
+		this.t += RECOVERY / this.timeLimit;
+		this.t = Mathf.Min (this.t, 1.0f);
+	}
 		
 }

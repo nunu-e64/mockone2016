@@ -23,6 +23,8 @@ public class MovePlayer : MonoBehaviour {
 	private GameObject explosion;
 	private GameObject mainCamera;
 	private GameObject touchObject;
+	[SerializeField]
+	private HpBar hpBar;
 
 	public enum ActionState {
 		NONE,		//直線移動中
@@ -184,6 +186,9 @@ public class MovePlayer : MonoBehaviour {
 			this.playerRigidbody.velocity = Vector2.zero; //DEBUG
 			SetActionState (ActionState.RELEASE);
 			CanvasManager.Instance.SetLogo (GameManager.GameState.CLEAR);
+		} else if (other.CompareTag(GameManager.CANDY_TAG)) {
+			hpBar.Recover ();
+			Destroy (other.gameObject);
 		}
 	}
 
