@@ -32,11 +32,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 		DontDestroyOnLoad (this.gameObject);
 	}
 
-	public void ChanageScene (string _name) {
+	public void ChangeScene (string _name) {
 		SceneManager.LoadScene (_name);
 	}
 
 	public void ReloadScene () {
-		this.ChanageScene (SceneManager.GetActiveScene ().name);
+		this.ChangeScene (SceneManager.GetActiveScene ().name);
 	}
 }
