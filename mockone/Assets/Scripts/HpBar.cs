@@ -3,6 +3,8 @@ using System.Collections;
 
 public class HpBar : MonoBehaviour {
 
+	private const float RECOVERY = 5.0f;
+
 	[SerializeField]
 	private float timeLimit;
 	[SerializeField]
