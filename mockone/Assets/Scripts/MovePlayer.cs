@@ -2,11 +2,14 @@
 using System.Collections;
 
 public class MovePlayer : MonoBehaviour {
- 
-	private const float GRAVITY_POWER = 10;
+
+	[SerializeField]
 	private const float SPEED_LOW = 4.0f;
+	[SerializeField]
 	private const float SPEED_HIGH = 8.0f;
+	[SerializeField]
 	private const float AROUND_BORDER_TIME = 5.0f;
+	[SerializeField]
 	private const int MAX_REFLECT_TIMES = 5;
 
 	private Rigidbody2D playerRigidbody;

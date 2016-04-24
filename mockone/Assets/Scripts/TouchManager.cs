@@ -13,6 +13,7 @@ public class TouchManager : MonoBehaviour {
 	[SerializeField]
 	private float touchObjectRadius;
 
+	[SerializeField]
 	private const float TOUCH_INTERVAL = 1.0f;
 	private float interval;
 
