@@ -52,7 +52,6 @@ public class TouchManager : MonoBehaviour {
 	}
 
 	void CreateGravitation (Vector3 _touchPos) {
-		var edge = -1 * Camera.main.ScreenToWorldPoint (Vector3.zero).x;
 		if (interval > TOUCH_INTERVAL) {
 			GameObject obj = Instantiate (touchObject, _touchPos, Quaternion.identity) as GameObject;
 			obj.GetComponent<TouchObject> ().Init (touchObjectRadius);
