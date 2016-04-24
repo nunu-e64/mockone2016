@@ -9,11 +9,13 @@ TagManager:
   - Star
   - Meteo
   - Monster
-  - Wall
+  - WallHorizontal
   - WallCameraUp
   - WallCameraDown
   - Goal
   - Candy
+  - TouchField
+  - WallVertical
   layers:
   - Default
   - TransparentFX

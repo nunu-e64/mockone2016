@@ -159,13 +159,14 @@ public class MovePlayer : MonoBehaviour {
 		} else if (other.CompareTag (GameManager.MONSTER_TAG)) {
 			if (this.strong) {
 				GameObject.Instantiate (explosion, this.transform.position, this.transform.localRotation);
+				other.gameObject.SetActive (false);
 			} else {
 				Dead ();
 			}
 
-		} else if (other.CompareTag (GameManager.WALL_TAG)) {
+		} else if (other.CompareTags (GameManager.WALL_HORIZONTAL_TAG, GameManager.WALL_VERTICAL_TAG)) {
 			if (this.strong && this.remainReflectable > 0) {
-				Reflect (new Vector2(1, 0));
+				Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
 				remainReflectable--;
 				if (remainReflectable == 0) {
 					strong = false;
@@ -194,7 +195,8 @@ public class MovePlayer : MonoBehaviour {
 
 	public void Dead() {
 		this.alive = false;
-		GameObject.Instantiate (explosion, this.transform.position, this.transform.localRotation);
+		var obj = GameObject.Instantiate (explosion, this.transform.position, this.transform.localRotation) as GameObject;
+		obj.GetComponent<DestroyEffect> ().isGameOver = true;
 		this.gameObject.SetActive (false);
 		CanvasManager.Instance.SetLogo (GameManager.GameState.GAME_OVER);
 	}

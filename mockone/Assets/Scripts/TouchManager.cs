@@ -14,7 +14,6 @@ public class TouchManager : MonoBehaviour {
 
 	private const float TOUCH_INTERVAL = 1.0f;
 	private float interval;
-	private const float UNTAPABLE_EDGE_WIDTH = 1.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +23,7 @@ public class TouchManager : MonoBehaviour {
 	// タップで引力点の生成or消滅
 	void Update () {
 		interval += Time.deltaTime;
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButtonDown (0) && Time.timeScale > 0) {
 			if (GameManager.gameState == GameManager.GameState.GAME_START) {
 				CanvasManager.Instance.SetLogo (GameManager.GameState.PLAYING);
 			} else if (GameManager.gameState == GameManager.GameState.PLAYING) {
@@ -37,8 +36,8 @@ public class TouchManager : MonoBehaviour {
 				Collider2D touchedCollider = Physics2D.OverlapPoint (touchPos);
 				if (GameObject.FindGameObjectsWithTag (GameManager.TOUCH_OBJECT_TAG).Length == 0) {
 				
-					if ((touchedCollider && (!touchedCollider.CompareTags (GameManager.STAR_TAG, GameManager.METEO_TAG, GameManager.MONSTER_TAG)))
-					    || !touchedCollider) {
+					if ((touchedCollider && touchedCollider.CompareTag (GameManager.TOUCH_FIELD_TAG))) {
+						Debug.Log (touchedCollider.name);
 						this.CreateGravitation (touchPos);
 					}
 				} else {
@@ -53,8 +52,7 @@ public class TouchManager : MonoBehaviour {
 	}
 
 	void CreateGravitation (Vector3 _touchPos) {
-		var edge = -1 * Camera.main.ScreenToWorldPoint (Vector3.zero).x;
-		if (interval > TOUCH_INTERVAL && _touchPos.x > -edge + UNTAPABLE_EDGE_WIDTH && _touchPos.x < edge - UNTAPABLE_EDGE_WIDTH) {
+		if (interval > TOUCH_INTERVAL) {
 			GameObject obj = Instantiate (touchObject, _touchPos, Quaternion.identity) as GameObject;
 			obj.GetComponent<TouchObject> ().Init (touchObjectRadius);
 			movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.MOVE, obj);
