@@ -23,6 +23,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public const string WALL_CAMERA_DOWN_TAG = "WallCameraDown";
 	public const string GOAL_TAG = "Goal";
 	public const string CANDY_TAG = "Candy";
+	public const string TOUCH_FIELD_TAG = "TouchField";
+
 
 	void Awake () {
 		if (this != Instance) {

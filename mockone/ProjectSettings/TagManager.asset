@@ -14,6 +14,7 @@ TagManager:
   - WallCameraDown
   - Goal
   - Candy
+  - TouchField
   layers:
   - Default
   - TransparentFX
