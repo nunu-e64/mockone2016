@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class TouchManager : MonoBehaviour {
 
@@ -27,22 +28,25 @@ public class TouchManager : MonoBehaviour {
 			if (GameManager.gameState == GameManager.GameState.GAME_START) {
 				CanvasManager.Instance.SetLogo (GameManager.GameState.PLAYING);
 			} else if (GameManager.gameState == GameManager.GameState.PLAYING) {
-				//タップ座標の取得と変換
-				Vector3 mouseScreenPos = Input.mousePosition;
-				mouseScreenPos.z = -mainCamera.transform.position.z;
-				Vector3 touchPos = Camera.main.ScreenToWorldPoint (mouseScreenPos);
+				//UIタップ時は判定しない
+				if (!EventSystem.current.IsPointerOverGameObject ()) { //TODO: スマホ対応後はInput.GetTouch(0).fingerIdを渡す)) {
+					//タップ座標の取得と変換
+					Vector3 mouseScreenPos = Input.mousePosition;
+					mouseScreenPos.z = -mainCamera.transform.position.z;
+					Vector3 touchPos = Camera.main.ScreenToWorldPoint (mouseScreenPos);
 
-				//タップ位置に障害物がなかった時だけ処理
-				Collider2D touchedCollider = Physics2D.OverlapPoint (touchPos);
-				if (GameObject.FindGameObjectsWithTag (GameManager.TOUCH_OBJECT_TAG).Length == 0) {
-				
-					if ((touchedCollider && touchedCollider.CompareTag (GameManager.TOUCH_FIELD_TAG))) {
-						Debug.Log (touchedCollider.name);
-						this.CreateGravitation (touchPos);
-					}
-				} else {
-					if ((touchedCollider && touchedCollider.CompareTag (GameManager.TOUCH_OBJECT_TAG))) {
-						this.ReleaseGravitation (touchPos);
+					//タップ位置に障害物がなかった時だけ処理
+					Collider2D touchedCollider = Physics2D.OverlapPoint (touchPos);
+					if (GameObject.FindGameObjectsWithTag (GameManager.TOUCH_OBJECT_TAG).Length == 0) {
+					
+						if ((touchedCollider && touchedCollider.CompareTag (GameManager.TOUCH_FIELD_TAG))) {
+							Debug.Log (touchedCollider.name);
+							this.CreateGravitation (touchPos);
+						}
+					} else {
+						if ((touchedCollider && touchedCollider.CompareTag (GameManager.TOUCH_OBJECT_TAG))) {
+							this.ReleaseGravitation (touchPos);
+						}
 					}
 				}
 			} else {
