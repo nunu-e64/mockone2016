@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MovePlayer : MonoBehaviour {
- 	
+
 	[SerializeField]
 	private const float SPEED_LOW = 4.0f;
 	[SerializeField]
