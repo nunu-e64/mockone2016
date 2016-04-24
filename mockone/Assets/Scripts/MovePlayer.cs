@@ -161,7 +161,6 @@ public class MovePlayer : MonoBehaviour {
 				GameObject.Instantiate (explosion, this.transform.position, this.transform.localRotation);
 				other.gameObject.SetActive (false);
 			} else {
-				Debug.Log ("dead");
 				Dead ();
 			}
 
@@ -196,7 +195,8 @@ public class MovePlayer : MonoBehaviour {
 
 	public void Dead() {
 		this.alive = false;
-		GameObject.Instantiate (explosion, this.transform.position, this.transform.localRotation);
+		var obj = GameObject.Instantiate (explosion, this.transform.position, this.transform.localRotation) as GameObject;
+		obj.GetComponent<DestroyEffect> ().isGameOver = true;
 		this.gameObject.SetActive (false);
 		CanvasManager.Instance.SetLogo (GameManager.GameState.GAME_OVER);
 	}
