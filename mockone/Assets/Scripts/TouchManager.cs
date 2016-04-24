@@ -26,11 +26,11 @@ public class TouchManager : MonoBehaviour {
 	void Update () {
 		interval += Time.deltaTime;
 		if (Input.GetMouseButtonDown (0) && Time.timeScale > 0) {
-			if (GameManager.gameState == GameManager.GameState.GAME_START) {
-				CanvasManager.Instance.SetLogo (GameManager.GameState.PLAYING);
-			} else if (GameManager.gameState == GameManager.GameState.PLAYING) {
-				//UIタップ時は判定しない
-				if (!EventSystem.current.IsPointerOverGameObject ()) { //TODO: スマホ対応後はInput.GetTouch(0).fingerIdを渡す)) {
+			//UIタップ時は判定しない
+			if (!EventSystem.current.IsPointerOverGameObject ()) { //TODO: スマホ対応後はInput.GetTouch(0).fingerIdを渡す)) {
+				if (GameManager.gameState == GameManager.GameState.GAME_START) {
+					CanvasManager.Instance.SetLogo (GameManager.GameState.PLAYING);
+				} else if (GameManager.gameState == GameManager.GameState.PLAYING) {
 					//タップ座標の取得と変換
 					Vector3 mouseScreenPos = Input.mousePosition;
 					mouseScreenPos.z = -mainCamera.transform.position.z;
@@ -50,8 +50,6 @@ public class TouchManager : MonoBehaviour {
 						}
 					}
 				}
-			} else {
-				GameManager.Instance.ReloadScene ();
 			}
 		}
 	}
