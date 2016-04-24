@@ -4,12 +4,10 @@ using System.Collections;
 public class HpBar : MonoBehaviour {
 
 	[SerializeField]
-	private const float RECOVERY = 5.0f;
-
-	[SerializeField]
-	private float timeLimit;
-	[SerializeField]
 	private GameObject movePlayer;
+
+	private float RECOVERY;
+	private float TIME_LIMIT;
 
 	private float t;
 	private float maxValue;
@@ -17,6 +15,8 @@ public class HpBar : MonoBehaviour {
 	private GameObject canvas;
 
 	void Start () {
+		this.RECOVERY = GameManager.Instance.RECOVERY;
+		this.TIME_LIMIT = GameManager.Instance.TIME_LIMIT;
 		this.gageTransform = gameObject.GetComponent<RectTransform> ();
 		this.maxValue = gageTransform.sizeDelta.x;
 		this.t = 1;
@@ -26,7 +26,7 @@ public class HpBar : MonoBehaviour {
 		if (GameManager.gameState != GameManager.GameState.PLAYING)
 			return;
 
-		this.t -= Time.deltaTime / this.timeLimit;
+		this.t -= Time.deltaTime / this.TIME_LIMIT;
 
 		float x = Mathf.Lerp (0, this.maxValue, this.t);
 		this.gageTransform.sizeDelta = new Vector2 (x, this.gageTransform.sizeDelta.y);
@@ -37,7 +37,7 @@ public class HpBar : MonoBehaviour {
 	}
 
 	public void Recover() {
-		this.t += RECOVERY / this.timeLimit;
+		this.t += this.RECOVERY / this.TIME_LIMIT;
 		this.t = Mathf.Min (this.t, 1.0f);
 	}
 		

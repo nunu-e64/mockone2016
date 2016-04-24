@@ -13,12 +13,13 @@ public class TouchManager : MonoBehaviour {
 	[SerializeField]
 	private float touchObjectRadius;
 
-	[SerializeField]
-	private const float TOUCH_INTERVAL = 1.0f;
+	private float TOUCH_INTERVAL;
+
 	private float interval;
 
 	// Use this for initialization
 	void Start () {
+		this.TOUCH_INTERVAL = GameManager.Instance.TOUCH_INTERVAL;
 		this.GetComponent<AudioManager> ();
 		AudioManager.Instance.PlayBGM ("stage");
 	}
