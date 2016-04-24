@@ -4,6 +4,21 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonMonoBehaviour<GameManager> {
 
+	//時間制限
+	public float TIME_LIMIT = 30;
+	//時間回復
+	public float RECOVERY = 10;
+	//タッチインターバル
+	public float TOUCH_INTERVAL = 1;
+	//基本スピード
+	public float SPEED_LOW = 4;
+	//高速スピード
+	public float SPEED_HIGH = 8;
+	//高速判定時間
+	public float AROUND_BORDER_TIME = 5;
+	//最大反射回数
+	public int MAX_REFLECT_TIMES = 5;
+
 	public static GameState gameState;
 
 	public enum GameState {

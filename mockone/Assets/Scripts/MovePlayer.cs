@@ -3,14 +3,10 @@ using System.Collections;
 
 public class MovePlayer : MonoBehaviour {
 
-	[SerializeField]
-	private const float SPEED_LOW = 4.0f;
-	[SerializeField]
-	private const float SPEED_HIGH = 8.0f;
-	[SerializeField]
-	private const float AROUND_BORDER_TIME = 5.0f;
-	[SerializeField]
-	private const int MAX_REFLECT_TIMES = 5;
+	private float SPEED_LOW;
+	private float SPEED_HIGH;
+	private float AROUND_BORDER_TIME;
+	private int MAX_REFLECT_TIMES;
 
 	private Rigidbody2D playerRigidbody;
 	private ActionState actionState;
@@ -43,6 +39,10 @@ public class MovePlayer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		this.SPEED_LOW = GameManager.Instance.SPEED_LOW;
+		this.SPEED_HIGH = GameManager.Instance.SPEED_HIGH;
+		this.AROUND_BORDER_TIME = GameManager.Instance.AROUND_BORDER_TIME;
+		this.MAX_REFLECT_TIMES = GameManager.Instance.MAX_REFLECT_TIMES;
 		this.mainCamera = FindObjectOfType<MainCamera> ().gameObject;
 		this.playerRigidbody = GetComponent<Rigidbody2D> ();
 		this.playerRadius = this.gameObject.transform.localScale.x * this.gameObject.GetComponent<CircleCollider2D> ().radius / 2;

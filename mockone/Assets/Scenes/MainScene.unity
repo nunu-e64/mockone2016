@@ -1166,6 +1166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ca4bd6a0ef34b0a89a258cc559c6d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TIME_LIMIT: 10
+  RECOVERY: 10
+  TOUCH_INTERVAL: 1
 --- !u!1001 &878361402
 Prefab:
   m_ObjectHideFlags: 0
@@ -2134,7 +2137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb1e2b99d3a14bfb825365b3788f922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 30
   movePlayer: {fileID: 180334948}
 --- !u!1 &1705868372
 GameObject:
