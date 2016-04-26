@@ -190,10 +190,16 @@ public class MovePlayer : MonoBehaviour {
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_UP_TAG)) {
 			if (transform.position.y - other.gameObject.transform.position.y < 0) {
 				this.mainCamera.GetComponent<MainCamera> ().Up();
+				this.strong = false;
+				playerRigidbody.velocity = Vector2.zero;
+				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y + other.transform.localScale.y / 2.0f), 0.5f);
 			}
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_DOWN_TAG)) {
 			if (transform.position.y - other.gameObject.transform.position.y > 0) {
 				this.mainCamera.GetComponent<MainCamera> ().Down();
+				this.strong = false;
+				playerRigidbody.velocity = Vector2.zero;
+				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y - other.transform.localScale.y / 2.0f), 0.5f);
 			}
 		} else if (other.CompareTag(GameManager.GOAL_TAG)) {
 			this.playerRigidbody.velocity = Vector2.zero; //DEBUG
