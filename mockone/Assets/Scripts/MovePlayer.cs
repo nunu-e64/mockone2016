@@ -5,6 +5,8 @@ public class MovePlayer : MonoBehaviour {
 
 	private float SPEED_LOW;
 	private float SPEED_HIGH;
+	private float AROUND_SPEED_LOW;
+	private float AROUND_SPEED_HIGH;
 	private float AROUND_BORDER_TIME;
 	private int MAX_REFLECT_TIMES;
 
@@ -43,6 +45,9 @@ public class MovePlayer : MonoBehaviour {
 		this.SPEED_HIGH = GameManager.Instance.SPEED_HIGH;
 		this.AROUND_BORDER_TIME = GameManager.Instance.AROUND_BORDER_TIME;
 		this.MAX_REFLECT_TIMES = GameManager.Instance.MAX_REFLECT_TIMES;
+		this.AROUND_SPEED_LOW = GameManager.Instance.AROUND_SPEED_LOW;
+		this.AROUND_SPEED_HIGH = GameManager.Instance.AROUND_SPEED_HIGH;
+
 		this.mainCamera = FindObjectOfType<MainCamera> ().gameObject;
 		this.playerRigidbody = GetComponent<Rigidbody2D> ();
 		this.playerRadius = this.gameObject.transform.localScale.x * this.gameObject.GetComponent<CircleCollider2D> ().radius / 2;
@@ -125,9 +130,9 @@ public class MovePlayer : MonoBehaviour {
 		var vec = (touchObject.transform.position - this.transform.position);
 
 		if (this.moveDirectionState == MoveDirectionState.RIGHT) {
-			this.playerRigidbody.velocity = new Vector2 (-1 * vec.y, 1 * vec.x).normalized * (strong ? SPEED_HIGH : SPEED_LOW);
+			this.playerRigidbody.velocity = new Vector2 (-1 * vec.y, 1 * vec.x).normalized * (strong ? AROUND_SPEED_HIGH : AROUND_SPEED_LOW);
 		} else {
-			this.playerRigidbody.velocity = new Vector2 (1 * vec.y, -1 * vec.x).normalized * (strong ? SPEED_HIGH : SPEED_LOW);
+			this.playerRigidbody.velocity = new Vector2 (1 * vec.y, -1 * vec.x).normalized * (strong ? AROUND_SPEED_HIGH : AROUND_SPEED_LOW);
 		}
 
 		this.transform.position = this.touchObject.transform.position + -1 * vec.normalized * ((this.touchObject.transform.localScale.x / 2) + this.playerRadius);

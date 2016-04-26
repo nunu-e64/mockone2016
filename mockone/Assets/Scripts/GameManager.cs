@@ -18,6 +18,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public float AROUND_BORDER_TIME = 5;
 	//最大反射回数
 	public int MAX_REFLECT_TIMES = 5;
+	//基本回転スピード
+	public float AROUND_SPEED_LOW = 4;
+	//高速回転スピード
+	public float AROUND_SPEED_HIGH = 8;
 
 	public static GameState gameState;
 
