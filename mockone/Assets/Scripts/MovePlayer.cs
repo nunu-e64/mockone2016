@@ -98,14 +98,18 @@ public class MovePlayer : MonoBehaviour {
 			this.remainReflectable = 0;
 			break;
 		case ActionState.RELEASE:
-			if (this.touchObject)
+			if (this.touchObject) {
 				this.touchObject.GetComponent<TouchObject> ().Reset ();
-			this.touchObject = null;
+				this.touchObject = null;
+			}
 			if (this.actionState == ActionState.MOVE) {
 				this.playerRigidbody.velocity = Vector2.zero;	//引力点に達する前にリリースされた場合その場停止
 			} else {
 				if (strong) {
 					remainReflectable = MAX_REFLECT_TIMES;
+					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_HIGH;
+				} else {
+					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_LOW;
 				}
 			}
 			this.actionState = ActionState.NONE;
