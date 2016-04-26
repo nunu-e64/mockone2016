@@ -27,18 +27,18 @@ public class TouchManager : MonoBehaviour {
 	void Update () {
 		interval += Time.deltaTime;
 		if (Input.GetMouseButtonDown (0) && Time.timeScale > 0) {
-			//UIタップ時は判定しない
-			if (!EventSystem.current.IsPointerOverGameObject ()) { //TODO: スマホ対応後はInput.GetTouch(0).fingerIdを渡す)) {
-				if (GameManager.Instance.gameState == GameManager.GameState.GAME_START) {
-					CanvasManager.Instance.SetLogo (GameManager.GameState.PLAYING);
-				} else if (GameManager.Instance.gameState == GameManager.GameState.PLAYING) {
+			if (GameManager.Instance.gameState == GameManager.GameState.GAME_START) {
+				CanvasManager.Instance.SetLogo (GameManager.GameState.PLAYING);
+			} else if (GameManager.Instance.gameState == GameManager.GameState.PLAYING) {
+				//UIタップ時は判定しない
+				if (!EventSystem.current.IsPointerOverGameObject ()) { //TODO: スマホ対応後はInput.GetTouch(0).fingerIdを渡す)) {
 					//タップ座標の取得と変換
 					Vector3 mouseScreenPos = Input.mousePosition;
 					mouseScreenPos.z = -mainCamera.transform.position.z;
 					Vector3 touchPos = Camera.main.ScreenToWorldPoint (mouseScreenPos);
 
 					//タップ位置に障害物がなかった時だけ処理
-					int layer = LayerMask.NameToLayer(GameManager.TAP_TARGET_LAYER);
+					int layer = LayerMask.NameToLayer (GameManager.TAP_TARGET_LAYER);
 					var touchedCollider = Physics2D.OverlapPoint (touchPos, 1 << layer);
 					if (touchedCollider)
 						Debug.Log (touchedCollider.name);
