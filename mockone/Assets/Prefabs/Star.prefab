@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 474746}
   - 212: {fileID: 21229308}
   - 58: {fileID: 5893828}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Star
   m_TagString: Star
   m_Icon: {fileID: 0}

@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 499182}
   - 212: {fileID: 21248236}
   - 58: {fileID: 5872378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Meteo
   m_TagString: Meteo
   m_Icon: {fileID: 0}

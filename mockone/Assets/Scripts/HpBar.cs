@@ -23,7 +23,7 @@ public class HpBar : MonoBehaviour {
 	}
 
 	void Update () {
-		if (GameManager.gameState != GameManager.GameState.PLAYING)
+		if (GameManager.Instance.gameState != GameManager.GameState.PLAYING)
 			return;
 
 		this.t -= Time.deltaTime / this.TIME_LIMIT;
