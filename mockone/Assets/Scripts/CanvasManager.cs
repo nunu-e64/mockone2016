@@ -65,7 +65,7 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 	}
 
 	public void SetLogo (GameManager.GameState _gameState) {
-		GameManager.gameState = _gameState;
+		GameManager.Instance.gameState = _gameState;
 
 		switch (_gameState) {
 		case GameManager.GameState.GAME_START:

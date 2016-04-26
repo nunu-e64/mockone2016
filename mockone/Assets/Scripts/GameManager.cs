@@ -19,7 +19,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	//最大反射回数
 	public int MAX_REFLECT_TIMES = 5;
 
-	public static GameState gameState;
+	public GameState gameState;
 
 	public enum GameState {
 		GAME_START,
@@ -40,7 +40,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public const string GOAL_TAG = "Goal";
 	public const string CANDY_TAG = "Candy";
 	public const string TOUCH_FIELD_TAG = "TouchField";
-
+	public const string TAP_TARGET_LAYER = "TapTarget";
 
 	void Awake () {
 		if (this != Instance) {
