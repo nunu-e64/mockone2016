@@ -1223,14 +1223,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ca4bd6a0ef34b0a89a258cc559c6d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TIME_LIMIT: 10
+  TIME_LIMIT: 30
   RECOVERY: 10
   TOUCH_INTERVAL: 1
   SPEED_LOW: 4
   SPEED_HIGH: 8
-  AROUND_BORDER_TIME: 5
+  AROUND_BORDER_TIME: 2
   MAX_REFLECT_TIMES: 5
-  gameState: 0
 --- !u!1001 &878361402
 Prefab:
   m_ObjectHideFlags: 0
