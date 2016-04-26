@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21233328}
   - 58: {fileID: 5879088}
   - 95: {fileID: 9575506}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monster
   m_TagString: Monster
   m_Icon: {fileID: 0}

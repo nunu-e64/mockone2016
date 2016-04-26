@@ -29,18 +29,20 @@ public class TouchManager : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0) && Time.timeScale > 0) {
 			//UIタップ時は判定しない
 			if (!EventSystem.current.IsPointerOverGameObject ()) { //TODO: スマホ対応後はInput.GetTouch(0).fingerIdを渡す)) {
-				if (GameManager.gameState == GameManager.GameState.GAME_START) {
+				if (GameManager.Instance.gameState == GameManager.GameState.GAME_START) {
 					CanvasManager.Instance.SetLogo (GameManager.GameState.PLAYING);
-				} else if (GameManager.gameState == GameManager.GameState.PLAYING) {
+				} else if (GameManager.Instance.gameState == GameManager.GameState.PLAYING) {
 					//タップ座標の取得と変換
 					Vector3 mouseScreenPos = Input.mousePosition;
 					mouseScreenPos.z = -mainCamera.transform.position.z;
 					Vector3 touchPos = Camera.main.ScreenToWorldPoint (mouseScreenPos);
 
 					//タップ位置に障害物がなかった時だけ処理
-					Collider2D touchedCollider = Physics2D.OverlapPoint (touchPos);
-					if (GameObject.FindGameObjectsWithTag (GameManager.TOUCH_OBJECT_TAG).Length == 0) {
-					
+					int layer = LayerMask.NameToLayer(GameManager.TAP_TARGET_LAYER);
+					var touchedCollider = Physics2D.OverlapPoint (touchPos, 1 << layer);
+					if (touchedCollider)
+						Debug.Log (touchedCollider.name);
+					if (GameObject.FindGameObjectsWithTag (GameManager.TOUCH_OBJECT_TAG).Length == 0) {					
 						if ((touchedCollider && touchedCollider.CompareTag (GameManager.TOUCH_FIELD_TAG))) {
 							Debug.Log (touchedCollider.name);
 							this.CreateGravitation (touchPos);

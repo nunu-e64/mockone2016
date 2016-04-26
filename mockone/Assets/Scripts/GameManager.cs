@@ -23,7 +23,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	//高速回転スピード
 	public float AROUND_SPEED_HIGH = 8;
 
-	public static GameState gameState;
+	public GameState gameState;
 
 	public enum GameState {
 		GAME_START,
@@ -44,7 +44,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public const string GOAL_TAG = "Goal";
 	public const string CANDY_TAG = "Candy";
 	public const string TOUCH_FIELD_TAG = "TouchField";
-
+	public const string TAP_TARGET_LAYER = "TapTarget";
 
 	void Awake () {
 		if (this != Instance) {

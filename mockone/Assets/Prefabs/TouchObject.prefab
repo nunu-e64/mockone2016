@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11444270}
   - 58: {fileID: 5831698}
   - 50: {fileID: 5066784}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TouchObject
   m_TagString: TouchObject
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ GameObject:
   - 33: {fileID: 3344838}
   - 135: {fileID: 13527312}
   - 23: {fileID: 2331542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
