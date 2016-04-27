@@ -98,14 +98,18 @@ public class MovePlayer : MonoBehaviour {
 			this.remainReflectable = 0;
 			break;
 		case ActionState.RELEASE:
-			if (this.touchObject)
+			if (this.touchObject) {
 				this.touchObject.GetComponent<TouchObject> ().Reset ();
-			this.touchObject = null;
+				this.touchObject = null;
+			}
 			if (this.actionState == ActionState.MOVE) {
 				this.playerRigidbody.velocity = Vector2.zero;	//引力点に達する前にリリースされた場合その場停止
 			} else {
 				if (strong) {
 					remainReflectable = MAX_REFLECT_TIMES;
+					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_HIGH;
+				} else {
+					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_LOW;
 				}
 			}
 			this.actionState = ActionState.NONE;
@@ -186,10 +190,16 @@ public class MovePlayer : MonoBehaviour {
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_UP_TAG)) {
 			if (transform.position.y - other.gameObject.transform.position.y < 0) {
 				this.mainCamera.GetComponent<MainCamera> ().Up();
+				this.strong = false;
+				playerRigidbody.velocity = Vector2.zero;
+				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y + other.transform.localScale.y / 2.0f), 0.5f);
 			}
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_DOWN_TAG)) {
 			if (transform.position.y - other.gameObject.transform.position.y > 0) {
 				this.mainCamera.GetComponent<MainCamera> ().Down();
+				this.strong = false;
+				playerRigidbody.velocity = Vector2.zero;
+				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y - other.transform.localScale.y / 2.0f), 0.5f);
 			}
 		} else if (other.CompareTag(GameManager.GOAL_TAG)) {
 			this.playerRigidbody.velocity = Vector2.zero; //DEBUG
