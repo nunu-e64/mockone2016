@@ -26,14 +26,26 @@ public class TouchManager : MonoBehaviour {
 	// タップで引力点の生成or消滅
 	void Update () {
 		interval += Time.deltaTime;
-		if (Input.GetMouseButtonDown (0) && Time.timeScale > 0) {
+
+		//タップとクリックの検出
+		bool hasTapped = true;
+		Vector3 tapPosition = new Vector3();
+		if (Input.GetMouseButtonDown(0)) {
+			tapPosition = Input.mousePosition;
+		} else if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+			tapPosition = Input.GetTouch(0).position;
+		} else {
+			hasTapped = false;
+		}
+
+		if (hasTapped && Time.timeScale > 0) {
 			if (GameManager.Instance.gameState == GameManager.GameState.GAME_START) {
 				CanvasManager.Instance.SetLogo (GameManager.GameState.PLAYING);
 			} else if (GameManager.Instance.gameState == GameManager.GameState.PLAYING) {
 				//UIタップ時は判定しない
-				if (!EventSystem.current.IsPointerOverGameObject ()) { //TODO: スマホ対応後はInput.GetTouch(0).fingerIdを渡す)) {
+				if (!EventSystem.current.IsPointerOverGameObject () && !(Input.touchCount > 0 && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))) {
 					//タップ座標の取得と変換
-					Vector3 mouseScreenPos = Input.mousePosition;
+					Vector3 mouseScreenPos = tapPosition;
 					mouseScreenPos.z = -mainCamera.transform.position.z;
 					Vector3 touchPos = Camera.main.ScreenToWorldPoint (mouseScreenPos);
 
