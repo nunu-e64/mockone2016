@@ -60,9 +60,7 @@ public class TouchManager : MonoBehaviour {
 							this.CreateGravitation (touchPos);
 						}
 					} else {
-						if ((touchedCollider && touchedCollider.CompareTag (GameManager.TOUCH_OBJECT_TAG))) {
-							this.ReleaseGravitation (touchPos);
-						}
+						this.ReleaseGravitation (touchPos);
 					}
 				}
 			}
