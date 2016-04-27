@@ -216,7 +216,6 @@ public class MovePlayer : MonoBehaviour {
 		var obj = GameObject.Instantiate (explosion, this.transform.position, this.transform.localRotation) as GameObject;
 		obj.GetComponent<DestroyEffect> ().isGameOver = true;
 		this.gameObject.SetActive (false);
-		CanvasManager.Instance.SetLogo (GameManager.GameState.GAME_OVER);
 	}
 
 	void Reflect(Vector2 _normalVector) {
