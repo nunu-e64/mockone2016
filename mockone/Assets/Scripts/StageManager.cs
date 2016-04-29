@@ -13,6 +13,9 @@ public class StageManager : MonoBehaviour {
 	void Update() {
 		var monster = GameObject.FindGameObjectWithTag (GameManager.MONSTER_TAG);
 		if (monster == null) {
+			monster = GameObject.FindGameObjectWithTag (GameManager.MONSTER_NIKOICHI_TAG);
+		}
+		if (monster == null) {
 			goal.SetActive (true);
 		}
 	}

@@ -16,6 +16,7 @@ TagManager:
   - Candy
   - TouchField
   - WallVertical
+  - Monster2
   layers:
   - Default
   - TransparentFX

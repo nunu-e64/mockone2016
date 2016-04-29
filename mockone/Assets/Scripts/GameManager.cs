@@ -23,6 +23,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	//高速回転スピード
 	public float AROUND_SPEED_HIGH = 8;
 
+	[SerializeField, Space(15)]
+
+	//モンスターの吹っ飛ばされ速度
+	public float MONSTER_BLAST_SPEED = 10;
+	//モンスターの吹っ飛ばされ回転量
+	public float MONSTER_BLAST_ROTATE = 10;
+
+	[System.NonSerialized]
 	public GameState gameState;
 
 	public enum GameState {
@@ -45,6 +53,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public const string CANDY_TAG = "Candy";
 	public const string TOUCH_FIELD_TAG = "TouchField";
 	public const string TAP_TARGET_LAYER = "TapTarget";
+	public const string MONSTER_NIKOICHI_TAG = "Monster2";
 
 	void Awake () {
 		if (this != Instance) {

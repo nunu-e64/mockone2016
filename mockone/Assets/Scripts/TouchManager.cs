@@ -53,10 +53,10 @@ public class TouchManager : MonoBehaviour {
 					int layer = LayerMask.NameToLayer (GameManager.TAP_TARGET_LAYER);
 					var touchedCollider = Physics2D.OverlapPoint (touchPos, 1 << layer);
 					if (touchedCollider)
-						Debug.Log (touchedCollider.name);
+//						Debug.Log (touchedCollider.name);
 					if (GameObject.FindGameObjectsWithTag (GameManager.TOUCH_OBJECT_TAG).Length == 0) {					
 						if ((touchedCollider && touchedCollider.CompareTag (GameManager.TOUCH_FIELD_TAG))) {
-							Debug.Log (touchedCollider.name);
+//							Debug.Log (touchedCollider.name);
 							this.CreateGravitation (touchPos);
 						}
 					} else {

@@ -94,7 +94,7 @@ public class MovePlayer : MonoBehaviour {
 			//タップポイントに方向転換
 			this.playerRigidbody.velocity = (this.touchObject.transform.position - this.transform.position).normalized * SPEED_LOW;
 			this.actionState = _actionState;
-			this.strong = false;
+			this.finishStrong ();
 			this.remainReflectable = 0;
 			break;
 		case ActionState.RELEASE:
@@ -147,9 +147,9 @@ public class MovePlayer : MonoBehaviour {
 			if (this.strong && this.remainReflectable > 0) {
 				Reflect (this.transform.position - other.transform.position);
 				remainReflectable--;
-				Debug.Log (remainReflectable);
+				Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
 				if (remainReflectable == 0) {
-					strong = false;
+					this.finishStrong ();
 				}
 			} else {
 				this.transform.position = other.transform.position + (this.transform.position - other.transform.position).normalized * ((other.transform.localScale.x / 2) + this.playerRadius);
@@ -161,27 +161,39 @@ public class MovePlayer : MonoBehaviour {
 			if (this.strong && this.remainReflectable > 0) {
 				Reflect (this.transform.position - other.transform.position);
 				remainReflectable--;
+				Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
 				if (remainReflectable == 0) {
-					strong = false;
+					this.finishStrong ();
 				}
 			} else {
 				Dead ();
 			}
 
 		} else if (other.CompareTag (GameManager.MONSTER_TAG)) {
-			if (this.strong) {
-				GameObject.Instantiate (explosion, this.transform.position, this.transform.localRotation);
-				other.gameObject.SetActive (false);
-			} else {
-				Dead ();
+			Monster monster = other.GetComponent<Monster> ();
+			if (!monster.hasBlasted) {
+				if (this.strong) {
+					monster.Dead (this.playerRigidbody.velocity.normalized);
+				} else {
+					Dead ();
+				}
 			}
-
+		} else if (other.CompareTag (GameManager.MONSTER_NIKOICHI_TAG)) {
+			Nicoichi monster = other.GetComponent<Nicoichi> ();
+			if (!monster.hasBlasted) {
+				if (this.strong) {
+					monster.Dead (this.playerRigidbody.velocity.normalized);
+				} else {
+					Dead ();
+				}
+			}
 		} else if (other.CompareTags (GameManager.WALL_HORIZONTAL_TAG, GameManager.WALL_VERTICAL_TAG)) {
 			if (this.strong && this.remainReflectable > 0) {
 				Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
 				remainReflectable--;
+				Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
 				if (remainReflectable == 0) {
-					strong = false;
+					this.finishStrong ();
 				}
 			} else {
 				this.playerRigidbody.velocity = Vector2.zero;
@@ -190,14 +202,15 @@ public class MovePlayer : MonoBehaviour {
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_UP_TAG)) {
 			if (transform.position.y - other.gameObject.transform.position.y < 0) {
 				this.mainCamera.GetComponent<MainCamera> ().Up();
-				this.strong = false;
+				this.finishStrong ();
 				playerRigidbody.velocity = Vector2.zero;
 				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y + other.transform.localScale.y / 2.0f), 0.5f);
 			}
+
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_DOWN_TAG)) {
 			if (transform.position.y - other.gameObject.transform.position.y > 0) {
 				this.mainCamera.GetComponent<MainCamera> ().Down();
-				this.strong = false;
+				this.finishStrong ();
 				playerRigidbody.velocity = Vector2.zero;
 				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y - other.transform.localScale.y / 2.0f), 0.5f);
 			}
@@ -220,5 +233,14 @@ public class MovePlayer : MonoBehaviour {
 
 	void Reflect(Vector2 _normalVector) {
 		this.playerRigidbody.velocity = Vector2.Reflect (this.playerRigidbody.velocity, _normalVector);
+	}
+
+	void finishStrong() {
+		strong = false;
+
+		var nicoichies = GameObject.FindGameObjectsWithTag (GameManager.MONSTER_NIKOICHI_TAG);
+		foreach (var monster in nicoichies) {
+			monster.GetComponent<Nicoichi> ().Recover ();
+		}
 	}
 }
