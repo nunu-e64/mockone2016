@@ -52,7 +52,7 @@ public class TouchManager : MonoBehaviour {
 					//タップ位置に障害物がなかった時だけ処理
 					int layer = LayerMask.NameToLayer (GameManager.TAP_TARGET_LAYER);
 					var touchedCollider = Physics2D.OverlapPoint (touchPos, 1 << layer);
-					if (touchedCollider)
+//					if (touchedCollider)
 //						Debug.Log (touchedCollider.name);
 					if (GameObject.FindGameObjectsWithTag (GameManager.TOUCH_OBJECT_TAG).Length == 0) {					
 						if ((touchedCollider && touchedCollider.CompareTag (GameManager.TOUCH_FIELD_TAG))) {
