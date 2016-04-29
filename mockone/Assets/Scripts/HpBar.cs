@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class HpBar : MonoBehaviour {
 
 	[SerializeField]
 	private GameObject movePlayer;
+	[SerializeField]
+	private GameObject gage1;
+	[SerializeField]
+	private GameObject gage2;
 
 	private float RECOVERY;
 	private float TIME_LIMIT;
@@ -13,13 +18,17 @@ public class HpBar : MonoBehaviour {
 	private float maxValue;
 	private RectTransform gageTransform;
 	private GameObject canvas;
+	private Image gage1Image;
+	private Image gage2Image;
 
 	void Start () {
 		this.RECOVERY = GameManager.Instance.RECOVERY;
 		this.TIME_LIMIT = GameManager.Instance.TIME_LIMIT;
-		this.gageTransform = gameObject.GetComponent<RectTransform> ();
+		this.gageTransform = gage2.GetComponent<RectTransform> ();
 		this.maxValue = gageTransform.sizeDelta.x;
 		this.t = 1;
+		this.gage1Image = gage1.GetComponent<Image> ();
+		this.gage2Image = gage2.GetComponent<Image> ();
 	}
 
 	void Update () {
@@ -34,6 +43,14 @@ public class HpBar : MonoBehaviour {
 		if (this.t <= 0) {
 			movePlayer.GetComponent<MovePlayer> ().Dead ();
 		}
+		else if (this.t <= 0.25f) {
+			this.gage1Image.color = new Color32 (255, 0, 0, 255);
+		} else if (this.t <= 0.5f) {
+			this.gage1Image.color = new Color32 (255, 85, 85, 255);
+		} else if (this.t <= 0.75f) {
+			this.gage1Image.color = new Color32 (255, 170, 170, 255);
+		} 
+		this.gage2Image.color = this.gage1Image.color;
 	}
 
 	public void Recover() {
