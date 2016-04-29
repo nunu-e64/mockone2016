@@ -11,7 +11,7 @@ public class Nicoichi : Monster {
 	private Sprite defaultImage;
 
 	// Use this for initialization
-	void Start () {
+	new void Start () {
 		base.Start ();
 		hasKnockDowned = false;
 		defaultImage = this.GetComponent<SpriteRenderer> ().sprite;
@@ -28,7 +28,7 @@ public class Nicoichi : Monster {
 		}
 	}
 
-	void Update() {
+	new void Update() {
 		base.Update();
 	}
 

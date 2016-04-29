@@ -1,22 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class StageManager : MonoBehaviour {
 
 	[SerializeField]
 	private GameObject goal;
 
+	private List<Monster> monsters;
+
 	void Start () {
 		goal.SetActive (false);
+
+		//すべての敵を事前にリストに格納
+		monsters = new List<Monster>();
+		var monsterObjects = GameObject.FindGameObjectsWithTag (GameManager.MONSTER_TAG);
+		foreach (var monsterObject in monsterObjects) {
+			monsters.Add(monsterObject.GetComponent<Monster>());
+		}
+		monsterObjects = GameObject.FindGameObjectsWithTag (GameManager.MONSTER_NIKOICHI_TAG);
+		foreach (var monsterObject in monsterObjects) {
+			monsters.Add(monsterObject.GetComponent<Nicoichi>());
+		}
 	}
 
 	void Update() {
-		var monster = GameObject.FindGameObjectWithTag (GameManager.MONSTER_TAG);
-		if (monster == null) {
-			monster = GameObject.FindGameObjectWithTag (GameManager.MONSTER_NIKOICHI_TAG);
+		//もし敵が全滅していればゴールを表示
+		foreach (var monster in monsters) {
+			if (!monster.hasBlasted) {
+				return;
+			}
 		}
-		if (monster == null) {
-			goal.SetActive (true);
-		}
+		goal.SetActive (true);
 	}
 }
