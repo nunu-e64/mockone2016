@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 125500, guid: 8361c91fd9dba4210ac1c67a265c2aa6, type: 2}
-  hpBar: {fileID: 0}
+  hpBar: {fileID: 754617011}
 --- !u!50 &180334951
 Rigidbody2D:
   serializedVersion: 2
@@ -942,7 +942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb1e2b99d3a14bfb825365b3788f922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayer: {fileID: 0}
+  movePlayer: {fileID: 180334948}
   gage1: {fileID: 1014762774}
   gage2: {fileID: 76003886}
 --- !u!1 &763482574
