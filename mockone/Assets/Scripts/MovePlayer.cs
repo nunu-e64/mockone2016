@@ -169,13 +169,23 @@ public class MovePlayer : MonoBehaviour {
 			}
 
 		} else if (other.CompareTag (GameManager.MONSTER_TAG)) {
-			if (this.strong) {
-				GameObject.Instantiate (explosion, this.transform.position, this.transform.localRotation);
-				other.gameObject.SetActive (false);
-			} else {
-				Dead ();
+			Monster monster = other.GetComponent<Monster> ();
+			if (!monster.hasBlasted) {
+				if (this.strong) {
+					other.GetComponent<Monster> ().Dead (this.playerRigidbody.velocity.normalized);
+				} else {
+					Dead ();
+				}
 			}
-
+		} else if (other.CompareTag (GameManager.MONSTER_NIKOICHI_TAG)) {
+			Nicoichi monster = other.GetComponent<Nicoichi> ();
+			if (!monster.hasBlasted) {
+				if (this.strong) {
+					monster.Dead (this.playerRigidbody.velocity.normalized);
+				} else {
+					Dead ();
+				}
+			}
 		} else if (other.CompareTags (GameManager.WALL_HORIZONTAL_TAG, GameManager.WALL_VERTICAL_TAG)) {
 			if (this.strong && this.remainReflectable > 0) {
 				Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
@@ -194,6 +204,7 @@ public class MovePlayer : MonoBehaviour {
 				playerRigidbody.velocity = Vector2.zero;
 				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y + other.transform.localScale.y / 2.0f), 0.5f);
 			}
+
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_DOWN_TAG)) {
 			if (transform.position.y - other.gameObject.transform.position.y > 0) {
 				this.mainCamera.GetComponent<MainCamera> ().Down();
