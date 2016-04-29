@@ -8,11 +8,13 @@ public class Nicoichi : Monster {
 
 	[SerializeField]
 	private Sprite damagedImage;
+	private Sprite defaultImage;
 
 	// Use this for initialization
 	void Start () {
 		base.Start ();
 		hasKnockDowned = false;
+		defaultImage = this.GetComponent<SpriteRenderer> ().sprite;
 
 		var nicoichis = GameObject.FindGameObjectsWithTag(GameManager.MONSTER_NIKOICHI_TAG);
 		foreach (var monster in nicoichis) {
@@ -42,6 +44,13 @@ public class Nicoichi : Monster {
 				base.Dead (hitDirection);
 				buddy.Dead (hitDirection);
 			}
+		}
+	}
+
+	public void Recover() {
+		if (!hasBlasted && hasKnockDowned) {
+			hasKnockDowned = false;
+			this.gameObject.GetComponent<SpriteRenderer> ().sprite = defaultImage;
 		}
 	}
 }
