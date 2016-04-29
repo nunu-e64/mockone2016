@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36d598ae9bd8546999e95095d80e29ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagedImage: {fileID: 21300000, guid: 79e4b10bce37142ad81e22062e56684b, type: 3}
 --- !u!212 &21258398
 SpriteRenderer:
   m_ObjectHideFlags: 1

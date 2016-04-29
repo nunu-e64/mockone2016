@@ -172,7 +172,7 @@ public class MovePlayer : MonoBehaviour {
 			Monster monster = other.GetComponent<Monster> ();
 			if (!monster.hasBlasted) {
 				if (this.strong) {
-					other.GetComponent<Monster> ().Dead (this.playerRigidbody.velocity.normalized);
+					monster.Dead (this.playerRigidbody.velocity.normalized);
 				} else {
 					Dead ();
 				}
