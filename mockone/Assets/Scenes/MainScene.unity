@@ -1046,6 +1046,52 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1001 &769615531
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1347758152}
+    m_Modifications:
+    - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &769615532 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+  m_PrefabInternal: {fileID: 769615531}
 --- !u!1 &786952580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,6 +1855,7 @@ Transform:
   - {fileID: 930451639}
   - {fileID: 2146756175}
   - {fileID: 1661254257}
+  - {fileID: 769615532}
   m_Father: {fileID: 53503850}
   m_RootOrder: 2
 --- !u!1 &1393971384
