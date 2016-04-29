@@ -11,8 +11,8 @@ GameObject:
   - 212: {fileID: 21258398}
   - 58: {fileID: 5891488}
   - 95: {fileID: 9580184}
-  - 114: {fileID: 11465126}
   - 50: {fileID: 5011046}
+  - 114: {fileID: 11465126}
   m_Layer: 8
   m_Name: Monster2_1
   m_TagString: Monster2
@@ -72,7 +72,7 @@ Animator:
   m_GameObject: {fileID: 157724}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: da2d8e3a8058145128ea6dba665db5bd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

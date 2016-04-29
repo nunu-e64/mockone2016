@@ -19,7 +19,6 @@ public class Nicoichi : Monster {
 		var nicoichis = GameObject.FindGameObjectsWithTag(GameManager.MONSTER_NIKOICHI_TAG);
 		foreach (var monster in nicoichis) {
 			if (monster != this.gameObject) {
-				Debug.Log (this.name + ":" + monster.name);	
 				buddy = monster.GetComponent<Nicoichi>();
 			}
 		}
@@ -34,7 +33,6 @@ public class Nicoichi : Monster {
 	}
 
 	public override void Dead(Vector2 hitDirection) {
-		Debug.Log (this.name + ":Nicoichi Dead");
 		if (!hasBlasted) {
 			if (!hasKnockDowned) {
 				hasKnockDowned = true;
