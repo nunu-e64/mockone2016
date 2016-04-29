@@ -147,7 +147,7 @@ public class MovePlayer : MonoBehaviour {
 			if (this.strong && this.remainReflectable > 0) {
 				Reflect (this.transform.position - other.transform.position);
 				remainReflectable--;
-				Debug.Log (remainReflectable);
+				Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
 				if (remainReflectable == 0) {
 					strong = false;
 				}
@@ -161,6 +161,7 @@ public class MovePlayer : MonoBehaviour {
 			if (this.strong && this.remainReflectable > 0) {
 				Reflect (this.transform.position - other.transform.position);
 				remainReflectable--;
+				Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
 				if (remainReflectable == 0) {
 					strong = false;
 				}
@@ -190,6 +191,7 @@ public class MovePlayer : MonoBehaviour {
 			if (this.strong && this.remainReflectable > 0) {
 				Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
 				remainReflectable--;
+				Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
 				if (remainReflectable == 0) {
 					strong = false;
 				}
