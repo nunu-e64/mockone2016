@@ -8,7 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TitleScene.unity
   - enabled: 1
+    path: Assets/Scenes/StageSelect.unity
+  - enabled: 1
     path: Assets/Scenes/MainScene.unity
+  - enabled: 1
+    path: Assets/Scenes/Stage1.unity
+  - enabled: 1
+    path: Assets/Scenes/Stage2.unity
+  - enabled: 1
+    path: Assets/Scenes/Stage3.unity
   - enabled: 0
     path: Assets/Sample/furiko/furiko.unity
   - enabled: 0
