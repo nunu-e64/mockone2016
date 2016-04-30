@@ -40,6 +40,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 		CLEAR
 	}
 
+	public enum SceneName{
+		Title = 0,
+		StageSelect,
+	}
+		
 	public const string PLAYER_TAG = "Player";
 	public const string TOUCH_OBJECT_TAG = "TouchObject";
 	public const string STAR_TAG = "Star";				
@@ -55,6 +60,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public const string TAP_TARGET_LAYER = "TapTarget";
 	public const string MONSTER_NIKOICHI_TAG = "Monster2";
 
+	private int sceneNum;
+
 	void Awake () {
 		if (this != Instance) {
 			Destroy (this);
@@ -64,11 +71,27 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 		DontDestroyOnLoad (this.gameObject);
 	}
 
+	void Start () {
+		this.sceneNum = SceneManager.sceneCountInBuildSettings;
+	}
+
 	public void ChangeScene (string _name) {
 		SceneManager.LoadScene (_name);
 	}
 
+	public void ChangeScene (int _num) {
+		SceneManager.LoadScene (_num);
+	}
+
 	public void ReloadScene () {
 		this.ChangeScene (SceneManager.GetActiveScene ().name);
+	}
+
+	public void NextScene () {
+		//BuildSettingsに従って次のステージへ
+		if (SceneManager.GetActiveScene ().buildIndex == sceneNum  - 1) {
+			Debug.Log ("LastStage");
+		}
+		this.ChangeScene (SceneManager.GetActiveScene ().buildIndex + 1);
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 {
@@ -54,12 +55,12 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 		}
 		//Nextステージ
 		nextButton.GetComponent<Button> ().onClick.AddListener (() => {
-			Debug.Log ("NextStage");
+			GameManager.Instance.NextScene ();
 		});
 		//ステージセレクト
 		for (int i = 0; i < stageSelectButton.Length; i ++) {
 			stageSelectButton[i].GetComponent<Button> ().onClick.AddListener (() => {
-				Debug.Log ("StageSelect");
+				GameManager.Instance.ChangeScene (GameManager.SceneName.StageSelect.ToString ());
 			});
 		}
 	}
