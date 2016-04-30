@@ -21,6 +21,11 @@ public class HpBar : MonoBehaviour {
 	private Image gage1Image;
 	private Image gage2Image;
 
+	private Color32 color1 = new Color32 (255, 0, 0, 255);
+	private Color32 color2 = new Color32 (255, 85, 85, 255);
+	private Color32 color3 = new Color32 (255, 170, 170, 255);
+	private Color32 color4 = new Color32 (255, 255, 255, 255);
+
 	void Start () {
 		this.RECOVERY = GameManager.Instance.RECOVERY;
 		this.TIME_LIMIT = GameManager.Instance.TIME_LIMIT;
@@ -42,14 +47,15 @@ public class HpBar : MonoBehaviour {
 
 		if (this.t <= 0) {
 			movePlayer.GetComponent<MovePlayer> ().Dead ();
-		}
-		else if (this.t <= 0.25f) {
-			this.gage1Image.color = new Color32 (255, 0, 0, 255);
+		} else if (this.t <= 0.25f) {
+			this.gage1Image.color = this.color1;
 		} else if (this.t <= 0.5f) {
-			this.gage1Image.color = new Color32 (255, 85, 85, 255);
+			this.gage1Image.color = this.color2;
 		} else if (this.t <= 0.75f) {
-			this.gage1Image.color = new Color32 (255, 170, 170, 255);
-		} 
+			this.gage1Image.color = this.color3;
+		} else {
+			this.gage1Image.color = this.color4;
+		}
 		this.gage2Image.color = this.gage1Image.color;
 	}
 
