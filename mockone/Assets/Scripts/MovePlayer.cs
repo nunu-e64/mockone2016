@@ -144,7 +144,7 @@ public class MovePlayer : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other) {
 		if (other.CompareTag (GameManager.STAR_TAG)) {
-			if (this.strong && this.remainReflectable > 0) {
+			if (this.strong) {
 				Reflect (this.transform.position - other.transform.position);
 				remainReflectable--;
 				Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
@@ -158,7 +158,7 @@ public class MovePlayer : MonoBehaviour {
 			}
 
 		} else if (other.CompareTag (GameManager.METEO_TAG)) {
-			if (this.strong && this.remainReflectable > 0) {
+			if (this.strong) {
 				Reflect (this.transform.position - other.transform.position);
 				remainReflectable--;
 				Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
@@ -174,6 +174,12 @@ public class MovePlayer : MonoBehaviour {
 			if (!monster.hasBlasted) {
 				if (this.strong) {
 					monster.Dead (this.playerRigidbody.velocity.normalized);
+					Reflect (this.transform.position - other.transform.position);
+					remainReflectable--;
+					Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
+					if (remainReflectable == 0) {
+						this.finishStrong ();
+					}
 				} else {
 					Dead ();
 				}
@@ -183,6 +189,12 @@ public class MovePlayer : MonoBehaviour {
 			if (!monster.hasBlasted) {
 				if (this.strong) {
 					monster.Dead (this.playerRigidbody.velocity.normalized);
+					Reflect (this.transform.position - other.transform.position);
+					remainReflectable--;
+					Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
+					if (remainReflectable == 0) {
+						this.finishStrong ();
+					}
 				} else {
 					Dead ();
 				}
@@ -232,7 +244,7 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	void Reflect(Vector2 _normalVector) {
-		this.playerRigidbody.velocity = Vector2.Reflect (this.playerRigidbody.velocity, _normalVector);
+		this.playerRigidbody.velocity = Vector2.Reflect (this.playerRigidbody.velocity, _normalVector.normalized);
 	}
 
 	void finishStrong() {
