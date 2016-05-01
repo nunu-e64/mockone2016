@@ -6,7 +6,11 @@ using System;
 public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 {
 	[SerializeField]
-	private GameObject logo;
+	private GameObject gameStartLogo;
+	[SerializeField]
+	private GameObject game;
+	[SerializeField]
+	private GameObject start;
 	[SerializeField]
 	private GameObject clearLogo;
 	[SerializeField]
@@ -23,8 +27,23 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 	private GameObject nextButton;
 	[SerializeField]
 	private GameObject[] stageSelectButton;
+
+	//GameStart用Hash
+	private int pingPongCount = 0;
+	private Hashtable hash;
+
 	// Use this for initialization
 	void Start () {
+
+		//GameStartHashの生成
+		this.hash = new Hashtable ();
+		this.hash.Add ("scale", new Vector3 (1.5f, 1.5f, 1.5f));
+		this.hash.Add ("time", 0.8f);
+		this.hash.Add ("loopType", "pingPong");
+		this.hash.Add ("easeType", iTween.EaseType.easeInQuad);
+		this.hash.Add ("oncomplete", "OnComplete");
+		this.hash.Add ("oncompletetarget", gameObject);
+
 		this.Init ();
 		this.SetLogo (GameManager.GameState.GAME_START);
 
@@ -70,11 +89,12 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 
 		switch (_gameState) {
 		case GameManager.GameState.GAME_START:
-			this.logo.SetActive (true);
-			this.logo.GetComponent<Text> ().text = "GameStart";
+			this.gameStartLogo.SetActive (true);
+			this.game.SetActive (true);
+			iTween.ScaleTo (this.game, this.hash);
 			break;
 		case GameManager.GameState.PLAYING:
-			this.logo.SetActive (false);
+			this.gameStartLogo.SetActive (false);
 			break;
 		case GameManager.GameState.GAME_OVER:
 			this.gameOverLogo.SetActive (true);
@@ -88,8 +108,21 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 	}
 
 	private void Init () {
-		this.logo.SetActive (false);
+		this.gameStartLogo.SetActive (false);
 		this.gameOverLogo.SetActive (false);
 		this.clearLogo.SetActive (false);
+	}
+
+	void OnComplete () {
+		this.pingPongCount ++;
+		if (this.pingPongCount == 2) {
+			this.game.SetActive (false);
+			this.start.SetActive (true);
+			iTween.ScaleTo (this.start, this.hash);
+		} else if (this.pingPongCount == 4) {
+			this.start.SetActive (false);
+			this.pingPongCount = 0;
+			this.SetLogo (GameManager.GameState.PLAYING);
+		}
 	}
 }

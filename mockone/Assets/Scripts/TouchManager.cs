@@ -40,7 +40,7 @@ public class TouchManager : MonoBehaviour {
 
 		if (hasTapped && Time.timeScale > 0) {
 			if (GameManager.Instance.gameState == GameManager.GameState.GAME_START) {
-				CanvasManager.Instance.SetLogo (GameManager.GameState.PLAYING);
+				//CanvasManager.Instance.SetLogo (GameManager.GameState.PLAYING);
 			} else if (GameManager.Instance.gameState == GameManager.GameState.PLAYING) {
 				//UIタップ時は判定しない
 				if (!EventSystem.current.IsPointerOverGameObject () && !(Input.touchCount > 0 && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))) {
