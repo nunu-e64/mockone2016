@@ -21,7 +21,7 @@ public class Monster : MonoBehaviour {
 
 	public virtual void Dead (Vector2 hitDirection) {
 		this.GetComponent<Animator> ().Stop ();
-		this.gameObject.GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0, 0, 30) * hitDirection * GameManager.Instance.MONSTER_BLAST_SPEED;
+		this.gameObject.GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0, 0, 0) * hitDirection * GameManager.Instance.MONSTER_BLAST_SPEED;
 		hasBlasted = true;
 	}
 }
