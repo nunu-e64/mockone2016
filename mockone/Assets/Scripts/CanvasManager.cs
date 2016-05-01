@@ -58,6 +58,8 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 			iTween.MoveBy (backButton, hash);
 			retryButton[0].transform.position += new Vector3 (-100, 0, 0);
 			iTween.MoveBy (retryButton[0], hash);
+			stageSelectButton[2].transform.position += new Vector3 (-100, 0, 0);
+			iTween.MoveBy (stageSelectButton[2], hash);
 			Time.timeScale = 0;
 		});
 		//ゲーム画面に戻る

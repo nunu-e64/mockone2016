@@ -43,6 +43,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public enum SceneName{
 		Title = 0,
 		StageSelect,
+		Prologue,
 	}
 		
 	public const string PLAYER_TAG = "Player";
