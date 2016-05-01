@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11465126}
   m_Layer: 8
   m_Name: Monster2_1
-  m_TagString: Monster2
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

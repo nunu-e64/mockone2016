@@ -159,7 +159,7 @@ public class MovePlayer : MonoBehaviour {
 				Dead ();
 			}
 
-		} else if (other.CompareTags (GameManager.MONSTER_TAG, GameManager.MONSTER_NIKOICHI_TAG)) {
+		} else if (other.CompareTag (GameManager.MONSTER_TAG)) {
 			Monster monster = other.GetComponent<Monster> ();
 			if (!monster.hasBlasted) {
 				if (this.strong) {
@@ -224,9 +224,9 @@ public class MovePlayer : MonoBehaviour {
 			playerRigidbody.velocity = playerRigidbody.velocity.normalized * SPEED_LOW;
 		}
 
-		var nicoichies = GameObject.FindGameObjectsWithTag (GameManager.MONSTER_NIKOICHI_TAG);
-		foreach (var monster in nicoichies) {
-			monster.GetComponent<Nicoichi> ().Recover ();
+		var monsters = GameObject.FindGameObjectsWithTag (GameManager.MONSTER_TAG);
+		foreach (var monster in monsters) {
+			monster.GetComponent<Monster> ().FinishPlayerStrong ();
 		}
 	}
 }

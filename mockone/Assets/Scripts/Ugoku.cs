@@ -32,6 +32,7 @@ public class Ugoku : Monster {
 	private float speed;
 	private float t;
 	private Vector3 startPosition;
+	private bool isInvincible;
 
 	// Use this for initialization
 	new void Start () {
@@ -40,6 +41,7 @@ public class Ugoku : Monster {
 		t = 0f;
 		startPosition = this.transform.position;
 		this.changeMoveStyle(isFirst);
+		isInvincible = false;
 	}
 	
 	new void Update() {
@@ -75,9 +77,10 @@ public class Ugoku : Monster {
 	}
 
 	public override void Dead(Vector2 hitDirection) {
-		if (!hasBlasted) {
+		if (!hasBlasted && !isInvincible) {
 			if (isFirst) {
 				this.changeMoveStyle (false);
+				isInvincible = true;
 			} else {
 				base.Dead (hitDirection);
 			}
@@ -95,5 +98,9 @@ public class Ugoku : Monster {
 			size = SECOND_SIZE;
 			speed = SECOND_SPEED;
 		}
+	}
+
+	public override void FinishPlayerStrong() {
+		isInvincible = false;
 	}
 }

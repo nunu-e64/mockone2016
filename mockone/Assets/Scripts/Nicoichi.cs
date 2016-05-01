@@ -16,10 +16,10 @@ public class Nicoichi : Monster {
 		hasKnockDowned = false;
 		defaultImage = this.GetComponent<SpriteRenderer> ().sprite;
 
-		var nicoichis = GameObject.FindGameObjectsWithTag(GameManager.MONSTER_NIKOICHI_TAG);
+		var nicoichis = GameObject.FindObjectsOfType<Nicoichi> ();
 		foreach (var monster in nicoichis) {
-			if (monster != this.gameObject) {
-				buddy = monster.GetComponent<Nicoichi>();
+			if (monster != this) {
+				buddy = monster;
 			}
 		}
 
@@ -45,7 +45,7 @@ public class Nicoichi : Monster {
 		}
 	}
 
-	public void Recover() {
+	public override void FinishPlayerStrong() {
 		if (!hasBlasted && hasKnockDowned) {
 			hasKnockDowned = false;
 			this.gameObject.GetComponent<SpriteRenderer> ().sprite = defaultImage;

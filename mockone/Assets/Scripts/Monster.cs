@@ -24,4 +24,7 @@ public class Monster : MonoBehaviour {
 		this.gameObject.GetComponent<Rigidbody2D>().velocity = Quaternion.Euler(0, 0, 0) * hitDirection * GameManager.Instance.MONSTER_BLAST_SPEED;
 		hasBlasted = true;
 	}
+
+	public virtual void FinishPlayerStrong() {
+	}
 }
