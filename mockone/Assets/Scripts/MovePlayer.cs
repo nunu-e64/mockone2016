@@ -146,11 +146,6 @@ public class MovePlayer : MonoBehaviour {
 		if (other.CompareTag (GameManager.STAR_TAG)) {
 			if (this.strong) {
 				Reflect (this.transform.position - other.transform.position);
-				remainReflectable--;
-				Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
-				if (remainReflectable == 0) {
-					this.finishStrong ();
-				}
 			} else {
 				this.transform.position = other.transform.position + (this.transform.position - other.transform.position).normalized * ((other.transform.localScale.x / 2) + this.playerRadius);
 				this.playerRigidbody.velocity = Vector2.zero;
@@ -160,11 +155,6 @@ public class MovePlayer : MonoBehaviour {
 		} else if (other.CompareTag (GameManager.METEO_TAG)) {
 			if (this.strong) {
 				Reflect (this.transform.position - other.transform.position);
-				remainReflectable--;
-				Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
-				if (remainReflectable == 0) {
-					this.finishStrong ();
-				}
 			} else {
 				Dead ();
 			}
@@ -175,11 +165,6 @@ public class MovePlayer : MonoBehaviour {
 				if (this.strong) {
 					monster.Dead (this.playerRigidbody.velocity.normalized);
 					Reflect (this.transform.position - other.transform.position);
-					remainReflectable--;
-					Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
-					if (remainReflectable == 0) {
-						this.finishStrong ();
-					}
 				} else {
 					Dead ();
 				}
@@ -190,11 +175,6 @@ public class MovePlayer : MonoBehaviour {
 				if (this.strong) {
 					monster.Dead (this.playerRigidbody.velocity.normalized);
 					Reflect (this.transform.position - other.transform.position);
-					remainReflectable--;
-					Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
-					if (remainReflectable == 0) {
-						this.finishStrong ();
-					}
 				} else {
 					Dead ();
 				}
@@ -202,11 +182,6 @@ public class MovePlayer : MonoBehaviour {
 		} else if (other.CompareTags (GameManager.WALL_HORIZONTAL_TAG, GameManager.WALL_VERTICAL_TAG)) {
 			if (this.strong && this.remainReflectable > 0) {
 				Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
-				remainReflectable--;
-				Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
-				if (remainReflectable == 0) {
-					this.finishStrong ();
-				}
 			} else {
 				this.playerRigidbody.velocity = Vector2.zero;
 			}				
@@ -221,10 +196,11 @@ public class MovePlayer : MonoBehaviour {
 
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_DOWN_TAG)) {
 			if (transform.position.y - other.gameObject.transform.position.y > 0) {
-				this.mainCamera.GetComponent<MainCamera> ().Down();
-				this.finishStrong ();
-				playerRigidbody.velocity = Vector2.zero;
-				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y - other.transform.localScale.y / 2.0f), 0.5f);
+				if (this.strong && this.remainReflectable > 0) {
+					Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
+				} else {
+					this.playerRigidbody.velocity = Vector2.zero;
+				}
 			}
 		} else if (other.CompareTag(GameManager.GOAL_TAG)) {
 			this.playerRigidbody.velocity = Vector2.zero; //DEBUG
@@ -245,10 +221,18 @@ public class MovePlayer : MonoBehaviour {
 
 	void Reflect(Vector2 _normalVector) {
 		this.playerRigidbody.velocity = Vector2.Reflect (this.playerRigidbody.velocity, _normalVector.normalized);
+		remainReflectable--;
+		Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
+		if (remainReflectable == 0) {
+			this.finishStrong ();
+		}
 	}
 
 	void finishStrong() {
 		strong = false;
+		if (playerRigidbody.velocity.sqrMagnitude > 0) {
+			playerRigidbody.velocity = playerRigidbody.velocity.normalized * SPEED_LOW;
+		}
 
 		var nicoichies = GameObject.FindGameObjectsWithTag (GameManager.MONSTER_NIKOICHI_TAG);
 		foreach (var monster in nicoichies) {
