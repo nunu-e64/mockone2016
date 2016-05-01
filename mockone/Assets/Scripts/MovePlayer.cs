@@ -12,7 +12,7 @@ public class MovePlayer : MonoBehaviour {
 
 	private Rigidbody2D playerRigidbody;
 	private ActionState actionState;
-	private MoveDirectionState moveDirectionState;	//右回転か左回転か
+	private MoveDirectionState moveDirectionState = MoveDirectionState.LEFT;	//右回転か左回転か
 	private float playerRadius;		//当たり判定半径
 	private float aroundTime;	//回転時間
 	private bool strong;	//強ビューン状態
@@ -169,16 +169,6 @@ public class MovePlayer : MonoBehaviour {
 					Dead ();
 				}
 			}
-		} else if (other.CompareTag (GameManager.MONSTER_NIKOICHI_TAG)) {
-			Nicoichi monster = other.GetComponent<Nicoichi> ();
-			if (!monster.hasBlasted) {
-				if (this.strong) {
-					monster.Dead (this.playerRigidbody.velocity.normalized);
-					Reflect (this.transform.position - other.transform.position);
-				} else {
-					Dead ();
-				}
-			}
 		} else if (other.CompareTags (GameManager.WALL_HORIZONTAL_TAG, GameManager.WALL_VERTICAL_TAG)) {
 			if (this.strong && this.remainReflectable > 0) {
 				Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
@@ -234,9 +224,9 @@ public class MovePlayer : MonoBehaviour {
 			playerRigidbody.velocity = playerRigidbody.velocity.normalized * SPEED_LOW;
 		}
 
-		var nicoichies = GameObject.FindGameObjectsWithTag (GameManager.MONSTER_NIKOICHI_TAG);
-		foreach (var monster in nicoichies) {
-			monster.GetComponent<Nicoichi> ().Recover ();
+		var monsters = GameObject.FindGameObjectsWithTag (GameManager.MONSTER_TAG);
+		foreach (var monster in monsters) {
+			monster.GetComponent<Monster> ().FinishPlayerStrong ();
 		}
 	}
 }
