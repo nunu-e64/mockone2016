@@ -221,10 +221,16 @@ public class MovePlayer : MonoBehaviour {
 
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_DOWN_TAG)) {
 			if (transform.position.y - other.gameObject.transform.position.y > 0) {
-				this.mainCamera.GetComponent<MainCamera> ().Down();
-				this.finishStrong ();
-				playerRigidbody.velocity = Vector2.zero;
-				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y - other.transform.localScale.y / 2.0f), 0.5f);
+				if (this.strong && this.remainReflectable > 0) {
+					Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
+					remainReflectable--;
+					Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
+					if (remainReflectable == 0) {
+						this.finishStrong ();
+					}
+				} else {
+					this.playerRigidbody.velocity = Vector2.zero;
+				}
 			}
 		} else if (other.CompareTag(GameManager.GOAL_TAG)) {
 			this.playerRigidbody.velocity = Vector2.zero; //DEBUG
