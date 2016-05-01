@@ -159,18 +159,8 @@ public class MovePlayer : MonoBehaviour {
 				Dead ();
 			}
 
-		} else if (other.CompareTag (GameManager.MONSTER_TAG)) {
+		} else if (other.CompareTags (GameManager.MONSTER_TAG, GameManager.MONSTER_NIKOICHI_TAG)) {
 			Monster monster = other.GetComponent<Monster> ();
-			if (!monster.hasBlasted) {
-				if (this.strong) {
-					monster.Dead (this.playerRigidbody.velocity.normalized);
-					Reflect (this.transform.position - other.transform.position);
-				} else {
-					Dead ();
-				}
-			}
-		} else if (other.CompareTag (GameManager.MONSTER_NIKOICHI_TAG)) {
-			Nicoichi monster = other.GetComponent<Nicoichi> ();
 			if (!monster.hasBlasted) {
 				if (this.strong) {
 					monster.Dead (this.playerRigidbody.velocity.normalized);

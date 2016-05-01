@@ -39,13 +39,13 @@ public class Ugoku : Monster {
 		isFirst = true;
 		t = 0f;
 		startPosition = this.transform.position;
-		this.applyMoveStyle();
+		this.changeMoveStyle(isFirst);
 	}
 	
 	new void Update() {
 		base.Update();
 
-		applyMoveStyle ();		//DEBUG: for パラメータ調整しやすくするため毎回反映
+		this.changeMoveStyle (isFirst);		//DEBUG: for パラメータ調整しやすくするため毎回反映
 		if (!hasBlasted) {
 			t += Time.deltaTime;
 			float x = Mathf.Cos (t * speed / size) * size;
@@ -75,10 +75,17 @@ public class Ugoku : Monster {
 	}
 
 	public override void Dead(Vector2 hitDirection) {
-		base.Dead (hitDirection);
+		if (!hasBlasted) {
+			if (isFirst) {
+				this.changeMoveStyle (false);
+			} else {
+				base.Dead (hitDirection);
+			}
+		}
 	}
 
-	private void applyMoveStyle() {
+	private void changeMoveStyle(bool _isFirst) {
+		isFirst = _isFirst;
 		if (isFirst) {
 			moveStyle = FIRST_MOVE_STYLE;
 			size = FIRST_SIZE;
