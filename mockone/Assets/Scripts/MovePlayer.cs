@@ -12,7 +12,7 @@ public class MovePlayer : MonoBehaviour {
 
 	private Rigidbody2D playerRigidbody;
 	private ActionState actionState;
-	private MoveDirectionState moveDirectionState;	//右回転か左回転か
+	private MoveDirectionState moveDirectionState = MoveDirectionState.LEFT;	//右回転か左回転か
 	private float playerRadius;		//当たり判定半径
 	private float aroundTime;	//回転時間
 	private bool strong;	//強ビューン状態
