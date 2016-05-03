@@ -730,6 +730,10 @@ Prefab:
       propertyPath: m_Text
       value: Stage2
       objectReference: {fileID: 0}
+    - target: {fileID: 11461412, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
+      propertyPath: movePlayer
+      value: 
+      objectReference: {fileID: 180334948}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
   m_IsPrefabParent: 0
@@ -1101,7 +1105,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 489088, guid: 50ec86500a9cb458fa975b249d31cf86, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 19.53
+      value: 25.18
       objectReference: {fileID: 0}
     - target: {fileID: 489088, guid: 50ec86500a9cb458fa975b249d31cf86, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1353,11 +1357,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 487290, guid: 3bbe29605889f488b809b65eea2d6b80, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.23
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 487290, guid: 3bbe29605889f488b809b65eea2d6b80, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 17.47
+      value: 22.08
       objectReference: {fileID: 0}
     - target: {fileID: 487290, guid: 3bbe29605889f488b809b65eea2d6b80, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2414,8 +2418,8 @@ Transform:
   - {fileID: 1912056554}
   - {fileID: 1008781263}
   - {fileID: 1092569955}
-  - {fileID: 249063508}
   - {fileID: 1962076744}
+  - {fileID: 249063508}
   - {fileID: 5219751}
   m_Father: {fileID: 1853400009}
   m_RootOrder: 1

@@ -18,10 +18,6 @@ public class StageManager : MonoBehaviour {
 		foreach (var monsterObject in monsterObjects) {
 			monsters.Add(monsterObject.GetComponent<Monster>());
 		}
-		monsterObjects = GameObject.FindGameObjectsWithTag (GameManager.MONSTER_NIKOICHI_TAG);
-		foreach (var monsterObject in monsterObjects) {
-			monsters.Add(monsterObject.GetComponent<Nicoichi>());
-		}
 	}
 
 	void Update() {

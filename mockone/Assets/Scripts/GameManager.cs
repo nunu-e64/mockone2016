@@ -43,6 +43,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public enum SceneName{
 		Title = 0,
 		StageSelect,
+		Prologue,
 	}
 		
 	public const string PLAYER_TAG = "Player";
@@ -58,7 +59,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public const string CANDY_TAG = "Candy";
 	public const string TOUCH_FIELD_TAG = "TouchField";
 	public const string TAP_TARGET_LAYER = "TapTarget";
-	public const string MONSTER_NIKOICHI_TAG = "Monster2";
 
 	private int sceneNum;
 
