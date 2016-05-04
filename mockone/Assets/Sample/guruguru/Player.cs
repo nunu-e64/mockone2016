@@ -10,7 +10,7 @@ public class Player : MonoBehaviour {
 	private GameObject activeStar;
 
 	private float power;
-	private float cameraSpeed = 0.5f;
+	private float cameraSpeed = 1.0f;
 
 	public bool furiko = false;
 	private float gravity = 10f;
