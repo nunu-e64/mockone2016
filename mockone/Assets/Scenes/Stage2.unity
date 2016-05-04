@@ -198,10 +198,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 11402926, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
-      propertyPath: hpBar
-      value: 
-      objectReference: {fileID: 295907484}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
   m_IsPrefabParent: 0
@@ -629,7 +625,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22444760, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 22444760, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -671,23 +667,13 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11469420, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
-      propertyPath: m_Text
-      value: Stage2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11461412, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
-      propertyPath: movePlayer
+    - target: {fileID: 22375428, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
+      propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 34201225}
+      objectReference: {fileID: 1705868376}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &295907484 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11461412, guid: 5f6ade7eb35c0432d9b53764a7ed6c00,
-    type: 2}
-  m_PrefabInternal: {fileID: 295907483}
-  m_Script: {fileID: 11500000, guid: 5eb1e2b99d3a14bfb825365b3788f922, type: 3}
 --- !u!1001 &343872584
 Prefab:
   m_ObjectHideFlags: 0
