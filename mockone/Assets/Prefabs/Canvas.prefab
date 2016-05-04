@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb1e2b99d3a14bfb825365b3788f922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayer: {fileID: 0}
+  movePlayer: {fileID: 118002, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
   gage1: {fileID: 184768}
   gage2: {fileID: 191134}
 --- !u!114 &11469420

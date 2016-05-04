@@ -82,6 +82,7 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 		for (int i = 0; i < stageSelectButton.Length; i ++) {
 			stageSelectButton[i].GetComponent<Button> ().onClick.AddListener (() => {
 				GameManager.Instance.ChangeScene (GameManager.SceneName.StageSelect.ToString ());
+				Time.timeScale = 1;
 			});
 		}
 	}
