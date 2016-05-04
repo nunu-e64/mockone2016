@@ -620,10 +620,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 11402926, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
-      propertyPath: hpBar
-      value: 
-      objectReference: {fileID: 754617011}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
   m_IsPrefabParent: 0
@@ -1380,12 +1376,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!114 &754617011 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11461412, guid: 5f6ade7eb35c0432d9b53764a7ed6c00,
-    type: 2}
-  m_PrefabInternal: {fileID: 1675557055}
-  m_Script: {fileID: 11500000, guid: 5eb1e2b99d3a14bfb825365b3788f922, type: 3}
 --- !u!1 &757202668
 GameObject:
   m_ObjectHideFlags: 0
@@ -3665,7 +3655,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &1705868378
 MonoBehaviour:
   m_ObjectHideFlags: 0
