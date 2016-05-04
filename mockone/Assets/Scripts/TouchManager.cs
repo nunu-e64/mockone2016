@@ -12,6 +12,8 @@ public class TouchManager : MonoBehaviour {
 	private GameObject touchObject;
 	[SerializeField]
 	private float touchObjectRadius;
+	[SerializeField]
+	private float touchEffect;
 
 	private float TOUCH_INTERVAL;
 
