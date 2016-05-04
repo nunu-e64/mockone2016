@@ -26,6 +26,8 @@ public class MovePlayer : MonoBehaviour {
 	private GameObject touchObject;
 	[SerializeField]
 	private HpBar hpBar;
+	[SerializeField]
+	private GameObject[] effects;
 
 	public enum ActionState {
 		NONE,		//直線移動中
@@ -68,8 +70,12 @@ public class MovePlayer : MonoBehaviour {
 	void Update () {
 		if (this.strong) {
 			this.GetComponent<SpriteRenderer> ().color = new Color (255 / 255.0f, 170 / 255.0f, 70 / 255.0f, 1);
+			this.effects [0].SetActive (false);
+			this.effects [1].SetActive (true);
 		} else {
 			this.GetComponent<SpriteRenderer> ().color = new Color (1, 1, 1, 1);
+			this.effects [0].SetActive (true);
+			this.effects [1].SetActive (false);
 		}
 
 		//周回挙動
