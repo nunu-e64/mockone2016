@@ -3,6 +3,9 @@ using System.Collections;
 
 public class TouchObject : MonoBehaviour {
 
+	[SerializeField]
+	private GameObject spakleEffect;
+
 	private	bool isAvailable = false;
 
 	// Use this for initialization
@@ -23,6 +26,7 @@ public class TouchObject : MonoBehaviour {
 	}
 
 	public void Reset () {
+		Instantiate(spakleEffect, transform.position, Quaternion.identity);
 		Destroy (gameObject); //TODO: アニメーション再生->アニメーション終了時にDestroy
 	}
 
