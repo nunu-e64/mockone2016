@@ -1085,14 +1085,6 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1705868376}
-    - target: {fileID: 11461412, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
-      propertyPath: movePlayer
-      value: 
-      objectReference: {fileID: 658572551}
-    - target: {fileID: 22375428, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
   m_IsPrefabParent: 0
@@ -1701,6 +1693,10 @@ Prefab:
     - target: {fileID: 439380, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
       propertyPath: m_RootOrder
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 118002, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
