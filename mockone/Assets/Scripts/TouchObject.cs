@@ -5,12 +5,16 @@ public class TouchObject : MonoBehaviour {
 
 	[SerializeField]
 	private GameObject spakleEffect;
+	[SerializeField]
+	private GameObject sphireEffect;
 
 	private	bool isAvailable = false;
+	private bool isSetEffect  = false;
 
 	// Use this for initialization
 	void Start () {
 		this.isAvailable = true;
+		this.isSetEffect = false;
 	}
 	
 	// Update is called once per frame
@@ -26,7 +30,7 @@ public class TouchObject : MonoBehaviour {
 	}
 
 	public void Reset () {
-		Instantiate(spakleEffect, transform.position, Quaternion.identity);
+		Instantiate (spakleEffect, transform.position, Quaternion.identity);
 		Destroy (gameObject); //TODO: アニメーション再生->アニメーション終了時にDestroy
 	}
 
@@ -34,5 +38,12 @@ public class TouchObject : MonoBehaviour {
 		//出現時に軌道半径を設定
 		float ratio = transform.GetChild(0).localScale.magnitude / transform.localScale.magnitude;
 		transform.localScale = Vector3.one * _radius / ratio * 2;
+	}
+
+	public void SetEffect () {
+		if (!this.isSetEffect) {
+			this.isSetEffect = true;
+			this.sphireEffect.SetActive (true);
+		}
 	}
 }

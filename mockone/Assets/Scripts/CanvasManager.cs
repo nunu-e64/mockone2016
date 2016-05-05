@@ -27,6 +27,11 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 	private GameObject nextButton;
 	[SerializeField]
 	private GameObject[] stageSelectButton;
+	[SerializeField]
+	private GameObject goalEffect;
+
+	private bool isClear;
+	private float isClearTime;
 
 	//GameStart用Hash
 	private int pingPongCount = 0;
@@ -34,6 +39,8 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 
 	// Use this for initialization
 	void Start () {
+		this.isClear = false;
+		this.isClearTime = 0;
 
 		//GameStartHashの生成
 		this.hash = new Hashtable ();
@@ -87,6 +94,17 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 		}
 	}
 
+	void Update () {
+		if (this.isClear) {
+			this.isClearTime += Time.deltaTime;
+			if (isClearTime >= 1) {
+				this.clearLogo.SetActive (true);
+				this.isClear = false;
+				this.isClearTime = 0;
+			}
+		}
+	}
+
 	public void SetLogo (GameManager.GameState _gameState) {
 		GameManager.Instance.gameState = _gameState;
 
@@ -103,7 +121,8 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 			this.gameOverLogo.SetActive (true);
 			break;
 		case GameManager.GameState.CLEAR:
-			this.clearLogo.SetActive (true);
+			this.goalEffect.SetActive (true);
+			this.isClear = true;
 			break;
 		default:
 			break;
