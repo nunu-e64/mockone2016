@@ -28,6 +28,8 @@ public class MovePlayer : MonoBehaviour {
 	private HpBar hpBar;
 	[SerializeField]
 	private GameObject[] effects;
+	[SerializeField]
+	private Sprite defaultImage;
 
 	public enum ActionState {
 		NONE,		//直線移動中
@@ -97,6 +99,9 @@ public class MovePlayer : MonoBehaviour {
 
 		switch (_actionState) {
 		case ActionState.MOVE:
+			//一回でも移動開始したらアニメーション終了
+			this.GetComponent<Animator> ().Stop ();
+			this.GetComponent<SpriteRenderer> ().sprite = this.defaultImage;
 			//タップポイントに方向転換
 			this.playerRigidbody.velocity = (this.touchObject.transform.position - this.transform.position).normalized * SPEED_LOW;
 			this.actionState = _actionState;
