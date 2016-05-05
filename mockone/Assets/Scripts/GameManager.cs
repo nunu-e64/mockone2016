@@ -85,7 +85,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	}
 
 	public void ReloadScene () {
-		this.ChangeScene (SceneManager.GetActiveScene ().name);
+		this.ChangeScene (this.GetActiveSceneName ());
 	}
 
 	public void NextScene () {
@@ -95,5 +95,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 		} else {
 			this.ChangeScene (SceneManager.GetActiveScene ().buildIndex + 1);
 		}
+	}
+
+	public string GetActiveSceneName () {
+		return SceneManager.GetActiveScene ().name;
 	}
 }

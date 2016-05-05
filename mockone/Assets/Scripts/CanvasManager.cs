@@ -29,6 +29,8 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 	private GameObject[] stageSelectButton;
 	[SerializeField]
 	private GameObject goalEffect;
+	[SerializeField]
+	private GameObject debugStageNumber;
 
 	private bool isClear;
 	private float isClearTime;
@@ -41,6 +43,8 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 	void Start () {
 		this.isClear = false;
 		this.isClearTime = 0;
+
+		debugStageNumber.GetComponent<Text> ().text = GameManager.Instance.GetActiveSceneName ();
 
 		//GameStartHashの生成
 		this.hash = new Hashtable ();

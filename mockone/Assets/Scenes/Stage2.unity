@@ -3,7 +3,7 @@
 --- !u!29 &1
 SceneSettings:
   m_ObjectHideFlags: 0
-  m_PVSData:
+  m_PVSData: 
   m_PVSObjectsArray: []
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
@@ -248,6 +248,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 11402926, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
+      propertyPath: hpBar
+      value: 
+      objectReference: {fileID: 295907484}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
   m_IsPrefabParent: 0
@@ -941,11 +945,25 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22375428, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
       propertyPath: m_Camera
-      value:
+      value: 
       objectReference: {fileID: 1705868376}
+    - target: {fileID: 11461412, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
+      propertyPath: movePlayer
+      value: 
+      objectReference: {fileID: 34201225}
+    - target: {fileID: 11469420, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
+      propertyPath: m_Text
+      value: Stage2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &295907484 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11461412, guid: 5f6ade7eb35c0432d9b53764a7ed6c00,
+    type: 2}
+  m_PrefabInternal: {fileID: 295907483}
+  m_Script: {fileID: 11500000, guid: 5eb1e2b99d3a14bfb825365b3788f922, type: 3}
 --- !u!1001 &343872584
 Prefab:
   m_ObjectHideFlags: 0
@@ -1412,11 +1430,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 9580184, guid: 50ec86500a9cb458fa975b249d31cf86, type: 2}
       propertyPath: m_Controller
-      value:
+      value: 
       objectReference: {fileID: 9100000, guid: da2d8e3a8058145128ea6dba665db5bd, type: 2}
     - target: {fileID: 22375428, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
       propertyPath: m_Camera
-      value:
+      value: 
       objectReference: {fileID: 1705868376}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50ec86500a9cb458fa975b249d31cf86, type: 2}
@@ -1748,8 +1766,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc1887be72a304b4c8bcaab4a242ae0e, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   goal: {fileID: 1220302402}
 --- !u!4 &763482576
 Transform:
@@ -2557,7 +2575,7 @@ SpriteRenderer:
   m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_ReflectionProbeUsage: 0
@@ -2745,7 +2763,7 @@ SpriteRenderer:
   m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_ReflectionProbeUsage: 0
@@ -3153,8 +3171,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 996e15faa05e3473f9aca9c253df8817, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1752737179
 Prefab:
   m_ObjectHideFlags: 0
@@ -3264,7 +3282,7 @@ SpriteRenderer:
   m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_ReflectionProbeUsage: 0
@@ -3382,8 +3400,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b13271d6455cd4141a8294a516907624, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   mainCamera: {fileID: 1705868372}
   movePlayer: {fileID: 34201225}
   touchObject: {fileID: 159720, guid: 5a3d2916048f544f6a7e1f818a4d0ba6, type: 2}
@@ -3428,7 +3446,6 @@ Transform:
   - {fileID: 882876608}
   - {fileID: 905261812}
   - {fileID: 1227527606}
-  - {fileID: 2020593441}
   - {fileID: 633390366}
   - {fileID: 587625786}
   - {fileID: 598819607}
@@ -3436,7 +3453,7 @@ Transform:
   - {fileID: 232875041}
   - {fileID: 1327101389}
   - {fileID: 955210430}
-  - {fileID: 51398119}
+  - {fileID: 2020593441}
   - {fileID: 1912056554}
   - {fileID: 1008781263}
   - {fileID: 249063508}
@@ -3444,6 +3461,7 @@ Transform:
   - {fileID: 674366129}
   - {fileID: 1180534698}
   - {fileID: 868587158}
+  - {fileID: 51398119}
   - {fileID: 136461086}
   - {fileID: 1878550466}
   - {fileID: 478007963}
@@ -4133,8 +4151,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -4151,8 +4169,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5

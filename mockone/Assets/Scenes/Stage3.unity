@@ -849,9 +849,23 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1964782299}
+    - target: {fileID: 11469420, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
+      propertyPath: m_Text
+      value: Stage3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11461412, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
+      propertyPath: movePlayer
+      value: 
+      objectReference: {fileID: 725730260}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &495653631 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11461412, guid: 5f6ade7eb35c0432d9b53764a7ed6c00,
+    type: 2}
+  m_PrefabInternal: {fileID: 495653630}
+  m_Script: {fileID: 11500000, guid: 5eb1e2b99d3a14bfb825365b3788f922, type: 3}
 --- !u!1 &583532538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,6 +1097,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 11402926, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
+      propertyPath: hpBar
+      value: 
+      objectReference: {fileID: 495653631}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
   m_IsPrefabParent: 0
@@ -2361,7 +2379,6 @@ MonoBehaviour:
   movePlayer: {fileID: 725730260}
   touchObject: {fileID: 159720, guid: 5a3d2916048f544f6a7e1f818a4d0ba6, type: 2}
   touchObjectRadius: 0.42
-  touchEffect: 0
 --- !u!4 &1836052949
 Transform:
   m_ObjectHideFlags: 0

@@ -938,6 +938,7 @@ MonoBehaviour:
   - {fileID: 141040}
   - {fileID: 148032}
   goalEffect: {fileID: 155186}
+  debugStageNumber: {fileID: 120138}
 --- !u!114 &11456214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1058,7 +1059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb1e2b99d3a14bfb825365b3788f922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePlayer: {fileID: 118002, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
+  movePlayer: {fileID: 0}
   gage1: {fileID: 184768}
   gage2: {fileID: 191134}
 --- !u!114 &11469420
@@ -1093,7 +1094,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Stage2
+  m_Text: MainScene
 --- !u!114 &11470502
 MonoBehaviour:
   m_ObjectHideFlags: 1
