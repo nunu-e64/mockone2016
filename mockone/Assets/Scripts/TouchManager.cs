@@ -12,17 +12,18 @@ public class TouchManager : MonoBehaviour {
 	private GameObject touchObject;
 	[SerializeField]
 	private float touchObjectRadius;
-	[SerializeField]
-	private float touchEffect;
 
 	private float TOUCH_INTERVAL;
 
+	private GameObject obj;
 	private float interval;
+
 
 	// Use this for initialization
 	void Start () {
 		this.TOUCH_INTERVAL = GameManager.Instance.TOUCH_INTERVAL;
 		this.GetComponent<AudioManager> ();
+		this.obj = null;
 		AudioManager.Instance.PlayBGM ("stage");
 	}
 	// タップで引力点の生成or消滅
@@ -67,13 +68,18 @@ public class TouchManager : MonoBehaviour {
 				}
 			}
 		}
+
+		//プレイヤーがAround状態になったときエフェクト生成
+		if (this.movePlayer.GetComponent<MovePlayer> ().GetActionState () == MovePlayer.ActionState.AROUND) {
+			this.obj.GetComponent<TouchObject> ().SetEffect ();
+		}
 	}
 
 	void CreateGravitation (Vector3 _touchPos) {
 		if (interval > TOUCH_INTERVAL) {
-			GameObject obj = Instantiate (touchObject, _touchPos, Quaternion.identity) as GameObject;
-			obj.GetComponent<TouchObject> ().Init (touchObjectRadius);
-			movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.MOVE, obj);
+			this.obj = Instantiate (touchObject, _touchPos, Quaternion.identity) as GameObject;
+			this.obj.GetComponent<TouchObject> ().Init (touchObjectRadius);
+			movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.MOVE, this.obj);
 		}
 	}
 

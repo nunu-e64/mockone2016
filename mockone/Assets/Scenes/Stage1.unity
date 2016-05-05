@@ -3610,7 +3610,8 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1705868376}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11416484, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1705868372
@@ -4025,7 +4026,6 @@ MonoBehaviour:
   movePlayer: {fileID: 180334948}
   touchObject: {fileID: 159720, guid: 5a3d2916048f544f6a7e1f818a4d0ba6, type: 2}
   touchObjectRadius: 0.42
-  touchEffect: 0
 --- !u!4 &1836052949
 Transform:
   m_ObjectHideFlags: 0
