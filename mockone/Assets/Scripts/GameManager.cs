@@ -44,6 +44,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 		Title = 0,
 		StageSelect,
 		Prologue,
+		Epilogue
 	}
 		
 	public const string PLAYER_TAG = "Player";
@@ -89,9 +90,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 
 	public void NextScene () {
 		//BuildSettingsに従って次のステージへ
-		if (SceneManager.GetActiveScene ().buildIndex == sceneNum  - 1) {
-			Debug.Log ("LastStage");
+		if (SceneManager.GetActiveScene ().buildIndex == sceneNum - 1) {
+			GameManager.Instance.ChangeScene (GameManager.SceneName.Epilogue.ToString ());
+		} else {
+			this.ChangeScene (SceneManager.GetActiveScene ().buildIndex + 1);
 		}
-		this.ChangeScene (SceneManager.GetActiveScene ().buildIndex + 1);
 	}
 }

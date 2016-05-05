@@ -203,10 +203,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 782148105}
   sprites:
-  - {fileID: 21300000, guid: 279a334f003304ef48dffffe4302c485, type: 3}
-  - {fileID: 21300000, guid: e851c3883ba69459e9910fe189825100, type: 3}
-  - {fileID: 21300000, guid: 40724cd9bab1c40ff877cb92da1a9d8d, type: 3}
-  - {fileID: 21300000, guid: 92cfd838cd8014733bdc002bad539ec9, type: 3}
+  - {fileID: 21300000, guid: 49d975c67f7a7459190aa15ece23c9a2, type: 3}
+  - {fileID: 21300000, guid: 653c486fe749f439aa5ecf62c2bae739, type: 3}
+  - {fileID: 21300000, guid: 640d5f39f7ed645c1ad0b3a5d33faa48, type: 3}
+  - {fileID: 21300000, guid: a54e32c7f9df34311b7a83296f2c8460, type: 3}
 --- !u!114 &679738344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,7 +334,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 279a334f003304ef48dffffe4302c485, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 49d975c67f7a7459190aa15ece23c9a2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
