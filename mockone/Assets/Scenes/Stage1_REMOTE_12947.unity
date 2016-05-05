@@ -620,10 +620,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 11402926, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
-      propertyPath: hpBar
-      value: 
-      objectReference: {fileID: 754617011}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
   m_IsPrefabParent: 0
@@ -2669,22 +2665,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: TOUCH_INTERVAL
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: TIME_LIMIT
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: RECOVERY
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: AROUND_BORDER_TIME
-      value: 2.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
   m_IsPrefabParent: 0
@@ -4055,8 +4035,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!1001 &1889975516
-Prefab:
+--- !u!1 &1949711440
+GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 176736, guid: cd475293770574f3fbd67cd4176cb80a, type: 2}
   m_PrefabInternal: {fileID: 0}

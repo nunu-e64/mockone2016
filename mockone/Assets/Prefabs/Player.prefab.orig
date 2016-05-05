@@ -135,9 +135,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 125500, guid: 8361c91fd9dba4210ac1c67a265c2aa6, type: 2}
   hpBar: {fileID: 11461412, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
+<<<<<<< HEAD
+=======
   effects:
   - {fileID: 141402}
   - {fileID: 126346}
+>>>>>>> master
 --- !u!198 &19846688
 ParticleSystem:
   m_ObjectHideFlags: 1
