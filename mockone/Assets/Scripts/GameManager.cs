@@ -24,11 +24,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public float AROUND_SPEED_HIGH = 8;
 
 	[SerializeField, Space(15)]
-
 	//モンスターの吹っ飛ばされ速度
 	public float MONSTER_BLAST_SPEED = 10;
 	//モンスターの吹っ飛ばされ回転量
 	public float MONSTER_BLAST_ROTATE = 10;
+
+	[SerializeField, Space(15)]
+	//浮遊スピード
+	public float PLAYER_SPIN_SPEED = 1;
+	//浮遊回転量
+	public float PLAYER_SPIN_ROTATE = 1.0f;
 
 	[System.NonSerialized]
 	public GameState gameState;
