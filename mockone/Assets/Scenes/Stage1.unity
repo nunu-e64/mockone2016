@@ -2184,6 +2184,18 @@ Prefab:
       propertyPath: AROUND_BORDER_TIME
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
+      propertyPath: SPEED_HIGH
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
+      propertyPath: AROUND_SPEED_LOW
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
+      propertyPath: AROUND_SPEED_HIGH
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
   m_IsPrefabParent: 0
