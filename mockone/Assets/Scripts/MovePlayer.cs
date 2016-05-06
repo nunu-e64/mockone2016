@@ -32,6 +32,8 @@ public class MovePlayer : MonoBehaviour {
 	private GameObject[] effects;
 	[SerializeField]
 	private Sprite defaultImage;
+	[SerializeField]
+	private Sprite strongImage;
 
 	public enum ActionState {
 		NONE,	
@@ -127,6 +129,7 @@ public class MovePlayer : MonoBehaviour {
 				if (strong) {
 					remainReflectable = MAX_REFLECT_TIMES;
 					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_HIGH;
+					this.GetComponent<SpriteRenderer> ().sprite = this.strongImage;
 				} else {
 					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_LOW;
 				}
@@ -246,6 +249,7 @@ public class MovePlayer : MonoBehaviour {
 
 	void finishStrong() {
 		strong = false;
+		this.GetComponent<SpriteRenderer> ().sprite = this.defaultImage;
 		if (playerRigidbody.velocity.sqrMagnitude > 0) {
 			playerRigidbody.velocity = playerRigidbody.velocity.normalized * SPEED_LOW;
 		}
