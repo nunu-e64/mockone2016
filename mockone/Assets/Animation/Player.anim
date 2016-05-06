@@ -38,7 +38,7 @@ AnimationClip:
         outSlope: {x: 0, y: -0.000000029802322, z: 0}
         tangentMode: 0
       - time: 1.3333334
-        value: {x: 0, y: -0, z: 0}
+        value: {x: 0, y: 0, z: 0}
         inSlope: {x: 0, y: 0.59999996, z: 0}
         outSlope: {x: 0, y: 0.59999996, z: 0}
         tangentMode: 0
@@ -66,7 +66,7 @@ AnimationClip:
       value: {fileID: 21300000, guid: daf68d7f03f2f40e6b35235d7161d22f, type: 3}
     - time: 1.1666666
       value: {fileID: 21300000, guid: 80365aeea1f734f68a3c28c60681bd42, type: 3}
-    - time: 1.3333333
+    - time: 1.25
       value: {fileID: 21300000, guid: e2aa0759901b042feb6a7bb8108aeef6, type: 3}
     attribute: m_Sprite
     path: 
@@ -124,7 +124,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.4166666
+    m_StopTime: 1.3333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -163,11 +163,6 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 1.3333334
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -199,7 +194,7 @@ AnimationClip:
         outSlope: -0.000000029802322
         tangentMode: 10
       - time: 1.3333334
-        value: -0
+        value: 0
         inSlope: 0.59999996
         outSlope: 0.59999996
         tangentMode: 10
@@ -229,11 +224,6 @@ AnimationClip:
         outSlope: 0
         tangentMode: 10
       - time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 1.3333334
         value: 0
         inSlope: 0
         outSlope: 0
