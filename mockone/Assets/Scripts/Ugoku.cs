@@ -75,7 +75,7 @@ public class Ugoku : Monster {
 	private Vector3 GetMoveDiff(float t) {
 		float x = Mathf.Cos (t * speed / size) * size;
 		float y = Mathf.Sin (t * speed / size) * size;
-		Debug.Log (t);
+//		Debug.Log (t);
 
 		switch (moveStyle) {
 		case MoveStyle.LEFT_CIRCLE:
