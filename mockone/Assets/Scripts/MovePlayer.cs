@@ -9,6 +9,8 @@ public class MovePlayer : MonoBehaviour {
 	private float AROUND_SPEED_HIGH;
 	private float AROUND_BORDER_TIME;
 	private int MAX_REFLECT_TIMES;
+	private float PLAYER_SPIN_SPEED;
+	private float PLAYER_SPIN_ROTATE;
 
 	private Rigidbody2D playerRigidbody;
 	private ActionState actionState;
@@ -28,12 +30,17 @@ public class MovePlayer : MonoBehaviour {
 	private HpBar hpBar;
 	[SerializeField]
 	private GameObject[] effects;
+	[SerializeField]
+	private Sprite defaultImage;
+	[SerializeField]
+	private Sprite strongImage;
 
 	public enum ActionState {
-		NONE,		//直線移動中
+		NONE,	
 		RELEASE,	//リリース瞬間
 		MOVE,		//軌道に向かって移動中
-		AROUND		//周回中
+		AROUND,		//周回中
+		FLOATING	//くるくる飛んでる
 	}
 
 	private enum MoveDirectionState {
@@ -43,6 +50,8 @@ public class MovePlayer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		this.PLAYER_SPIN_SPEED = GameManager.Instance.PLAYER_SPIN_SPEED;
+		this.PLAYER_SPIN_ROTATE = GameManager.Instance.PLAYER_SPIN_ROTATE;
 		this.SPEED_LOW = GameManager.Instance.SPEED_LOW;
 		this.SPEED_HIGH = GameManager.Instance.SPEED_HIGH;
 		this.AROUND_BORDER_TIME = GameManager.Instance.AROUND_BORDER_TIME;
@@ -86,8 +95,10 @@ public class MovePlayer : MonoBehaviour {
 			}
 			this.GoAround ();
 		}
-		//速度方向に自機の画像を回転
-		if (this.playerRigidbody.velocity.sqrMagnitude > 0) {
+		//その場回転または速度方向に自機の画像を回転
+		if (this.actionState == ActionState.FLOATING) {
+			this.transform.Rotate(new Vector3 (0f, 0f, this.PLAYER_SPIN_ROTATE));
+		} else if (this.playerRigidbody.velocity.sqrMagnitude > 0) {
 			this.transform.rotation = Quaternion.Euler (0, 0, -90 + Mathf.Rad2Deg * Mathf.Atan2 (this.playerRigidbody.velocity.y, this.playerRigidbody.velocity.x));
 		}
 	}
@@ -97,6 +108,9 @@ public class MovePlayer : MonoBehaviour {
 
 		switch (_actionState) {
 		case ActionState.MOVE:
+			//一回でも移動開始したらアニメーション終了
+			this.GetComponent<Animator> ().Stop ();
+			this.GetComponent<SpriteRenderer> ().sprite = this.defaultImage;
 			//タップポイントに方向転換
 			this.playerRigidbody.velocity = (this.touchObject.transform.position - this.transform.position).normalized * SPEED_LOW;
 			this.actionState = _actionState;
@@ -109,16 +123,18 @@ public class MovePlayer : MonoBehaviour {
 				this.touchObject = null;
 			}
 			if (this.actionState == ActionState.MOVE) {
-				this.playerRigidbody.velocity = Vector2.zero;	//引力点に達する前にリリースされた場合その場停止
+				this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.PLAYER_SPIN_SPEED;	//引力点に達する前にリリースされた場合速度低下
+				SetActionState (ActionState.FLOATING);
 			} else {
 				if (strong) {
 					remainReflectable = MAX_REFLECT_TIMES;
 					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_HIGH;
+					this.GetComponent<SpriteRenderer> ().sprite = this.strongImage;
 				} else {
 					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_LOW;
 				}
+				this.actionState = ActionState.NONE;
 			}
-			this.actionState = ActionState.NONE;
 			break;
 		case ActionState.AROUND:
 			this.playerRigidbody.velocity = Vector2.zero;
@@ -154,8 +170,9 @@ public class MovePlayer : MonoBehaviour {
 				Reflect (this.transform.position - other.transform.position);
 			} else {
 				this.transform.position = other.transform.position + (this.transform.position - other.transform.position).normalized * ((other.transform.localScale.x / 2) + this.playerRadius);
-				this.playerRigidbody.velocity = Vector2.zero;
-				SetActionState (ActionState.RELEASE);
+				Reflect (this.transform.position - other.transform.position);
+				this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.PLAYER_SPIN_SPEED;
+				SetActionState (ActionState.FLOATING);
 			}
 
 		} else if (other.CompareTag (GameManager.METEO_TAG)) {
@@ -175,12 +192,15 @@ public class MovePlayer : MonoBehaviour {
 					Dead ();
 				}
 			}
+
 		} else if (other.CompareTags (GameManager.WALL_HORIZONTAL_TAG, GameManager.WALL_VERTICAL_TAG)) {
 			if (this.strong && this.remainReflectable > 0) {
 				Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
 			} else {
-				this.playerRigidbody.velocity = Vector2.zero;
-			}				
+				Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
+				this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.PLAYER_SPIN_SPEED;
+				SetActionState (ActionState.FLOATING);
+			}
 
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_UP_TAG)) {
 			if (transform.position.y - other.gameObject.transform.position.y < 0) {
@@ -188,6 +208,7 @@ public class MovePlayer : MonoBehaviour {
 				this.finishStrong ();
 				playerRigidbody.velocity = Vector2.zero;
 				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y + other.transform.localScale.y / 2.0f), 0.5f);
+				SetActionState (ActionState.NONE);
 			}
 
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_DOWN_TAG)) {
@@ -195,7 +216,9 @@ public class MovePlayer : MonoBehaviour {
 				if (this.strong && this.remainReflectable > 0) {
 					Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
 				} else {
-					this.playerRigidbody.velocity = Vector2.zero;
+					Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
+					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.PLAYER_SPIN_SPEED;
+					SetActionState (ActionState.FLOATING);
 				}
 			}
 		} else if (other.CompareTag(GameManager.GOAL_TAG)) {
@@ -227,6 +250,7 @@ public class MovePlayer : MonoBehaviour {
 
 	void finishStrong() {
 		strong = false;
+		this.GetComponent<SpriteRenderer> ().sprite = this.defaultImage;
 		if (playerRigidbody.velocity.sqrMagnitude > 0) {
 			playerRigidbody.velocity = playerRigidbody.velocity.normalized * SPEED_LOW;
 		}

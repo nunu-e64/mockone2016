@@ -4034,6 +4034,7 @@ MonoBehaviour:
   movePlayer: {fileID: 180334948}
   touchObject: {fileID: 159720, guid: 5a3d2916048f544f6a7e1f818a4d0ba6, type: 2}
   touchObjectRadius: 0.42
+  touchEffect: 0
 --- !u!4 &1836052949
 Transform:
   m_ObjectHideFlags: 0
