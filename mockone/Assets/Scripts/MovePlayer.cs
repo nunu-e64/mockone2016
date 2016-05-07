@@ -11,6 +11,7 @@ public class MovePlayer : MonoBehaviour {
 	private int MAX_REFLECT_TIMES;
 	private float PLAYER_SPIN_SPEED;
 	private float PLAYER_SPIN_ROTATE;
+	private float DRAWING_ACCELERATION;
 
 	private Rigidbody2D playerRigidbody;
 	private ActionState actionState;
@@ -61,6 +62,7 @@ public class MovePlayer : MonoBehaviour {
 		this.MAX_REFLECT_TIMES = GameManager.Instance.MAX_REFLECT_TIMES;
 		this.AROUND_SPEED_LOW = GameManager.Instance.AROUND_SPEED_LOW;
 		this.AROUND_SPEED_HIGH = GameManager.Instance.AROUND_SPEED_HIGH;
+		this.DRAWING_ACCELERATION = GameManager.Instance.DRAWING_ACCELERATION;
 
 		this.mainCamera = FindObjectOfType<MainCamera> ().gameObject;
 		this.playerRigidbody = GetComponent<Rigidbody2D> ();
@@ -113,12 +115,25 @@ public class MovePlayer : MonoBehaviour {
 			}
 			this.GoAround ();
 		}
+
 		//その場回転または速度方向に自機の画像を回転
-		if (this.actionState == ActionState.FLOATING) {
+		if (this.actionState == ActionState.FLOATING || this.actionState == ActionState.MOVE) {
 			this.transform.Rotate(new Vector3 (0f, 0f, this.PLAYER_SPIN_ROTATE));
 		} else if (this.playerRigidbody.velocity.sqrMagnitude > 0) {
 			this.transform.rotation = Quaternion.Euler (0, 0, -90 + Mathf.Rad2Deg * Mathf.Atan2 (this.playerRigidbody.velocity.y, this.playerRigidbody.velocity.x));
 		}
+
+		//引力点に引き寄せられてる間は加速
+		if (this.actionState == ActionState.MOVE) {
+//			&& this.playerRigidbody.velocity.sqrMagnitude < this.SPEED_LOW * this.SPEED_LOW) {
+			this.playerRigidbody.velocity += this.playerRigidbody.velocity.normalized * this.DRAWING_ACCELERATION;
+			if (this.playerRigidbody.velocity.sqrMagnitude > this.SPEED_LOW * this.SPEED_LOW) {
+				this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_LOW;
+			}
+			Debug.Log (this.playerRigidbody.velocity.sqrMagnitude);
+		}
+
+		Debug.Log (this.actionState);
 	}
 		
 	public void SetActionState (ActionState _actionState, GameObject _touchObject = null) {
@@ -129,15 +144,16 @@ public class MovePlayer : MonoBehaviour {
 
 		switch (_actionState) {
 		case ActionState.MOVE:
+			//強ビューン終了
+			this.finishStrong ();
 			//タップエリア削除
 			this.SetActiveTouchArea(false);
 			//一回でも移動開始したらアニメーション終了
 			this.GetComponent<Animator> ().Stop ();
 			this.GetComponent<SpriteRenderer> ().sprite = this.defaultImage;
 			//タップポイントに方向転換
-			this.playerRigidbody.velocity = (this.touchObject.transform.position - this.transform.position).normalized * SPEED_LOW;
+			this.playerRigidbody.velocity = (this.touchObject.transform.position - this.transform.position).normalized * 0.01f;
 			this.actionState = ActionState.MOVE;
-			this.finishStrong ();
 			this.remainReflectable = 0;
 			break;
 		case ActionState.RELEASE:
