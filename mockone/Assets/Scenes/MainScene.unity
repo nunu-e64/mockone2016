@@ -1709,7 +1709,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 118002, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11402926, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
       propertyPath: hpBar
