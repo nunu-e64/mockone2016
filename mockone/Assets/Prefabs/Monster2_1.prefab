@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36d598ae9bd8546999e95095d80e29ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagedImage: {fileID: 21300000, guid: 79e4b10bce37142ad81e22062e56684b, type: 3}
+  damagedImage: {fileID: 21300000, guid: 5dc6347799745415384a340db3a66245, type: 3}
 --- !u!212 &21258398
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -118,7 +118,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: abff749977ab54653bf62421d00acfc6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bea63695dbda44fe0a3be38aa850d23d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

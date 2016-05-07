@@ -1428,14 +1428,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9580184, guid: 50ec86500a9cb458fa975b249d31cf86, type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: da2d8e3a8058145128ea6dba665db5bd, type: 2}
-    - target: {fileID: 22375428, guid: 5f6ade7eb35c0432d9b53764a7ed6c00, type: 2}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1705868376}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50ec86500a9cb458fa975b249d31cf86, type: 2}
   m_IsPrefabParent: 0
@@ -1894,6 +1886,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 21269046, guid: 3bbe29605889f488b809b65eea2d6b80, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9387d83697e6d4098b0548b4453dd936,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3bbe29605889f488b809b65eea2d6b80, type: 2}
   m_IsPrefabParent: 0
