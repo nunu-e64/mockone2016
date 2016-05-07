@@ -90,7 +90,7 @@ public class MovePlayer : MonoBehaviour {
 		//周回挙動
 		if (this.actionState == ActionState.AROUND) {
 			this.aroundTime += Time.deltaTime;
-			if (this.aroundTime > AROUND_BORDER_TIME) {
+			if (!this.strong && this.aroundTime > AROUND_BORDER_TIME) {
 				this.strong = true;
 				AudioManager.Instance.PlaySE ("SE_ChangeGravyColor");
 			}
