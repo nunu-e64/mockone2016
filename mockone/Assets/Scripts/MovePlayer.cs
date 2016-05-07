@@ -36,11 +36,11 @@ public class MovePlayer : MonoBehaviour {
 	private Sprite strongImage;
 
 	public enum ActionState {
-		NONE,	
+		NONE,		//ステージ開始状態、カメラ移動時、ビューン中
 		RELEASE,	//リリース瞬間
 		MOVE,		//軌道に向かって移動中
 		AROUND,		//周回中
-		FLOATING	//くるくる飛んでる
+		FLOATING	//壁に当たってくるくるふわふわ飛んでる
 	}
 
 	private enum MoveDirectionState {
@@ -104,7 +104,10 @@ public class MovePlayer : MonoBehaviour {
 	}
 		
 	public void SetActionState (ActionState _actionState, GameObject _touchObject = null) {
-		this.touchObject = (_touchObject == null ? this.touchObject : _touchObject);
+		if (_touchObject != null)
+		{
+			this.touchObject = _touchObject;
+		}
 
 		switch (_actionState) {
 		case ActionState.MOVE:
@@ -113,7 +116,7 @@ public class MovePlayer : MonoBehaviour {
 			this.GetComponent<SpriteRenderer> ().sprite = this.defaultImage;
 			//タップポイントに方向転換
 			this.playerRigidbody.velocity = (this.touchObject.transform.position - this.transform.position).normalized * SPEED_LOW;
-			this.actionState = _actionState;
+			this.actionState = ActionState.MOVE;
 			this.finishStrong ();
 			this.remainReflectable = 0;
 			break;
@@ -133,19 +136,29 @@ public class MovePlayer : MonoBehaviour {
 				} else {
 					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_LOW;
 				}
-				this.actionState = ActionState.NONE;
+				SetActionState(ActionState.NONE);
 			}
 			break;
 		case ActionState.AROUND:
 			this.playerRigidbody.velocity = Vector2.zero;
-			this.actionState = _actionState;
+			this.actionState = ActionState.AROUND;
 			this.aroundTime = 0.0f;
 			break;
-		default:
-			this.actionState = _actionState;
-			this.touchObject = null;
+		case ActionState.FLOATING:
+			if (this.touchObject) {
+				this.touchObject.GetComponent<TouchObject> ().Reset ();
+				this.touchObject = null;
+			}
+			this.actionState = ActionState.FLOATING;
 			break;
-		}
+		case ActionState.NONE:
+			if (this.touchObject) {
+				this.touchObject.GetComponent<TouchObject> ().Reset ();
+				this.touchObject = null;
+			}
+			this.actionState = ActionState.NONE;
+			break;
+		} 
 	}
 
 	public ActionState GetActionState () {
@@ -209,14 +222,16 @@ public class MovePlayer : MonoBehaviour {
 				playerRigidbody.velocity = Vector2.zero;
 				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y + other.transform.localScale.y / 2.0f), 0.5f);
 				SetActionState (ActionState.NONE);
+				this.GetComponent<Animator> ().enabled = false;
+				this.GetComponent<Animator> ().enabled = true;
 			}
 
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_DOWN_TAG)) {
 			if (transform.position.y - other.gameObject.transform.position.y > 0) {
 				if (this.strong && this.remainReflectable > 0) {
-					Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
+					Reflect (new Vector2(0, 1));
 				} else {
-					Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
+					Reflect (new Vector2(0, 1));
 					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.PLAYER_SPIN_SPEED;
 					SetActionState (ActionState.FLOATING);
 				}

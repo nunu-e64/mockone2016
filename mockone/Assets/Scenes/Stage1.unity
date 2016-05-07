@@ -352,7 +352,7 @@ Transform:
   m_GameObject: {fileID: 276308913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 19.2, z: 1}
-  m_LocalScale: {x: 8.8, y: 16.2, z: 1}
+  m_LocalScale: {x: 10.8, y: 19.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -851,7 +851,7 @@ Transform:
   m_GameObject: {fileID: 747778850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 8.8, y: 16.2, z: 1}
+  m_LocalScale: {x: 10.8, y: 19.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -2168,34 +2168,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: TOUCH_INTERVAL
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: TIME_LIMIT
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: RECOVERY
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: AROUND_BORDER_TIME
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: SPEED_HIGH
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: AROUND_SPEED_LOW
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: AROUND_SPEED_HIGH
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
   m_IsPrefabParent: 0
@@ -3033,7 +3005,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1705868372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 22, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3363,7 +3335,6 @@ MonoBehaviour:
   movePlayer: {fileID: 180334948}
   touchObject: {fileID: 159720, guid: 5a3d2916048f544f6a7e1f818a4d0ba6, type: 2}
   touchObjectRadius: 0.42
-  touchEffect: 0
 --- !u!4 &1836052949
 Transform:
   m_ObjectHideFlags: 0

@@ -860,7 +860,7 @@ Transform:
   m_GameObject: {fileID: 276308913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 19.2, z: 1}
-  m_LocalScale: {x: 8.8, y: 16.2, z: 1}
+  m_LocalScale: {x: 10.8, y: 19.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -1737,7 +1737,7 @@ Transform:
   m_GameObject: {fileID: 747778850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 8.8, y: 16.2, z: 1}
+  m_LocalScale: {x: 10.8, y: 19.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -2103,38 +2103,6 @@ Prefab:
     - target: {fileID: 471040, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: TOUCH_INTERVAL
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: TIME_LIMIT
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: AROUND_BORDER_TIME
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: AROUND_SPEED_HIGH
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: AROUND_SPEED_LOW
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: SPEED_LOW
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: SPEED_HIGH
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: RECOVERY
-      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
