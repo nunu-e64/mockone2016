@@ -10,6 +10,7 @@ public class StageManager : MonoBehaviour {
 	private List<Monster> monsters;
 
 	void Start () {
+		AudioManager.Instance.PlayBGM ("BGM_Stage");
 		goal.SetActive (false);
 
 		//すべての敵を事前にリストに格納

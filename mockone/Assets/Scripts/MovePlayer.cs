@@ -130,16 +130,19 @@ public class MovePlayer : MonoBehaviour {
 				SetActionState (ActionState.FLOATING);
 			} else {
 				if (strong) {
+					AudioManager.Instance.PlaySE ("SE_ByuunStrong");
 					remainReflectable = MAX_REFLECT_TIMES;
 					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_HIGH;
 					this.GetComponent<SpriteRenderer> ().sprite = this.strongImage;
 				} else {
+					AudioManager.Instance.PlaySE ("SE_ByuunWeak");
 					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_LOW;
 				}
 				SetActionState(ActionState.NONE);
 			}
 			break;
 		case ActionState.AROUND:
+			AudioManager.Instance.PlaySE ("SE_Around");
 			this.playerRigidbody.velocity = Vector2.zero;
 			this.actionState = ActionState.AROUND;
 			this.aroundTime = 0.0f;
@@ -179,6 +182,7 @@ public class MovePlayer : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other) {
 		if (other.CompareTag (GameManager.STAR_TAG)) {
+			AudioManager.Instance.PlaySE ("SE_Impact");
 			if (this.strong) {
 				Reflect (this.transform.position - other.transform.position);
 			} else {
@@ -190,8 +194,10 @@ public class MovePlayer : MonoBehaviour {
 
 		} else if (other.CompareTag (GameManager.METEO_TAG)) {
 			if (this.strong) {
+				AudioManager.Instance.PlaySE ("SE_Impact");
 				Reflect (this.transform.position - other.transform.position);
 			} else {
+				AudioManager.Instance.PlaySE ("SE_ImpactStar");
 				Dead ();
 			}
 
@@ -199,14 +205,17 @@ public class MovePlayer : MonoBehaviour {
 			Monster monster = other.GetComponent<Monster> ();
 			if (!monster.hasBlasted) {
 				if (this.strong) {
+					AudioManager.Instance.PlaySE ("SE_BlastMonster");
 					monster.Dead (this.playerRigidbody.velocity.normalized);
 					Reflect (this.transform.position - other.transform.position);
 				} else {
+					AudioManager.Instance.PlaySE ("SE_ImpactStar");
 					Dead ();
 				}
 			}
 
 		} else if (other.CompareTags (GameManager.WALL_HORIZONTAL_TAG, GameManager.WALL_VERTICAL_TAG)) {
+			AudioManager.Instance.PlaySE ("SE_Impact");
 			if (this.strong && this.remainReflectable > 0) {
 				Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
 			} else {
@@ -222,12 +231,15 @@ public class MovePlayer : MonoBehaviour {
 				playerRigidbody.velocity = Vector2.zero;
 				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y + other.transform.localScale.y / 2.0f), 0.5f);
 				SetActionState (ActionState.NONE);
+
+				//Animation Restart
 				this.GetComponent<Animator> ().enabled = false;
 				this.GetComponent<Animator> ().enabled = true;
 			}
 
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_DOWN_TAG)) {
 			if (transform.position.y - other.gameObject.transform.position.y > 0) {
+				AudioManager.Instance.PlaySE ("SE_Impact");
 				if (this.strong && this.remainReflectable > 0) {
 					Reflect (new Vector2(0, 1));
 				} else {

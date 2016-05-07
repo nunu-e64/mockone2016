@@ -60,6 +60,7 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 
 		//一時停止
 		stopButton.GetComponent<Button> ().onClick.AddListener (() => {
+			AudioManager.Instance.PlaySE("SE_Pause");
 			stopModal.SetActive (true);
 			Hashtable hash = new Hashtable ();
 			hash.Add ("x", 100);
@@ -114,6 +115,7 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 
 		switch (_gameState) {
 		case GameManager.GameState.GAME_START:
+			AudioManager.Instance.PlaySE ("SE_StageStart");
 			this.gameStartLogo.SetActive (true);
 			this.game.SetActive (true);
 			iTween.ScaleTo (this.game, this.hash);
@@ -122,9 +124,11 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 			this.gameStartLogo.SetActive (false);
 			break;
 		case GameManager.GameState.GAME_OVER:
+			AudioManager.Instance.PlaySE ("SE_GameOver");
 			this.gameOverLogo.SetActive (true);
 			break;
 		case GameManager.GameState.CLEAR:
+			AudioManager.Instance.PlaySE ("SE_Clear");
 			this.goalEffect.SetActive (true);
 			this.isClear = true;
 			break;

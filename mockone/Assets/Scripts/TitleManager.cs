@@ -10,6 +10,7 @@ public class TitleManager : MonoBehaviour {
 
 	void Start () {
 		this.timeElapsed = 0;
+		AudioManager.Instance.PlayBGM ("BGM_Title");
 	}
 
 	void Update () {

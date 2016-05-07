@@ -24,7 +24,7 @@ public class TouchManager : MonoBehaviour {
 		this.TOUCH_INTERVAL = GameManager.Instance.TOUCH_INTERVAL;
 		this.GetComponent<AudioManager> ();
 		this.obj = null;
-		AudioManager.Instance.PlayBGM ("stage");
+		AudioManager.Instance.PlayBGM ("BGM_Stage");
 	}
 	// タップで引力点の生成or消滅
 	void Update () {

@@ -14,6 +14,7 @@ public class PrologueManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		AudioManager.Instance.PlayBGM ("BGM_StageSelect");
 		this.timeElapsed = 0;
 		this.touchCount = 0;
 	}
