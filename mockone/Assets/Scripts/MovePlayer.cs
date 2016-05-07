@@ -95,7 +95,7 @@ public class MovePlayer : MonoBehaviour {
 			this.effects [1].SetActive (true);
 		} else {
 			this.GetComponent<SpriteRenderer> ().color = new Color (1, 1, 1, 1);
-			this.effects [0].SetActive (true);
+			this.effects [0].SetActive (this.actionState != ActionState.MOVE);
 			this.effects [1].SetActive (false);
 		}
 
@@ -124,8 +124,8 @@ public class MovePlayer : MonoBehaviour {
 		}
 
 		//引力点に引き寄せられてる間は加速
-		if (this.actionState == ActionState.MOVE) {
-//			&& this.playerRigidbody.velocity.sqrMagnitude < this.SPEED_LOW * this.SPEED_LOW) {
+		if (this.actionState == ActionState.MOVE
+				&& this.playerRigidbody.velocity.sqrMagnitude < this.SPEED_LOW * this.SPEED_LOW) {
 			this.playerRigidbody.velocity += this.playerRigidbody.velocity.normalized * this.DRAWING_ACCELERATION;
 			if (this.playerRigidbody.velocity.sqrMagnitude > this.SPEED_LOW * this.SPEED_LOW) {
 				this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_LOW;
@@ -133,7 +133,7 @@ public class MovePlayer : MonoBehaviour {
 			Debug.Log (this.playerRigidbody.velocity.sqrMagnitude);
 		}
 
-		Debug.Log (this.actionState);
+//		Debug.Log (this.actionState);
 	}
 		
 	public void SetActionState (ActionState _actionState, GameObject _touchObject = null) {
