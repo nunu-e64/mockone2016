@@ -24,7 +24,6 @@ public class TouchManager : MonoBehaviour {
 		this.TOUCH_INTERVAL = GameManager.Instance.TOUCH_INTERVAL;
 		this.GetComponent<AudioManager> ();
 		this.obj = null;
-		AudioManager.Instance.PlayBGM ("stage");
 	}
 	// タップで引力点の生成or消滅
 	void Update () {
@@ -55,11 +54,8 @@ public class TouchManager : MonoBehaviour {
 					//タップ位置に障害物がなかった時だけ処理
 					int layer = LayerMask.NameToLayer (GameManager.TAP_TARGET_LAYER);
 					var touchedCollider = Physics2D.OverlapPoint (touchPos, 1 << layer);
-//					if (touchedCollider)
-//						Debug.Log (touchedCollider.name);
 					if (GameObject.FindGameObjectsWithTag (GameManager.TOUCH_OBJECT_TAG).Length == 0) {					
 						if ((touchedCollider && touchedCollider.CompareTag (GameManager.TOUCH_FIELD_TAG))) {
-//							Debug.Log (touchedCollider.name);
 							this.CreateGravitation (touchPos);
 						}
 					} else {
@@ -77,6 +73,7 @@ public class TouchManager : MonoBehaviour {
 
 	void CreateGravitation (Vector3 _touchPos) {
 		if (interval > TOUCH_INTERVAL) {
+			AudioManager.Instance.PlaySE ("SE_Touch");
 			this.obj = Instantiate (touchObject, _touchPos, Quaternion.identity) as GameObject;
 			this.obj.GetComponent<TouchObject> ().Init (touchObjectRadius);
 			movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.MOVE, this.obj);

@@ -10,6 +10,7 @@ public class TitleManager : MonoBehaviour {
 
 	void Start () {
 		this.timeElapsed = 0;
+		AudioManager.Instance.PlayBGM ("BGM_Title");
 	}
 
 	void Update () {
@@ -21,6 +22,7 @@ public class TitleManager : MonoBehaviour {
 		}
 
 		if (Input.GetMouseButtonDown(0)) {
+			AudioManager.Instance.PlaySE ("SE_Ok");
 			GameManager.Instance.ChangeScene (GameManager.SceneName.Prologue.ToString ());
 		}
 	}
