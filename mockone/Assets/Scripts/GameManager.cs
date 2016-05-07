@@ -60,6 +60,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public const string STAR_TAG = "Star";				
 	public const string METEO_TAG = "Meteo";
 	public const string MONSTER_TAG = "Monster";
+	public const string CRACK_TAG = "Crack";
 	public const string WALL_HORIZONTAL_TAG = "WallHorizontal";
 	public const string WALL_VERTICAL_TAG = "WallVertical";
 	public const string WALL_CAMERA_UP_TAG = "WallCameraUp";

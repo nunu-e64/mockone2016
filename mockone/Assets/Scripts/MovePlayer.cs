@@ -130,7 +130,7 @@ public class MovePlayer : MonoBehaviour {
 			if (this.playerRigidbody.velocity.sqrMagnitude > this.SPEED_LOW * this.SPEED_LOW) {
 				this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_LOW;
 			}
-			Debug.Log (this.playerRigidbody.velocity.sqrMagnitude);
+			//Debug.Log (this.playerRigidbody.velocity.sqrMagnitude);
 		}
 
 //		Debug.Log (this.actionState);
@@ -224,6 +224,24 @@ public class MovePlayer : MonoBehaviour {
 			if (this.strong) {
 				Reflect (this.transform.position - other.transform.position);
 			} else {
+				this.transform.position = other.transform.position + (this.transform.position - other.transform.position).normalized * ((other.transform.localScale.x / 2) + this.playerRadius);
+				Reflect (this.transform.position - other.transform.position);
+				this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.PLAYER_SPIN_SPEED;
+				SetActionState (ActionState.FLOATING);
+			}
+
+		}else if (other.CompareTag (GameManager.CRACK_TAG)) {
+			if (this.strong) {
+				AudioManager.Instance.PlaySE ("SE_BlastMonster");
+				other.GetComponent<Crack> ().Hp--;
+				if (other.GetComponent<Crack> ().Hp <= 0) {
+					//破壊
+					other.GetComponent<Crack>().Dead();
+				} else {
+					Reflect (this.transform.position - other.transform.position);
+				}
+			} else {
+				AudioManager.Instance.PlaySE ("SE_Impact");
 				this.transform.position = other.transform.position + (this.transform.position - other.transform.position).normalized * ((other.transform.localScale.x / 2) + this.playerRadius);
 				Reflect (this.transform.position - other.transform.position);
 				this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.PLAYER_SPIN_SPEED;
