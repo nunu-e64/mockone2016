@@ -236,7 +236,7 @@ public class MovePlayer : MonoBehaviour {
 				other.GetComponent<Crack> ().Hp--;
 				if (other.GetComponent<Crack> ().Hp <= 0) {
 					//破壊
-					other.gameObject.SetActive(false);
+					other.GetComponent<Crack>().Dead();
 				} else {
 					Reflect (this.transform.position - other.transform.position);
 				}
