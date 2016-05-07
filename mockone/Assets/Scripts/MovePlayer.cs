@@ -227,9 +227,9 @@ public class MovePlayer : MonoBehaviour {
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_DOWN_TAG)) {
 			if (transform.position.y - other.gameObject.transform.position.y > 0) {
 				if (this.strong && this.remainReflectable > 0) {
-					Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
+					Reflect (new Vector2(0, 1));
 				} else {
-					Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
+					Reflect (new Vector2(0, 1));
 					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.PLAYER_SPIN_SPEED;
 					SetActionState (ActionState.FLOATING);
 				}
