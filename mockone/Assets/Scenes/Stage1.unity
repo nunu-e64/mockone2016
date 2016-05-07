@@ -2168,34 +2168,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: TOUCH_INTERVAL
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: TIME_LIMIT
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: RECOVERY
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: AROUND_BORDER_TIME
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: SPEED_HIGH
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: AROUND_SPEED_LOW
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412390, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
-      propertyPath: AROUND_SPEED_HIGH
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e2751785d3c14079b61a72d47551f53, type: 2}
   m_IsPrefabParent: 0
@@ -3363,7 +3335,6 @@ MonoBehaviour:
   movePlayer: {fileID: 180334948}
   touchObject: {fileID: 159720, guid: 5a3d2916048f544f6a7e1f818a4d0ba6, type: 2}
   touchObjectRadius: 0.42
-  touchEffect: 0
 --- !u!4 &1836052949
 Transform:
   m_ObjectHideFlags: 0
