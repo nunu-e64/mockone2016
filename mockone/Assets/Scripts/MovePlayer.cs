@@ -92,6 +92,7 @@ public class MovePlayer : MonoBehaviour {
 			this.aroundTime += Time.deltaTime;
 			if (this.aroundTime > AROUND_BORDER_TIME) {
 				this.strong = true;
+				AudioManager.Instance.PlaySE ("SE_ChangeGravyColor");
 			}
 			this.GoAround ();
 		}

@@ -8,7 +8,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
 
 	public List<AudioClip> BGMList;
 	public List<AudioClip> SEList;
-	public int MaxSE = 20;
+	public int MaxSE = 100;
 
 	private AudioSource bgmSource = null;
 	private List<AudioSource> seSources = null;
