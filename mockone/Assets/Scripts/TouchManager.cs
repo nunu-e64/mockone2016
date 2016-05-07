@@ -30,7 +30,7 @@ public class TouchManager : MonoBehaviour {
 		interval += Time.deltaTime;
 
 		//タップ可否とタップエリアを合わせる
-		if (interval > TOUCH_INTERVAL && interval - Time.deltaTime <= TOUCH_INTERVAL) {
+		if (interval > TOUCH_INTERVAL) {
 			movePlayer.GetComponent<MovePlayer> ().hasTouchIntervalPassed = true;
 		}
 

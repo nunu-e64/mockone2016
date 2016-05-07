@@ -53,6 +53,7 @@ MonoBehaviour:
   MONSTER_BLAST_ROTATE: 5
   PLAYER_SPIN_SPEED: 1
   PLAYER_SPIN_ROTATE: 2
+  DRAWING_ACCELERATION: 0.1
 --- !u!114 &11467340
 MonoBehaviour:
   m_ObjectHideFlags: 1
