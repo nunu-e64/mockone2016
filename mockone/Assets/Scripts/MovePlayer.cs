@@ -222,6 +222,8 @@ public class MovePlayer : MonoBehaviour {
 				playerRigidbody.velocity = Vector2.zero;
 				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y + other.transform.localScale.y / 2.0f), 0.5f);
 				SetActionState (ActionState.NONE);
+				this.GetComponent<Animator> ().enabled = false;
+				this.GetComponent<Animator> ().enabled = true;
 			}
 
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_DOWN_TAG)) {
