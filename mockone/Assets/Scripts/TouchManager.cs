@@ -29,6 +29,11 @@ public class TouchManager : MonoBehaviour {
 	void Update () {
 		interval += Time.deltaTime;
 
+		//タップ可否とタップエリアを合わせる
+		if (interval > TOUCH_INTERVAL && interval - Time.deltaTime <= TOUCH_INTERVAL) {
+			movePlayer.GetComponent<MovePlayer> ().hasTouchIntervalPassed = true;
+		}
+
 		//タップとクリックの検出
 		bool hasTapped = true;
 		Vector3 tapPosition = new Vector3();
@@ -83,5 +88,6 @@ public class TouchManager : MonoBehaviour {
 	void ReleaseGravitation (Vector3 _touchPos) {
 		interval = 0;
 		movePlayer.GetComponent<MovePlayer> ().SetActionState (MovePlayer.ActionState.RELEASE);
+		movePlayer.GetComponent<MovePlayer> ().hasTouchIntervalPassed = false;
 	}
 }

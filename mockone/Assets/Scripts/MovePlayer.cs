@@ -35,6 +35,9 @@ public class MovePlayer : MonoBehaviour {
 	[SerializeField]
 	private Sprite strongImage;
 
+	private GameObject touchArea;
+	public bool hasTouchIntervalPassed { set; private get;}
+
 	public enum ActionState {
 		NONE,		//ステージ開始状態、カメラ移動時、ビューン中
 		RELEASE,	//リリース瞬間
@@ -62,6 +65,11 @@ public class MovePlayer : MonoBehaviour {
 		this.mainCamera = FindObjectOfType<MainCamera> ().gameObject;
 		this.playerRigidbody = GetComponent<Rigidbody2D> ();
 		this.playerRadius = this.gameObject.transform.localScale.x * this.gameObject.GetComponent<CircleCollider2D> ().radius / 2;
+
+		this.touchArea = this.transform.FindChild ("TouchArea").gameObject;
+		if (!this.touchArea) {
+			Debug.LogError ("Not Found TouchArea in Player Children");
+		}
 		this.Init ();
 	}
 
@@ -73,10 +81,12 @@ public class MovePlayer : MonoBehaviour {
 		this.actionState = ActionState.NONE;
 		this.strong = false;
 		this.remainReflectable = 0;
+		this.SetActiveTouchArea (false);
 	}
 
 	// Update is called once per frame
 	void Update () {
+		//ビューン状態に応じた色とエフェクト
 		if (this.strong) {
 			this.GetComponent<SpriteRenderer> ().color = new Color (255 / 255.0f, 170 / 255.0f, 70 / 255.0f, 1);
 			this.effects [0].SetActive (false);
@@ -85,6 +95,13 @@ public class MovePlayer : MonoBehaviour {
 			this.GetComponent<SpriteRenderer> ().color = new Color (1, 1, 1, 1);
 			this.effects [0].SetActive (true);
 			this.effects [1].SetActive (false);
+		}
+
+		//タップエリアの表示判定
+		if (GameManager.Instance.gameState == GameManager.GameState.PLAYING && !touchArea.activeSelf &&
+			hasTouchIntervalPassed && (this.actionState == ActionState.FLOATING || this.actionState == ActionState.NONE)) {
+			this.SetActiveTouchArea(true);
+			hasTouchIntervalPassed = false;
 		}
 
 		//周回挙動
@@ -112,6 +129,8 @@ public class MovePlayer : MonoBehaviour {
 
 		switch (_actionState) {
 		case ActionState.MOVE:
+			//タップエリア削除
+			this.SetActiveTouchArea(false);
 			//一回でも移動開始したらアニメーション終了
 			this.GetComponent<Animator> ().Stop ();
 			this.GetComponent<SpriteRenderer> ().sprite = this.defaultImage;
@@ -122,6 +141,7 @@ public class MovePlayer : MonoBehaviour {
 			this.remainReflectable = 0;
 			break;
 		case ActionState.RELEASE:
+			this.SetActiveTouchArea(false);	//タップエリア削除
 			if (this.touchObject) {
 				this.touchObject.GetComponent<TouchObject> ().Reset ();
 				this.touchObject = null;
@@ -143,6 +163,7 @@ public class MovePlayer : MonoBehaviour {
 			}
 			break;
 		case ActionState.AROUND:
+			this.SetActiveTouchArea(false); //タップエリア削除
 			AudioManager.Instance.PlaySE ("SE_Around");
 			this.playerRigidbody.velocity = Vector2.zero;
 			this.actionState = ActionState.AROUND;
@@ -288,4 +309,9 @@ public class MovePlayer : MonoBehaviour {
 			monster.GetComponent<Monster> ().FinishPlayerStrong ();
 		}
 	}
+
+	void SetActiveTouchArea(bool active) {
+		this.touchArea.SetActive (active);
+	}
+
 }
