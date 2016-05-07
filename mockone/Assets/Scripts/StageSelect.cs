@@ -10,7 +10,7 @@ public class StageSelect : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		AudioManager.Instance.PlayBGM ("BGM_StageSelect");
+		AudioManager.Instance.PlayBGM ("BGM_StageSelect", 0.5f);
 		for (int i = 0; i < stages.Length; i++) {
 			string stageName = stages[i].name;
 			stages[i].GetComponent<Button> ().onClick.AddListener (() => {

@@ -76,23 +76,32 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 		});
 		//ゲーム画面に戻る
 		backButton.GetComponent<Button> ().onClick.AddListener (() => {
+			AudioManager.Instance.PlaySE ("SE_Ok");
 			stopModal.SetActive (false);
 			Time.timeScale = 1;
 		});
 		//リトライ
 		for (int i = 0; i < retryButton.Length; i ++) {
 			retryButton[i].GetComponent<Button> ().onClick.AddListener (() => {
+				AudioManager.Instance.StopBGM ();
+				AudioManager.Instance.StopSE ();
+				AudioManager.Instance.PlaySE ("SE_Ok");
 				GameManager.Instance.ReloadScene ();
 				Time.timeScale = 1;
 			});
 		}
 		//Nextステージ
 		nextButton.GetComponent<Button> ().onClick.AddListener (() => {
+			AudioManager.Instance.StopSE ();
+			AudioManager.Instance.PlaySE ("SE_Ok");
 			GameManager.Instance.NextScene ();
 		});
 		//ステージセレクト
 		for (int i = 0; i < stageSelectButton.Length; i ++) {
 			stageSelectButton[i].GetComponent<Button> ().onClick.AddListener (() => {
+				AudioManager.Instance.StopSE ();
+				AudioManager.Instance.StopBGM ();
+				AudioManager.Instance.PlaySE ("SE_Ok");
 				GameManager.Instance.ChangeScene (GameManager.SceneName.StageSelect.ToString ());
 				Time.timeScale = 1;
 			});
@@ -115,6 +124,7 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 
 		switch (_gameState) {
 		case GameManager.GameState.GAME_START:
+			AudioManager.Instance.StopSE ();
 			AudioManager.Instance.PlaySE ("SE_StageStart");
 			this.gameStartLogo.SetActive (true);
 			this.game.SetActive (true);
@@ -124,10 +134,12 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 			this.gameStartLogo.SetActive (false);
 			break;
 		case GameManager.GameState.GAME_OVER:
+			AudioManager.Instance.StopBGM ();
 			AudioManager.Instance.PlaySE ("SE_GameOver");
 			this.gameOverLogo.SetActive (true);
 			break;
 		case GameManager.GameState.CLEAR:
+			AudioManager.Instance.StopBGM ();
 			AudioManager.Instance.PlaySE ("SE_Clear");
 			this.goalEffect.SetActive (true);
 			this.isClear = true;

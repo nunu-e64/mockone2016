@@ -22,6 +22,7 @@ public class TitleManager : MonoBehaviour {
 		}
 
 		if (Input.GetMouseButtonDown(0)) {
+			AudioManager.Instance.PlaySE ("SE_Ok");
 			GameManager.Instance.ChangeScene (GameManager.SceneName.Prologue.ToString ());
 		}
 	}
