@@ -30,10 +30,13 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 	[SerializeField]
 	private GameObject goalEffect;
 	[SerializeField]
+	private GameObject seigenJikan;
+	[SerializeField]
 	private GameObject debugStageNumber;
 
 	private bool isClear;
 	private float isClearTime;
+	private GameObject player;
 
 	//GameStart用Hash
 	private int pingPongCount = 0;
@@ -43,6 +46,7 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 	void Start () {
 		this.isClear = false;
 		this.isClearTime = 0;
+		this.player = GameObject.Find ("Player");
 
 		debugStageNumber.GetComponent<Text> ().text = GameManager.Instance.GetActiveSceneName ();
 
@@ -137,13 +141,21 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 			AudioManager.Instance.StopBGM ();
 			AudioManager.Instance.PlaySE ("SE_GameOver");
 			this.gameOverLogo.SetActive (true);
+			this.seigenJikan.SetActive (false);
 			break;
 		case GameManager.GameState.CLEAR:
 			PlayerPrefsManager.Instance.SetClearStage ();
 			AudioManager.Instance.StopBGM ();
 			AudioManager.Instance.PlaySE ("SE_Clear");
 			this.goalEffect.SetActive (true);
+			this.seigenJikan.SetActive (false);
 			this.isClear = true;
+			//ラストステージの時はNextだけ表示
+			if (GameManager.Instance.isLastStage ()) {
+				stageSelectButton[1].SetActive (false);
+			}
+			//プレイヤーの判定をなくす
+			this.player.GetComponent<MovePlayer> ().SetIsClear (true);
 			break;
 		default:
 			break;

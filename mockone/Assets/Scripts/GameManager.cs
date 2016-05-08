@@ -45,6 +45,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public float fadeOutTime = 0.5f;
 
 	public enum GameState {
+		NONE,
 		GAME_START,
 		PLAYING,
 		GAME_OVER,
@@ -97,6 +98,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 
 	void Start () {
 		this.sceneNum = SceneManager.sceneCountInBuildSettings;
+		PREVIOUS_SCENE = SceneName.TitleScene.ToString ();
 	}
 
 	public void ChangeScene (string _name) {
@@ -121,11 +123,19 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 
 	public void NextScene () {
 		//BuildSettingsに従って次のステージへ
-		if (SceneManager.GetActiveScene ().buildIndex == sceneNum - 1) {
+		if (this.isLastStage ()) {
 			this.ChangeScene (GameManager.SceneName.Epilogue.ToString ());
 		} else {
 			this.ChangeScene (SceneManager.GetActiveScene ().buildIndex + 1);
 		}
+	}
+
+	public bool isLastStage () {
+		if (SceneManager.GetActiveScene ().buildIndex == this.sceneNum - 1) {
+			return true;
+		}
+
+		return false;
 	}
 
 	public string GetActiveSceneName () {

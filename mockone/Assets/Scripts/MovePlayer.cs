@@ -20,6 +20,7 @@ public class MovePlayer : MonoBehaviour {
 	private float aroundTime;	//回転時間
 	private bool strong;	//強ビューン状態
 	private int remainReflectable;	//残り反射可能回数
+	private bool isClear;
 
 	public bool alive{get; set;}
 
@@ -67,6 +68,7 @@ public class MovePlayer : MonoBehaviour {
 		this.mainCamera = FindObjectOfType<MainCamera> ().gameObject;
 		this.playerRigidbody = GetComponent<Rigidbody2D> ();
 		this.playerRadius = this.gameObject.transform.localScale.x * this.gameObject.GetComponent<CircleCollider2D> ().radius / 2;
+		this.isClear = false;
 
 		this.touchArea = this.transform.FindChild ("TouchArea").gameObject;
 		if (!this.touchArea) {
@@ -219,6 +221,10 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
+
+		if (this.isClear)
+			return;
+
 		if (other.CompareTag (GameManager.STAR_TAG)) {
 			AudioManager.Instance.PlaySE ("SE_Impact");
 			if (this.strong) {
@@ -316,10 +322,16 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	public void Dead() {
-		this.alive = false;
-		var obj = GameObject.Instantiate (explosion, this.transform.position, this.transform.localRotation) as GameObject;
-		obj.GetComponent<DestroyEffect> ().isGameOver = true;
-		this.gameObject.SetActive (false);
+		if (this.alive) {
+			this.alive = false;
+			var obj = GameObject.Instantiate (explosion, this.transform.position, this.transform.localRotation) as GameObject;
+			obj.GetComponent<DestroyEffect> ().isGameOver = true;
+			this.gameObject.SetActive (false);
+		}
+	}
+
+	public void SetIsClear (bool isClear) {
+		this.isClear = isClear;
 	}
 
 	void Reflect(Vector2 _normalVector) {

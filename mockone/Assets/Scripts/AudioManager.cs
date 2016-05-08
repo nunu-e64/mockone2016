@@ -83,6 +83,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
 		this.bgmSource.clip = this.bgmDict[bgmName];
 		this.bgmSource.loop = loop;
 		this.bgmSource.volume = volume;
+		this.bgmSource.pitch = 1;
 		this.bgmSource.Play(); 
 	}
 
@@ -92,5 +93,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
 		this.bgmSource.clip = null;
 	}
 
-
+	public void SetBGMPitch (int pitch) {
+		this.bgmSource.pitch = pitch;
+	}
 }
