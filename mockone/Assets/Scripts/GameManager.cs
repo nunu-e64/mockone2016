@@ -57,6 +57,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 		Prologue,
 		Epilogue
 	}
+
+	public enum StageName{
+		Stage1 = 0,
+		Stage2,
+		Stage3
+	}
 		
 	public const string PLAYER_TAG = "Player";
 	public const string TOUCH_OBJECT_TAG = "TouchObject";
@@ -73,9 +79,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public const string TOUCH_FIELD_TAG = "TouchField";
 	public const string TAP_TARGET_LAYER = "TapTarget";
 
+	public static string PREVIOUS_SCENE;
+
 	private int sceneNum;
 
-	public delegate void OnComplete();
+	private delegate void OnComplete();
 	private OnComplete callBack;
 
 	void Awake () {
@@ -92,6 +100,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	}
 
 	public void ChangeScene (string _name) {
+		PREVIOUS_SCENE = this.GetActiveSceneName ();
 		this.ChangeScene(()=> {
 			SceneManager.LoadScene (_name);
 			ScreenFadeManager.Instance.FadeOut (this.fadeOutTime, Color.black, ()=> {}); 
@@ -99,6 +108,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	}
 
 	public void ChangeScene (int _num) {
+		PREVIOUS_SCENE = this.GetActiveSceneName ();
 		this.ChangeScene(()=> {
 			SceneManager.LoadScene (_num); 
 			ScreenFadeManager.Instance.FadeOut (this.fadeOutTime, Color.black, ()=> {}); 

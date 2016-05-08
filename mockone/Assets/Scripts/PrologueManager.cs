@@ -61,7 +61,11 @@ public class PrologueManager : MonoBehaviour {
 		if (this.sceneName == SceneName.Prologue.ToString ()) {
 			GameManager.Instance.ChangeScene (GameManager.SceneName.TitleScene.ToString ());	
 		} else {
-			GameManager.Instance.ChangeScene (GameManager.SceneName.StageSelect.ToString ());
+			if (GameManager.PREVIOUS_SCENE == GameManager.SceneName.StageSelect.ToString ()) {
+				GameManager.Instance.ChangeScene (GameManager.SceneName.StageSelect.ToString ());
+			} else {
+				GameManager.Instance.ChangeScene (GameManager.SceneName.TitleScene.ToString ());
+			}
 		}
 	}
 }
