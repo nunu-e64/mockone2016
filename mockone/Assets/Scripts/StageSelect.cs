@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 using System;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class StageSelect : MonoBehaviour
 {
@@ -20,8 +22,10 @@ public class StageSelect : MonoBehaviour
 			stages [i].GetComponent<Button> ().onClick.AddListener (() => {
 				AudioManager.Instance.PlaySE ("SE_PushStageButton");
 				GameManager.Instance.ChangeScene (stageName);
-			});	
+			});
 		}
+
+
 
 		epilogue.GetComponent<Button> ().onClick.AddListener (() => {
 			if (PlayerPrefsManager.Instance.GetClearStage () >= Enum.GetValues (typeof(GameManager.StageName)).Length) {
