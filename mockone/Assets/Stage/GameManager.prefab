@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 471040}
   - 114: {fileID: 11467340}
   - 114: {fileID: 11412390}
+  - 114: {fileID: 11455402}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -54,6 +55,20 @@ MonoBehaviour:
   PLAYER_SPIN_SPEED: 1
   PLAYER_SPIN_ROTATE: 2
   DRAWING_ACCELERATION: 0.1
+  fadeInTime: 0.5
+  fadeOutTime: 0.5
+--- !u!114 &11455402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2dfe12b8b3ff4f63958831a7e0e384c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFadeAction: 0
 --- !u!114 &11467340
 MonoBehaviour:
   m_ObjectHideFlags: 1
