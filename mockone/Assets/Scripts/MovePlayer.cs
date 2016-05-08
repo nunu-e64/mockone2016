@@ -130,12 +130,7 @@ public class MovePlayer : MonoBehaviour {
 			if (this.playerRigidbody.velocity.sqrMagnitude > this.SPEED_LOW * this.SPEED_LOW) {
 				this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_LOW;
 			}
-<<<<<<< HEAD
-			Debug.Log (this.playerRigidbody.velocity.sqrMagnitude);
-=======
-			//Debug.Log (this.playerRigidbody.velocity.sqrMagnitude);
->>>>>>> 85ab1ad32ae3348b0b2e849e50db0e52deab6704
-		}
+}
 
 //		Debug.Log (this.actionState);
 	}
