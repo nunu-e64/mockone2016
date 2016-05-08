@@ -139,6 +139,7 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 			this.gameOverLogo.SetActive (true);
 			break;
 		case GameManager.GameState.CLEAR:
+			PlayerPrefsManager.Instance.SetClearStage ();
 			AudioManager.Instance.StopBGM ();
 			AudioManager.Instance.PlaySE ("SE_Clear");
 			this.goalEffect.SetActive (true);
