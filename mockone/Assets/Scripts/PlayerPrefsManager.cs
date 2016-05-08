@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerPrefsManager : SingletonMonoBehaviour<PlayerPrefsManager> {
 
 	[SerializeField]
 	private bool setInitialize = false;
+	[SerializeField]
+	private bool setAllClear = false;
 
 	const string CLEAR_STAGE = "clearStage";
 
@@ -21,12 +24,19 @@ public class PlayerPrefsManager : SingletonMonoBehaviour<PlayerPrefsManager> {
 	// Use this for initialization
 	void Start () {
 		if (setInitialize) {
-			this.Init ();
+			this.Initialize ();
+		}
+		if (setAllClear) {
+			this.AllClear ();
 		}
 	}
 		
-	private void Init () {
+	private void Initialize () {
 		PlayerPrefs.DeleteAll ();
+	}
+
+	private void AllClear () {
+		PlayerPrefs.SetInt (CLEAR_STAGE, Enum.GetValues (typeof(GameManager.StageName)).Length);
 	}
 
 	public void SetClearStage () {

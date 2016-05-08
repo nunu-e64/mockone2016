@@ -24,7 +24,7 @@ public class StageSelect : MonoBehaviour
 		}
 
 		epilogue.GetComponent<Button> ().onClick.AddListener (() => {
-			if (PlayerPrefsManager.Instance.GetClearStage () == Enum.GetValues (typeof(GameManager.StageName)).Length) {
+			if (PlayerPrefsManager.Instance.GetClearStage () >= Enum.GetValues (typeof(GameManager.StageName)).Length) {
 				AudioManager.Instance.PlaySE ("SE_PushStageButton");
 				GameManager.Instance.ChangeScene (GameManager.SceneName.Epilogue.ToString ());
 			}
