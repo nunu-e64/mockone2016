@@ -10,6 +10,8 @@ public class HpBar : MonoBehaviour {
 	private GameObject gage1;
 	[SerializeField]
 	private GameObject gage2;
+	[SerializeField]
+	private GameObject seigenJikan;
 
 	private float RECOVERY;
 	private float TIME_LIMIT;
@@ -20,11 +22,11 @@ public class HpBar : MonoBehaviour {
 	private GameObject canvas;
 	private Image gage1Image;
 	private Image gage2Image;
+	private float timeElapsed;
 
 	private Color32 color1 = new Color32 (255, 0, 0, 255);
-	private Color32 color2 = new Color32 (255, 85, 85, 255);
-	private Color32 color3 = new Color32 (255, 170, 170, 255);
-	private Color32 color4 = new Color32 (255, 255, 255, 255);
+	private Color32 color2 = new Color32 (255, 127, 127, 255);
+	private Color32 color3 = new Color32 (255, 255, 255, 255);
 
 	void Start () {
 		this.RECOVERY = GameManager.Instance.RECOVERY;
@@ -34,6 +36,7 @@ public class HpBar : MonoBehaviour {
 		this.t = 1;
 		this.gage1Image = gage1.GetComponent<Image> ();
 		this.gage2Image = gage2.GetComponent<Image> ();
+		this.timeElapsed = 0;
 	}
 
 	void Update () {
@@ -47,14 +50,20 @@ public class HpBar : MonoBehaviour {
 
 		if (this.t <= 0) {
 			movePlayer.GetComponent<MovePlayer> ().Dead ();
-		} else if (this.t <= 0.25f) {
+		} else if (this.t <= 0.33f) {
 			this.gage1Image.color = this.color1;
-		} else if (this.t <= 0.5f) {
+			AudioManager.Instance.SetBGMPitch (2);
+			timeElapsed += Time.deltaTime;
+			if (timeElapsed >= 0.5f) {
+				seigenJikan.SetActive (!seigenJikan.activeSelf);
+				timeElapsed = 0;
+			}
+		} else if (this.t <= 0.66f) {
 			this.gage1Image.color = this.color2;
-		} else if (this.t <= 0.75f) {
-			this.gage1Image.color = this.color3;
+			AudioManager.Instance.SetBGMPitch (1);
 		} else {
-			this.gage1Image.color = this.color4;
+			this.gage1Image.color = this.color3;
+			AudioManager.Instance.SetBGMPitch (1);
 		}
 		this.gage2Image.color = this.gage1Image.color;
 	}

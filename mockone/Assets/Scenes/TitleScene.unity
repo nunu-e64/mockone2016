@@ -595,7 +595,7 @@ GameObject:
   - 222: {fileID: 1808716331}
   - 114: {fileID: 1808716330}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Find
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -620,7 +620,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4b595427d13bb4029aeb8a0abff2fb87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 14444d583a81c43c8bca1ac190af586a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

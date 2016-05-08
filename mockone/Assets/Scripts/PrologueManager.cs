@@ -39,21 +39,9 @@ public class PrologueManager : MonoBehaviour {
 	void Update () {
 		timeElapsed += Time.deltaTime;
 		if (timeElapsed >= this.prologuePageTime) {
-			this.touchCount ++;
-			if (touchCount == sprites.Length) {
-				this.Skip ();
-			} else {
-				ScreenFadeManager.Instance.FadeIn (this.prologueFadeInTime, Color.black, ()=> {
-					this.image.GetComponent<Image> ().sprite = sprites[this.touchCount];
-					ScreenFadeManager.Instance.FadeOut (this.prologueFadeOutTime, Color.black, ()=> {}); 
-				});  
-			}
-			this.timeElapsed = 0 - this.prologueFadeOutTime;
-
-			//エピローグの2番目の画像のときはさらにtimeElapsedを引く
-			if (this.sceneName == SceneName.Epilogue.ToString () && this.touchCount == 1) {
-				this.timeElapsed -= this.prologuePageTime;
-			} 
+			this.SetAction ();
+		} else if (Input.GetMouseButtonDown(0)) {
+			this.SetAction ();
 		}
 	}
 
@@ -67,5 +55,28 @@ public class PrologueManager : MonoBehaviour {
 				GameManager.Instance.ChangeScene (GameManager.SceneName.TitleScene.ToString ());
 			}
 		}
+	}
+
+	private void SetAction () {
+		if (this.touchCount == this.sprites.Length - 1) {
+			this.Skip ();
+		} else {
+			this.NextPage ();
+		}
+	}
+
+	private void NextPage () {
+		this.touchCount ++;
+
+		ScreenFadeManager.Instance.FadeIn (this.prologueFadeInTime, Color.black, ()=> {
+			this.image.GetComponent<Image> ().sprite = sprites[this.touchCount];
+			ScreenFadeManager.Instance.FadeOut (this.prologueFadeOutTime, Color.black, ()=> {}); 
+		});  
+
+		this.timeElapsed = 0 - this.prologueFadeOutTime;
+		//エピローグの2番目の画像のときはさらにtimeElapsedを引く
+		if (this.sceneName == SceneName.Epilogue.ToString () && this.touchCount == 1) {
+			this.timeElapsed -= this.prologuePageTime;
+		} 
 	}
 }
