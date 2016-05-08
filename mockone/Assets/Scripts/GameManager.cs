@@ -41,6 +41,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	[System.NonSerialized]
 	public GameState gameState;
 
+	public float fadeInTime = 0.5f; 
+	public float fadeOutTime = 0.5f;
+
 	public enum GameState {
 		GAME_START,
 		PLAYING,
@@ -49,7 +52,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	}
 
 	public enum SceneName{
-		Title = 0,
+		TitleScene = 0,
 		StageSelect,
 		Prologue,
 		Epilogue
@@ -72,6 +75,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 
 	private int sceneNum;
 
+	public delegate void OnComplete();
+	private OnComplete callBack;
+
 	void Awake () {
 		if (this != Instance) {
 			Destroy (this);
@@ -86,11 +92,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	}
 
 	public void ChangeScene (string _name) {
-		SceneManager.LoadScene (_name);
+		this.ChangeScene(()=> {
+			SceneManager.LoadScene (_name);
+			ScreenFadeManager.Instance.FadeOut (this.fadeOutTime, Color.black, ()=> {}); 
+		});
 	}
 
 	public void ChangeScene (int _num) {
-		SceneManager.LoadScene (_num);
+		this.ChangeScene(()=> {
+			SceneManager.LoadScene (_num); 
+			ScreenFadeManager.Instance.FadeOut (this.fadeOutTime, Color.black, ()=> {}); 
+		});
 	}
 
 	public void ReloadScene () {
@@ -100,7 +112,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public void NextScene () {
 		//BuildSettingsに従って次のステージへ
 		if (SceneManager.GetActiveScene ().buildIndex == sceneNum - 1) {
-			GameManager.Instance.ChangeScene (GameManager.SceneName.Epilogue.ToString ());
+			this.ChangeScene (GameManager.SceneName.Epilogue.ToString ());
 		} else {
 			this.ChangeScene (SceneManager.GetActiveScene ().buildIndex + 1);
 		}
@@ -109,4 +121,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	public string GetActiveSceneName () {
 		return SceneManager.GetActiveScene ().name;
 	}
+
+	private void ChangeScene (OnComplete onComplete) {
+		this.callBack = onComplete;
+		ScreenFadeManager.Instance.FadeIn (this.fadeInTime, Color.black, ()=> {
+			this.callBack ();
+		});  
+	} 
 }
