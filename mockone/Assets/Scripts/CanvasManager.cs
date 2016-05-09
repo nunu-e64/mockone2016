@@ -30,8 +30,6 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 	[SerializeField]
 	private GameObject goalEffect;
 	[SerializeField]
-	private GameObject seigenJikan;
-	[SerializeField]
 	private GameObject debugStageNumber;
 
 	private bool isClear;
@@ -141,14 +139,12 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 			AudioManager.Instance.StopBGM ();
 			AudioManager.Instance.PlaySE ("SE_GameOver");
 			this.gameOverLogo.SetActive (true);
-			this.seigenJikan.SetActive (false);
 			break;
 		case GameManager.GameState.CLEAR:
 			PlayerPrefsManager.Instance.SetClearStage ();
 			AudioManager.Instance.StopBGM ();
 			AudioManager.Instance.PlaySE ("SE_Clear");
 			this.goalEffect.SetActive (true);
-			this.seigenJikan.SetActive (false);
 			this.isClear = true;
 			//ラストステージの時はNextだけ表示
 			if (GameManager.Instance.isLastStage ()) {

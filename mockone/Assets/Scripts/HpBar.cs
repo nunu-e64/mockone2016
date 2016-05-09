@@ -10,8 +10,6 @@ public class HpBar : MonoBehaviour {
 	private GameObject gage1;
 	[SerializeField]
 	private GameObject gage2;
-	[SerializeField]
-	private GameObject seigenJikan;
 
 	private float RECOVERY;
 	private float TIME_LIMIT;
@@ -23,6 +21,9 @@ public class HpBar : MonoBehaviour {
 	private Image gage1Image;
 	private Image gage2Image;
 	private float timeElapsed;
+	private GameObject seigenJikan1;
+	private GameObject seigenJikan2;
+	private int colorJudge; 
 
 	private Color32 color1 = new Color32 (255, 0, 0, 255);
 	private Color32 color2 = new Color32 (255, 127, 127, 255);
@@ -37,6 +38,9 @@ public class HpBar : MonoBehaviour {
 		this.gage1Image = gage1.GetComponent<Image> ();
 		this.gage2Image = gage2.GetComponent<Image> ();
 		this.timeElapsed = 0;
+		this.seigenJikan1 = GameObject.Find ("SeigenJikan1");
+		this.seigenJikan2 = GameObject.Find ("SeigenJikan2");
+		this.colorJudge = 1;
 	}
 
 	void Update () {
@@ -50,20 +54,29 @@ public class HpBar : MonoBehaviour {
 
 		if (this.t <= 0) {
 			movePlayer.GetComponent<MovePlayer> ().Dead ();
+			seigenJikan1.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, 0);
+			seigenJikan2.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, 0);
 		} else if (this.t <= 0.33f) {
 			this.gage1Image.color = this.color1;
 			AudioManager.Instance.SetBGMPitch (2);
 			timeElapsed += Time.deltaTime;
+			seigenJikan1.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, (int)(255 / 2 * Time.deltaTime) * colorJudge);
+			seigenJikan2.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, (int)(255 / 2 * Time.deltaTime) * colorJudge);
 			if (timeElapsed >= 0.5f) {
-				seigenJikan.SetActive (!seigenJikan.activeSelf);
+				this.colorJudge = -this.colorJudge;
 				timeElapsed = 0;
 			}
+
 		} else if (this.t <= 0.66f) {
 			this.gage1Image.color = this.color2;
 			AudioManager.Instance.SetBGMPitch (1);
+			seigenJikan1.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, 0);
+			seigenJikan2.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, 0);
 		} else {
 			this.gage1Image.color = this.color3;
 			AudioManager.Instance.SetBGMPitch (1);
+			seigenJikan1.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, 0);
+			seigenJikan2.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, 0);
 		}
 		this.gage2Image.color = this.gage1Image.color;
 	}
