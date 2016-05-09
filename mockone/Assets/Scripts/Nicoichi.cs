@@ -32,7 +32,7 @@ public class Nicoichi : Monster {
 		base.Update();
 	}
 
-	public override void Dead(Vector2 hitDirection) {
+	public override bool Dead(Vector2 hitDirection) {
 		if (!hasBlasted) {
 			if (!hasKnockDowned) {
 				hasKnockDowned = true;
@@ -43,6 +43,7 @@ public class Nicoichi : Monster {
 				buddy.Dead (hitDirection);
 			}
 		}
+		return hasBlasted;
 	}
 
 	public override void FinishPlayerStrong() {

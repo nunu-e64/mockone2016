@@ -267,8 +267,9 @@ public class MovePlayer : MonoBehaviour {
 			if (!monster.hasBlasted) {
 				if (this.strong) {
 					AudioManager.Instance.PlaySE ("SE_BlastMonster");
-					monster.Dead (this.playerRigidbody.velocity.normalized);
-					Reflect (this.transform.position - other.transform.position);
+					if (!(monster.Dead (this.playerRigidbody.velocity.normalized))) {
+						Reflect (this.transform.position - other.transform.position);
+					}
 				} else {
 					AudioManager.Instance.PlaySE ("SE_ImpactStar");
 					Dead ();

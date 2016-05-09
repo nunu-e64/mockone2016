@@ -100,7 +100,7 @@ public class Ugoku : Monster {
 		return Vector3.zero;
 	}
 
-	public override void Dead(Vector2 hitDirection) {
+	public override bool Dead(Vector2 hitDirection) {
 		if (!hasBlasted && !isInvincible) {
 			if (isFirst) {
 				this.changeMoveStyle (false);
@@ -116,6 +116,7 @@ public class Ugoku : Monster {
 				base.Dead (hitDirection);
 			}
 		}
+		return hasBlasted;
 	}
 
 	private void changeMoveStyle(bool _isFirst) {
