@@ -40,6 +40,7 @@ public class MovePlayer : MonoBehaviour {
 	private GameObject touchArea;
 	public bool hasTouchIntervalPassed { set; private get;}
 	private float hitStop = 0;
+	private float strongTime = 0;
 
 	public enum ActionState {
 		NONE,		//ステージ開始状態、カメラ移動時、ビューン中
@@ -96,12 +97,12 @@ public class MovePlayer : MonoBehaviour {
 			this.GetComponent<SpriteRenderer> ().color = new Color (255 / 255.0f, 170 / 255.0f, 70 / 255.0f, 1);
 			this.effects [0].SetActive (false);
 			this.effects [1].SetActive (true);
-			var speed = this.playerRigidbody.velocity.magnitude - 0.2f;
-			if (speed <= this.PLAYER_SPIN_SPEED) {
-				finishStrong ();
-				this.SetActionState (ActionState.FLOATING);
-			} else {
-				this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * speed;
+			if (this.actionState == ActionState.NONE) {
+				strongTime -= Time.deltaTime;
+				if (strongTime <= 0) {
+					finishStrong ();
+					this.SetActionState (ActionState.FLOATING);
+				}
 			}
 		} else {
 			this.GetComponent<SpriteRenderer> ().color = new Color (1, 1, 1, 1);
@@ -178,6 +179,7 @@ public class MovePlayer : MonoBehaviour {
 					remainReflectable = MAX_REFLECT_TIMES;
 					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_HIGH;
 					this.GetComponent<SpriteRenderer> ().sprite = this.strongImage;
+					strongTime = 1.0f;
 				} else {
 					AudioManager.Instance.PlaySE ("SE_ByuunWeak");
 					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_LOW;
