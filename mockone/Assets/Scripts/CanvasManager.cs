@@ -51,7 +51,7 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 		//GameStartHashの生成
 		this.hash = new Hashtable ();
 		this.hash.Add ("scale", new Vector3 (1.5f, 1.5f, 1.5f));
-		this.hash.Add ("time", 0.8f);
+		this.hash.Add ("time", 1.0f);
 		this.hash.Add ("loopType", "pingPong");
 		this.hash.Add ("easeType", iTween.EaseType.easeInQuad);
 		this.hash.Add ("oncomplete", "OnComplete");
