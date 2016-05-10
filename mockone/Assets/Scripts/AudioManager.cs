@@ -93,7 +93,15 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
 		this.bgmSource.clip = null;
 	}
 
-	public void SetBGMPitch (int pitch) {
+	public void SetBGMPitch (float pitch) {
 		this.bgmSource.pitch = pitch;
+	}
+
+	public void SetSEPitch (string seName, float pitch) {
+		foreach (var source in this.seSources) {
+			if (source.clip.name == seName) {
+				source.pitch = pitch;
+			}
+		}
 	}
 }
