@@ -1814,7 +1814,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: da2d8e3a8058145128ea6dba665db5bd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -3401,6 +3401,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 747374565}
   - 212: {fileID: 747374566}
+  - 95: {fileID: 747374567}
   m_Layer: 0
   m_Name: monster02_light
   m_TagString: Untagged
@@ -3450,6 +3451,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &747374567
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 747374564}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: da2d8e3a8058145128ea6dba665db5bd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &747644079
 Prefab:
   m_ObjectHideFlags: 0
@@ -6325,7 +6343,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: da2d8e3a8058145128ea6dba665db5bd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
