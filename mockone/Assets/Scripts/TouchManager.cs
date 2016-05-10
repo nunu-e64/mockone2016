@@ -73,6 +73,9 @@ public class TouchManager : MonoBehaviour {
 		//プレイヤーがAround状態になったときエフェクト生成
 		if (this.movePlayer.GetComponent<MovePlayer> ().GetActionState () == MovePlayer.ActionState.AROUND) {
 			this.obj.GetComponent<TouchObject> ().SetEffect ();
+			if (this.movePlayer.GetComponent<MovePlayer> ().GetIsStrong ()) {
+				this.obj.GetComponent<TouchObject> ().SetSphireToEffect ();
+			}
 		}
 	}
 

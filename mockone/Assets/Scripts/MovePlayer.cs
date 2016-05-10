@@ -352,6 +352,10 @@ public class MovePlayer : MonoBehaviour {
 		this.isClear = isClear;
 	}
 
+	public bool GetIsStrong () {
+		return this.strong;
+	}
+
 	void Reflect(Vector2 _normalVector) {
 		this.playerRigidbody.velocity = Vector2.Reflect (this.playerRigidbody.velocity, _normalVector.normalized);
 		remainReflectable--;
