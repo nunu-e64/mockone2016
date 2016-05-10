@@ -3,8 +3,16 @@ using System.Collections;
 
 public class MainCamera : MonoBehaviour {
 
+	[SerializeField]
+	private float moveTime = 2;
+
 	// Use this for initialization
 	void Start () {
+		Hashtable hash = new Hashtable ();
+		hash.Add ("y", -19.2);
+		hash.Add ("time", this.moveTime);
+		hash.Add ("easeType", iTween.EaseType.linear);  
+		iTween.MoveBy (this.gameObject, hash);
 	}
 
 	// Update is called once per frame
