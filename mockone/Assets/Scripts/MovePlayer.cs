@@ -99,9 +99,14 @@ public class MovePlayer : MonoBehaviour {
 			this.effects [1].SetActive (true);
 			if (this.actionState == ActionState.NONE) {
 				strongTime -= Time.deltaTime;
-				if (strongTime <= 0) {
-					finishStrong ();
-					this.SetActionState (ActionState.FLOATING);
+				if (strongTime <= 0f) {
+					var speed = this.playerRigidbody.velocity.magnitude - 60f * Time.deltaTime;
+					if (speed <= this.PLAYER_SPIN_SPEED) {
+						finishStrong ();
+						this.SetActionState (ActionState.FLOATING);
+					} else {
+						this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * speed;
+					}
 				}
 			}
 		} else {
