@@ -1828,13 +1828,13 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 4286168831
         key1:
           serializedVersion: 2
-          rgba: 4291155967
+          rgba: 4278224127
         key2:
           serializedVersion: 2
-          rgba: 7763711
+          rgba: 34047
         key3:
           serializedVersion: 2
           rgba: 0
@@ -1850,8 +1850,8 @@ ParticleSystem:
         key7:
           serializedVersion: 2
           rgba: 0
-        ctime0: 17926
-        ctime1: 41249
+        ctime0: 1542
+        ctime1: 65535
         ctime2: 65535
         ctime3: 0
         ctime4: 0
@@ -1866,7 +1866,7 @@ ParticleSystem:
         atime5: 0
         atime6: 0
         atime7: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
         key0:
@@ -2024,7 +2024,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startRotation:
-      scalar: 6.283185
+      scalar: 3.1415925
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2047,7 +2047,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 0
-      minMaxState: 3
+      minMaxState: 0
     randomizeRotationDirection: 0
     gravityModifier: 0
     maxNumParticles: 100000
@@ -2055,9 +2055,9 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 2
     enabled: 1
-    type: 0
+    type: 4
     radius: 0.02
-    angle: 25
+    angle: 5
     length: 5
     boxX: 1
     boxY: 1
@@ -3299,7 +3299,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 8fcb483ec12534919a95ad3b494ca09d, type: 3}
-  m_Color: {r: 0.2870891, g: 0.32453164, b: 0.43382353, a: 0.138}
+  m_Color: {r: 0.2835208, g: 0.2974824, b: 0.33823532, a: 0.138}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!1001 &100100000

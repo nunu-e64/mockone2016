@@ -6,15 +6,22 @@ public class TouchObject : MonoBehaviour {
 	[SerializeField]
 	private GameObject spakleEffect;
 	[SerializeField]
-	private GameObject sphireEffect;
+	private GameObject sphireFromEffect;
+	[SerializeField]
+	private GameObject sphireToEffect;
+	[SerializeField]
+	private GameObject grow;
 
 	private	bool isAvailable = false;
 	private bool isSetEffect  = false;
+	private bool isSphireToEffect  = false;
 
 	// Use this for initialization
 	void Start () {
 		this.isAvailable = true;
 		this.isSetEffect = false;
+		this.isSphireToEffect = false;
+		this.grow.transform.parent = null;
 	}
 	
 	// Update is called once per frame
@@ -31,6 +38,11 @@ public class TouchObject : MonoBehaviour {
 
 	public void Reset () {
 		Instantiate (spakleEffect, transform.position, Quaternion.identity);
+		if (isSphireToEffect) {
+			Instantiate (sphireToEffect, transform.position, Quaternion.identity);
+		}
+		this.grow.GetComponent<ParticleSystem> ().startColor = new Color(1, 1, 1, 0);
+		Destroy (this.grow, 2);
 		Destroy (gameObject); //TODO: アニメーション再生->アニメーション終了時にDestroy
 	}
 
@@ -43,7 +55,13 @@ public class TouchObject : MonoBehaviour {
 	public void SetEffect () {
 		if (!this.isSetEffect) {
 			this.isSetEffect = true;
-			this.sphireEffect.SetActive (true);
+			this.sphireFromEffect.SetActive (true);
+		}
+	}
+
+	public void SetSphireToEffect () {
+		if (!this.isSphireToEffect) {
+			this.isSphireToEffect = true;
 		}
 	}
 }
