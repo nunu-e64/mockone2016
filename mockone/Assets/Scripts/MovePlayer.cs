@@ -96,6 +96,13 @@ public class MovePlayer : MonoBehaviour {
 			this.GetComponent<SpriteRenderer> ().color = new Color (255 / 255.0f, 170 / 255.0f, 70 / 255.0f, 1);
 			this.effects [0].SetActive (false);
 			this.effects [1].SetActive (true);
+			var speed = this.playerRigidbody.velocity.magnitude - 0.2f;
+			if (speed <= this.PLAYER_SPIN_SPEED) {
+				finishStrong ();
+				this.SetActionState (ActionState.FLOATING);
+			} else {
+				this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * speed;
+			}
 		} else {
 			this.GetComponent<SpriteRenderer> ().color = new Color (1, 1, 1, 1);
 			this.effects [0].SetActive (this.actionState != ActionState.MOVE);
@@ -164,7 +171,6 @@ public class MovePlayer : MonoBehaviour {
 				this.touchObject = null;
 			}
 			if (this.actionState == ActionState.MOVE) {
-				this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.PLAYER_SPIN_SPEED;	//引力点に達する前にリリースされた場合速度低下
 				SetActionState (ActionState.FLOATING);
 			} else {
 				if (strong) {
@@ -191,6 +197,7 @@ public class MovePlayer : MonoBehaviour {
 				this.touchObject.GetComponent<TouchObject> ().Reset ();
 				this.touchObject = null;
 			}
+			this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.PLAYER_SPIN_SPEED;
 			this.actionState = ActionState.FLOATING;
 			break;
 		case ActionState.NONE:
@@ -230,7 +237,6 @@ public class MovePlayer : MonoBehaviour {
 			} else {
 				this.transform.position = other.transform.position + (this.transform.position - other.transform.position).normalized * ((other.transform.localScale.x / 2) + this.playerRadius);
 				Reflect (this.transform.position - other.transform.position);
-				this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.PLAYER_SPIN_SPEED;
 				SetActionState (ActionState.FLOATING);
 			}
 
@@ -248,7 +254,6 @@ public class MovePlayer : MonoBehaviour {
 				AudioManager.Instance.PlaySE ("SE_Impact");
 				this.transform.position = other.transform.position + (this.transform.position - other.transform.position).normalized * ((other.transform.localScale.x / 2) + this.playerRadius);
 				Reflect (this.transform.position - other.transform.position);
-				this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.PLAYER_SPIN_SPEED;
 				SetActionState (ActionState.FLOATING);
 			}
 
@@ -283,7 +288,6 @@ public class MovePlayer : MonoBehaviour {
 				Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
 			} else {
 				Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
-				this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.PLAYER_SPIN_SPEED;
 				SetActionState (ActionState.FLOATING);
 			}
 
@@ -307,7 +311,6 @@ public class MovePlayer : MonoBehaviour {
 					Reflect (new Vector2(0, 1));
 				} else {
 					Reflect (new Vector2(0, 1));
-					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.PLAYER_SPIN_SPEED;
 					SetActionState (ActionState.FLOATING);
 				}
 			}
