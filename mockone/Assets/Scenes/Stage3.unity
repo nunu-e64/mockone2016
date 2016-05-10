@@ -95,6 +95,7 @@ GameObject:
   - 4: {fileID: 7216251}
   - 212: {fileID: 7216253}
   - 58: {fileID: 7216252}
+  - 95: {fileID: 7216254}
   m_Layer: 8
   m_Name: Meteo (21)
   m_TagString: Meteo
@@ -160,6 +161,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &7216254
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 7216250}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &46833008
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +503,7 @@ GameObject:
   - 4: {fileID: 111665078}
   - 212: {fileID: 111665080}
   - 58: {fileID: 111665079}
+  - 95: {fileID: 111665081}
   m_Layer: 8
   m_Name: Meteo
   m_TagString: Meteo
@@ -550,6 +569,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &111665081
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 111665077}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &150578352
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,6 +671,7 @@ GameObject:
   - 4: {fileID: 152334575}
   - 212: {fileID: 152334577}
   - 58: {fileID: 152334576}
+  - 95: {fileID: 152334578}
   m_Layer: 8
   m_Name: Meteo (8)
   m_TagString: Meteo
@@ -700,6 +737,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &152334578
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 152334574}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &161309669
 Prefab:
   m_ObjectHideFlags: 0
@@ -1376,6 +1430,7 @@ GameObject:
   - 4: {fileID: 287128405}
   - 212: {fileID: 287128407}
   - 58: {fileID: 287128406}
+  - 95: {fileID: 287128408}
   m_Layer: 8
   m_Name: Meteo (4)
   m_TagString: Meteo
@@ -1441,6 +1496,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &287128408
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 287128404}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &319664305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,6 +1962,7 @@ GameObject:
   - 4: {fileID: 382055664}
   - 212: {fileID: 382055666}
   - 58: {fileID: 382055665}
+  - 95: {fileID: 382055667}
   m_Layer: 8
   m_Name: Meteo (14)
   m_TagString: Meteo
@@ -1955,6 +2028,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &382055667
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 382055663}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &386997314
 GameObject:
   m_ObjectHideFlags: 0
@@ -2229,139 +2319,6 @@ Transform:
   - {fileID: 505272868}
   m_Father: {fileID: 486765426}
   m_RootOrder: 4
---- !u!1 &411926290
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 105708, guid: 5bb86ea2b586649a499e099a53e9f0c2, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 411926291}
-  - 212: {fileID: 411926296}
-  - 58: {fileID: 411926295}
-  - 95: {fileID: 411926294}
-  - 50: {fileID: 411926293}
-  - 114: {fileID: 411926292}
-  m_Layer: 8
-  m_Name: Monster3
-  m_TagString: Monster
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &411926291
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 460546, guid: 5bb86ea2b586649a499e099a53e9f0c2, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 411926290}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: 22.9, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1137510991}
-  m_RootOrder: 0
---- !u!114 &411926292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11405046, guid: 5bb86ea2b586649a499e099a53e9f0c2,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 411926290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d02b1c0d81b64b66a46f65834fa1ee2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FIRST_MOVE_STYLE: 2
-  FIRST_SIZE: 2
-  FIRST_SPEED: 3
-  SECOND_MOVE_STYLE: 1
-  SECOND_SIZE: 2
-  SECOND_SPEED: 8
-  isFirst: 1
---- !u!50 &411926293
-Rigidbody2D:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 5087290, guid: 5bb86ea2b586649a499e099a53e9f0c2,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 411926290}
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!95 &411926294
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9575538, guid: 5bb86ea2b586649a499e099a53e9f0c2,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 411926290}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 742b2ec1f464c414ab94ab41191f7af0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!58 &411926295
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 5856110, guid: 5bb86ea2b586649a499e099a53e9f0c2,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 411926290}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.3}
-  serializedVersion: 2
-  m_Radius: 2.14
---- !u!212 &411926296
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 21257874, guid: 5bb86ea2b586649a499e099a53e9f0c2,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 411926290}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 0
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 040ac0e1c8aa94bd4b21207f86783799, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
 --- !u!1001 &431926496
 Prefab:
   m_ObjectHideFlags: 0
@@ -2675,6 +2632,7 @@ GameObject:
   - 4: {fileID: 505272868}
   - 212: {fileID: 505272870}
   - 58: {fileID: 505272869}
+  - 95: {fileID: 505272871}
   m_Layer: 8
   m_Name: Meteo (18)
   m_TagString: Meteo
@@ -2740,6 +2698,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &505272871
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 505272867}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &533237533
 GameObject:
   m_ObjectHideFlags: 0
@@ -2825,6 +2800,7 @@ GameObject:
   - 4: {fileID: 608284426}
   - 212: {fileID: 608284428}
   - 58: {fileID: 608284427}
+  - 95: {fileID: 608284429}
   m_Layer: 8
   m_Name: Meteo (2)
   m_TagString: Meteo
@@ -2890,6 +2866,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &608284429
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 608284425}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &646152242
 GameObject:
   m_ObjectHideFlags: 0
@@ -2975,6 +2968,7 @@ GameObject:
   - 4: {fileID: 671816793}
   - 212: {fileID: 671816795}
   - 58: {fileID: 671816794}
+  - 95: {fileID: 671816796}
   m_Layer: 8
   m_Name: Meteo (10)
   m_TagString: Meteo
@@ -3040,6 +3034,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &671816796
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 671816792}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &708550837
 GameObject:
   m_ObjectHideFlags: 0
@@ -4022,6 +4033,48 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1001 &874631985
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1137510991}
+    m_Modifications:
+    - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 22.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &889368448
 GameObject:
   m_ObjectHideFlags: 0
@@ -4197,6 +4250,7 @@ GameObject:
   - 4: {fileID: 911889157}
   - 212: {fileID: 911889159}
   - 58: {fileID: 911889158}
+  - 95: {fileID: 911889160}
   m_Layer: 8
   m_Name: Meteo (20)
   m_TagString: Meteo
@@ -4262,6 +4316,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &911889160
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 911889156}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &936755912
 GameObject:
   m_ObjectHideFlags: 0
@@ -4362,6 +4433,7 @@ GameObject:
   - 4: {fileID: 957193425}
   - 212: {fileID: 957193427}
   - 58: {fileID: 957193426}
+  - 95: {fileID: 957193428}
   m_Layer: 8
   m_Name: Meteo (9)
   m_TagString: Meteo
@@ -4427,6 +4499,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &957193428
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 957193424}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &992262809
 GameObject:
   m_ObjectHideFlags: 0
@@ -4437,6 +4526,7 @@ GameObject:
   - 4: {fileID: 992262810}
   - 212: {fileID: 992262812}
   - 58: {fileID: 992262811}
+  - 95: {fileID: 992262813}
   m_Layer: 8
   m_Name: Meteo (3)
   m_TagString: Meteo
@@ -4502,6 +4592,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &992262813
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 992262809}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1126710854
 GameObject:
   m_ObjectHideFlags: 0
@@ -4602,7 +4709,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 411926291}
+  - {fileID: 1274534232}
   m_Father: {fileID: 486765426}
   m_RootOrder: 2
 --- !u!1 &1143194652
@@ -4615,6 +4722,7 @@ GameObject:
   - 4: {fileID: 1143194653}
   - 212: {fileID: 1143194655}
   - 58: {fileID: 1143194654}
+  - 95: {fileID: 1143194656}
   m_Layer: 8
   m_Name: Meteo (6)
   m_TagString: Meteo
@@ -4680,6 +4788,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &1143194656
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1143194652}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1192361850
 GameObject:
   m_ObjectHideFlags: 0
@@ -4690,6 +4815,7 @@ GameObject:
   - 4: {fileID: 1192361851}
   - 212: {fileID: 1192361853}
   - 58: {fileID: 1192361852}
+  - 95: {fileID: 1192361854}
   m_Layer: 8
   m_Name: Meteo (13)
   m_TagString: Meteo
@@ -4755,6 +4881,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &1192361854
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192361850}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1203540559
 GameObject:
   m_ObjectHideFlags: 0
@@ -4765,6 +4908,7 @@ GameObject:
   - 4: {fileID: 1203540560}
   - 212: {fileID: 1203540562}
   - 58: {fileID: 1203540561}
+  - 95: {fileID: 1203540563}
   m_Layer: 8
   m_Name: Meteo (5)
   m_TagString: Meteo
@@ -4830,6 +4974,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &1203540563
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1203540559}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1220302402
 GameObject:
   m_ObjectHideFlags: 0
@@ -4988,6 +5149,7 @@ GameObject:
   - 4: {fileID: 1252809206}
   - 212: {fileID: 1252809208}
   - 58: {fileID: 1252809207}
+  - 95: {fileID: 1252809209}
   m_Layer: 8
   m_Name: Meteo (22)
   m_TagString: Meteo
@@ -5053,6 +5215,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &1252809209
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1252809205}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1274097461
 GameObject:
   m_ObjectHideFlags: 0
@@ -5128,6 +5307,10 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!4 &1274534232 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+  m_PrefabInternal: {fileID: 874631985}
 --- !u!1 &1281953340
 GameObject:
   m_ObjectHideFlags: 0
@@ -5172,6 +5355,7 @@ GameObject:
   - 4: {fileID: 1281984667}
   - 212: {fileID: 1281984669}
   - 58: {fileID: 1281984668}
+  - 95: {fileID: 1281984670}
   m_Layer: 8
   m_Name: Meteo (16)
   m_TagString: Meteo
@@ -5237,6 +5421,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &1281984670
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1281984666}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1297422159
 GameObject:
   m_ObjectHideFlags: 0
@@ -5412,6 +5613,7 @@ GameObject:
   - 4: {fileID: 1337591837}
   - 212: {fileID: 1337591839}
   - 58: {fileID: 1337591838}
+  - 95: {fileID: 1337591840}
   m_Layer: 8
   m_Name: Meteo (7)
   m_TagString: Meteo
@@ -5477,6 +5679,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &1337591840
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1337591836}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1373972904
 GameObject:
   m_ObjectHideFlags: 0
@@ -5562,6 +5781,7 @@ GameObject:
   - 4: {fileID: 1377999170}
   - 212: {fileID: 1377999172}
   - 58: {fileID: 1377999171}
+  - 95: {fileID: 1377999173}
   m_Layer: 8
   m_Name: Meteo (11)
   m_TagString: Meteo
@@ -5627,6 +5847,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &1377999173
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1377999169}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &1404085068
 Prefab:
   m_ObjectHideFlags: 0
@@ -6096,6 +6333,7 @@ GameObject:
   - 4: {fileID: 1561225565}
   - 212: {fileID: 1561225567}
   - 58: {fileID: 1561225566}
+  - 95: {fileID: 1561225568}
   m_Layer: 8
   m_Name: Meteo (15)
   m_TagString: Meteo
@@ -6161,6 +6399,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &1561225568
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1561225564}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1628122610
 GameObject:
   m_ObjectHideFlags: 0
@@ -6516,6 +6771,7 @@ GameObject:
   - 4: {fileID: 1769683534}
   - 212: {fileID: 1769683536}
   - 58: {fileID: 1769683535}
+  - 95: {fileID: 1769683537}
   m_Layer: 8
   m_Name: Meteo (12)
   m_TagString: Meteo
@@ -6581,6 +6837,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &1769683537
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1769683533}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1775101003
 GameObject:
   m_ObjectHideFlags: 0
@@ -7498,6 +7771,7 @@ GameObject:
   - 4: {fileID: 1992198535}
   - 212: {fileID: 1992198537}
   - 58: {fileID: 1992198536}
+  - 95: {fileID: 1992198538}
   m_Layer: 8
   m_Name: Meteo (17)
   m_TagString: Meteo
@@ -7563,6 +7837,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &1992198538
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992198534}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2009955753
 GameObject:
   m_ObjectHideFlags: 0
@@ -7859,6 +8150,7 @@ GameObject:
   - 4: {fileID: 2115542202}
   - 212: {fileID: 2115542204}
   - 58: {fileID: 2115542203}
+  - 95: {fileID: 2115542205}
   m_Layer: 8
   m_Name: Meteo (1)
   m_TagString: Meteo
@@ -7924,6 +8216,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &2115542205
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2115542201}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26472a0cbb6214c7291c6acdb16d0b41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2142422983
 GameObject:
   m_ObjectHideFlags: 0
