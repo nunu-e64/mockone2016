@@ -39,6 +39,7 @@ public class MovePlayer : MonoBehaviour {
 
 	private GameObject touchArea;
 	public bool hasTouchIntervalPassed { set; private get;}
+	private float hitStop = 0;
 
 	public enum ActionState {
 		NONE,		//ステージ開始状態、カメラ移動時、ビューン中
@@ -132,8 +133,7 @@ public class MovePlayer : MonoBehaviour {
 			if (this.playerRigidbody.velocity.sqrMagnitude > this.SPEED_LOW * this.SPEED_LOW) {
 				this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_LOW;
 			}
-}
-
+		}
 //		Debug.Log (this.actionState);
 	}
 		
@@ -220,7 +220,6 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-
 		if (this.isClear)
 			return;
 
@@ -269,6 +268,8 @@ public class MovePlayer : MonoBehaviour {
 					AudioManager.Instance.PlaySE ("SE_BlastMonster");
 					if (!(monster.Dead (this.playerRigidbody.velocity.normalized))) {
 						Reflect (this.transform.position - other.transform.position);
+					} else {
+						hitStop = 0.5f;
 					}
 				} else {
 					AudioManager.Instance.PlaySE ("SE_ImpactStar");

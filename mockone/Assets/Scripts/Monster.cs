@@ -13,7 +13,7 @@ public class Monster : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	protected void FixUpdate () {
+	protected void Update () {
 		if (hasBlasted) {
 			this.gameObject.transform.Rotate (new Vector3 (0f, 0f, blastedRotationAngle));
 		}
