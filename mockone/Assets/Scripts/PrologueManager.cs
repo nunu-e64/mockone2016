@@ -29,10 +29,10 @@ public class PrologueManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		AudioManager.Instance.PlayBGM ("BGM_StageSelect");
 		this.timeElapsed = 0 - ScreenFadeManager.Instance.GetFadeOutTime ();
 		this.touchCount = 0;
 		this.sceneName = GameManager.Instance.GetActiveSceneName ();
+		AudioManager.Instance.PlayBGM ((this.sceneName==SceneName.Prologue.ToString() ? "BGM_Prologue" : "BGM_Epilogue"), 0.5f);
 	}
 	
 	// Update is called once per frame
