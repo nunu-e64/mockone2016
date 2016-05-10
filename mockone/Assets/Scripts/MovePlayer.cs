@@ -323,7 +323,8 @@ public class MovePlayer : MonoBehaviour {
 			}
 		} else if (other.CompareTag(GameManager.GOAL_TAG)) {
 			this.playerRigidbody.velocity = Vector2.up;
-			SetActionState (ActionState.RELEASE);
+			this.finishStrong ();
+			this.SetActionState (ActionState.RELEASE);
 			CanvasManager.Instance.SetLogo (GameManager.GameState.CLEAR);
 		} else if (other.CompareTag(GameManager.CANDY_TAG)) {
 			AudioManager.Instance.PlaySE ("SE_GetItem");
