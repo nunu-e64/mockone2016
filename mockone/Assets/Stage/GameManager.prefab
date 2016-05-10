@@ -51,8 +51,8 @@ MonoBehaviour:
   MAX_REFLECT_TIMES: 100
   AROUND_SPEED_LOW: 2
   AROUND_SPEED_HIGH: 3
-  MONSTER_BLAST_SPEED: 6
-  MONSTER_BLAST_ROTATE: 5
+  MONSTER_BLAST_SPEED: 12
+  MONSTER_BLAST_ROTATE: 8
   PLAYER_SPIN_SPEED: 1
   PLAYER_SPIN_ROTATE: 2
   DRAWING_ACCELERATION: 0.1
@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setInitialize: 0
+  setAllClear: 0
 --- !u!114 &11455402
 MonoBehaviour:
   m_ObjectHideFlags: 1
