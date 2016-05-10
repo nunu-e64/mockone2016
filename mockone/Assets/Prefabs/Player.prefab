@@ -1770,7 +1770,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0.9
+          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1788,9 +1788,9 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 0
-      minMaxState: 3
+      minMaxState: 0
     startSpeed:
-      scalar: 1
+      scalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2056,8 +2056,8 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 4
-    radius: 0.02
-    angle: 5
+    radius: 0.01
+    angle: 3
     length: 5
     boxX: 1
     boxY: 1
