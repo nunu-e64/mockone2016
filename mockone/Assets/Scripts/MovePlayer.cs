@@ -132,6 +132,8 @@ public class MovePlayer : MonoBehaviour {
 			if (!this.strong && this.aroundTime > AROUND_BORDER_TIME) {
 				this.strong = true;
 				AudioManager.Instance.PlaySE ("SE_ChangeGravyColor");
+			} else if (!this.strong && this.aroundTime < AROUND_BORDER_TIME) {
+				AudioManager.Instance.SetSEPitch("SE_Around", Mathf.Lerp(1, 3, this.aroundTime / this.AROUND_BORDER_TIME));
 			}
 			this.GoAround ();
 		}
