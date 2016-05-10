@@ -36,6 +36,10 @@ public class MovePlayer : MonoBehaviour {
 	private Sprite defaultImage;
 	[SerializeField]
 	private Sprite strongImage;
+	[SerializeField]
+	private GameObject shockEffect;
+	[SerializeField]
+	private GameObject shockEffectStrong;
 
 	private GameObject touchArea;
 	public bool hasTouchIntervalPassed { set; private get;}
@@ -353,6 +357,7 @@ public class MovePlayer : MonoBehaviour {
 		if (remainReflectable == 0) {
 			this.finishStrong ();
 		}
+		GameObject.Instantiate ((this.strong ? shockEffectStrong : shockEffect), this.transform.position, this.transform.rotation);
 	}
 
 	void finishStrong() {
