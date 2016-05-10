@@ -53,23 +53,6 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: {x: 0, y: 0, z: 0}
-        inSlope: {x: 1.2264, y: 0.99840003, z: 0}
-        outSlope: {x: 1.2264, y: 0.99840003, z: 0}
-        tangentMode: 0
-      - time: 0.41666666
-        value: {x: 0.511, y: 0.416, z: 0}
-        inSlope: {x: 1.2264, y: 0.99840003, z: 0}
-        outSlope: {x: 1.2264, y: 0.99840003, z: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: CrackPiece
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: {x: 0, y: 0, z: 0}
         inSlope: {x: -1.1808001, y: -1.4760001, z: 0}
         outSlope: {x: -1.1808001, y: -1.4760001, z: 0}
         tangentMode: 0
@@ -101,86 +84,6 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.r
-    path: CrackPiece
-    classID: 212
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.41666666
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Color.g
-    path: CrackPiece
-    classID: 212
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.41666666
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Color.b
-    path: CrackPiece
-    classID: 212
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
-        inSlope: -2.4
-        outSlope: -2.4
-        tangentMode: 10
-      - time: 0.41666666
-        value: 0
-        inSlope: -2.4
-        outSlope: -2.4
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Color.a
-    path: CrackPiece
-    classID: 212
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.41666666
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Color.r
     path: CrackPiece (1)
     classID: 212
     script: {fileID: 0}
@@ -404,7 +307,21 @@ AnimationClip:
     path: CrackPiece (3)
     classID: 212
     script: {fileID: 0}
-  m_PPtrCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 327b2b3c4bd644d0ab27d78244ca6cf6, type: 3}
+    attribute: m_Sprite
+    path: CrackPiece (4)
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 6d1a77bfb61a84c5ab8c65966ee87b78, type: 3}
+    attribute: m_Sprite
+    path: CrackPiece (5)
+    classID: 212
+    script: {fileID: 0}
   m_SampleRate: 12
   m_WrapMode: 0
   m_Bounds:
@@ -424,24 +341,12 @@ AnimationClip:
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: 3478644088
-      attribute: 1
-      script: {fileID: 0}
-      classID: 4
-      customType: 0
-      isPPtrCurve: 0
     - path: 4268889260
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: 3478644088
-      attribute: 304273561
-      script: {fileID: 0}
-      classID: 212
-      customType: 0
-      isPPtrCurve: 0
     - path: 3427038766
       attribute: 304273561
       script: {fileID: 0}
@@ -460,24 +365,18 @@ AnimationClip:
       classID: 212
       customType: 0
       isPPtrCurve: 0
-    - path: 3478644088
-      attribute: 2526845255
+    - path: 2972942955
+      attribute: 0
       script: {fileID: 0}
       classID: 212
-      customType: 0
-      isPPtrCurve: 0
-    - path: 3478644088
-      attribute: 4215373228
+      customType: 23
+      isPPtrCurve: 1
+    - path: 2821239594
+      attribute: 0
       script: {fileID: 0}
       classID: 212
-      customType: 0
-      isPPtrCurve: 0
-    - path: 3478644088
-      attribute: 2334886179
-      script: {fileID: 0}
-      classID: 212
-      customType: 0
-      isPPtrCurve: 0
+      customType: 23
+      isPPtrCurve: 1
     - path: 3427038766
       attribute: 2526845255
       script: {fileID: 0}
@@ -532,7 +431,9 @@ AnimationClip:
       classID: 212
       customType: 0
       isPPtrCurve: 0
-    pptrCurveMapping: []
+    pptrCurveMapping:
+    - {fileID: 21300000, guid: 327b2b3c4bd644d0ab27d78244ca6cf6, type: 3}
+    - {fileID: 21300000, guid: 6d1a77bfb61a84c5ab8c65966ee87b78, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -679,66 +580,6 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: 1.2264
-        outSlope: 1.2264
-        tangentMode: 10
-      - time: 0.41666666
-        value: 0.511
-        inSlope: 1.2264
-        outSlope: 1.2264
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalPosition.x
-    path: CrackPiece
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0.99840003
-        outSlope: 0.99840003
-        tangentMode: 10
-      - time: 0.41666666
-        value: 0.416
-        inSlope: 0.99840003
-        outSlope: 0.99840003
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalPosition.y
-    path: CrackPiece
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.41666666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalPosition.z
-    path: CrackPiece
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
         inSlope: -1.1808001
         outSlope: -1.1808001
         tangentMode: 10
@@ -793,86 +634,6 @@ AnimationClip:
     attribute: m_LocalPosition.z
     path: CrackPiece (3)
     classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.41666666
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Color.r
-    path: CrackPiece
-    classID: 212
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.41666666
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Color.g
-    path: CrackPiece
-    classID: 212
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.41666666
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Color.b
-    path: CrackPiece
-    classID: 212
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
-        inSlope: -2.4
-        outSlope: -2.4
-        tangentMode: 10
-      - time: 0.41666666
-        value: 0
-        inSlope: -2.4
-        outSlope: -2.4
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Color.a
-    path: CrackPiece
-    classID: 212
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
