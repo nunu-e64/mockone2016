@@ -7,8 +7,12 @@ public class Nicoichi : Monster {
 	private Nicoichi buddy = null;
 
 	[SerializeField]
+	private Sprite animatedImage;
+	[SerializeField]
 	private Sprite damagedImage;
 	private Sprite defaultImage;
+
+	private float animationTime = 0.0f;
 
 	// Use this for initialization
 	new void Start () {
@@ -26,10 +30,22 @@ public class Nicoichi : Monster {
 		if (buddy == null) {
 			Debug.LogError ("Nicoichi : Not Found buddy");
 		}
+
+		animationTime = 1.4f;
 	}
 
 	new void Update() {
 		base.Update();
+		animationTime += Time.deltaTime;
+
+		if (!hasKnockDowned) {
+			if (animationTime >= 2.0f) {
+				this.gameObject.GetComponent<SpriteRenderer> ().sprite = defaultImage;
+				animationTime = animationTime % 2.0f;
+			} else if (animationTime >= 1.0f) {
+				this.gameObject.GetComponent<SpriteRenderer> ().sprite = animatedImage;
+			}
+		}
 	}
 
 	public override bool Dead(Vector2 hitDirection) {
