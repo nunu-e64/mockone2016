@@ -54,8 +54,8 @@ public class TitleManager : MonoBehaviour {
 		for (int i = 0; i < stars.Length; i++) {
 			Vector3 pos = stars [i].transform.position;
 			hash.Clear();
-			hash.Add ("x", -600);
-			hash.Add ("y", -400);
+			hash.Add ("x", -1200);
+			hash.Add ("y", -800);
 			hash.Add ("time", this.starTimes[i]);
 			hash.Add ("loopType", "loop");
 			hash.Add ("easeType", iTween.EaseType.easeInOutSine);
