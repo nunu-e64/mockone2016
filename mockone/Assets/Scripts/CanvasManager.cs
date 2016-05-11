@@ -143,6 +143,9 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 			AudioManager.Instance.StopBGM ();
 			AudioManager.Instance.PlaySE ("SE_GameOver");
 			this.gameOverLogo.SetActive (true);
+			//制限時間を元に戻す
+			seigenJikan1.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, 0);
+			seigenJikan2.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, 0);
 			break;
 		case GameManager.GameState.CLEAR:
 			PlayerPrefsManager.Instance.SetClearStage ();
