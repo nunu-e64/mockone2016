@@ -15,6 +15,7 @@ public class TouchObject : MonoBehaviour {
 	private	bool isAvailable = false;
 	private bool isSetEffect  = false;
 	private bool isSphireToEffect  = false;
+	private Hashtable hash;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +23,13 @@ public class TouchObject : MonoBehaviour {
 		this.isSetEffect = false;
 		this.isSphireToEffect = false;
 		this.grow.transform.parent = null;
+
+		//Hashの生成
+		this.hash = new Hashtable ();
+		this.hash.Add ("x", 0);
+		this.hash.Add ("time", 2);
+		//this.hash.Add ("loopType", "pingPong");
+		//this.hash.Add ("easeType", iTween.EaseType.easeInOutSine);  
 	}
 	
 	// Update is called once per frame
@@ -42,6 +50,8 @@ public class TouchObject : MonoBehaviour {
 			Instantiate (sphireToEffect, transform.position, Quaternion.identity);
 		}
 		this.grow.GetComponent<ParticleSystem> ().startColor = new Color(1, 1, 1, 0);
+		//this.grow.GetComponent<ParticleSystem> ().
+		//iTween.ScaleTo (this.grow, this.hash);
 		Destroy (this.grow, 2);
 		Destroy (gameObject); //TODO: アニメーション再生->アニメーション終了時にDestroy
 	}
