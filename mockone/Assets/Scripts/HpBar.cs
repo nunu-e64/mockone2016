@@ -41,6 +41,7 @@ public class HpBar : MonoBehaviour {
 		this.seigenJikan1 = GameObject.Find ("SeigenJikan1");
 		this.seigenJikan2 = GameObject.Find ("SeigenJikan2");
 		this.colorJudge = 1;
+		AudioManager.Instance.SetBGMPitch (1);
 	}
 
 	void Update () {
@@ -53,6 +54,7 @@ public class HpBar : MonoBehaviour {
 		this.gageTransform.sizeDelta = new Vector2 (x, this.gageTransform.sizeDelta.y);
 
 		if (this.t <= 0) {
+			AudioManager.Instance.SetBGMPitch (1);
 			movePlayer.GetComponent<MovePlayer> ().Dead ();
 			seigenJikan1.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, 0);
 			seigenJikan2.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, 0);
@@ -68,11 +70,13 @@ public class HpBar : MonoBehaviour {
 			}
 
 		} else if (this.t <= 0.66f) {
+			AudioManager.Instance.SetBGMPitch (1);
 			this.gage1Image.color = this.color2;
 			AudioManager.Instance.SetBGMPitch (1);
 			seigenJikan1.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, 0);
 			seigenJikan2.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, 0);
 		} else {
+			AudioManager.Instance.SetBGMPitch (1);
 			this.gage1Image.color = this.color3;
 			AudioManager.Instance.SetBGMPitch (1);
 			seigenJikan1.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, 0);

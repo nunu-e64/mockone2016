@@ -67,16 +67,25 @@ public class PrologueManager : MonoBehaviour {
 
 	private void NextPage () {
 		this.touchCount ++;
+		float time1 = this.prologueFadeInTime;
+		float time2 = this.prologueFadeOutTime;
 
-		ScreenFadeManager.Instance.FadeIn (this.prologueFadeInTime, Color.black, ()=> {
+		//エピローグの2番目の画像のときはfadetimeを2倍にする
+		if (this.sceneName == SceneName.Epilogue.ToString () && this.touchCount == 2) {
+			time1 = this.prologuePageTime;
+			time2 = this.prologuePageTime;
+		} 
+
+		ScreenFadeManager.Instance.FadeIn (time1, Color.black, ()=> {
 			this.image.GetComponent<Image> ().sprite = sprites[this.touchCount];
-			ScreenFadeManager.Instance.FadeOut (this.prologueFadeOutTime, Color.black, ()=> {}); 
+			ScreenFadeManager.Instance.FadeOut (time2, Color.black, ()=> {}); 
+
+			//エピローグの2番目の画像の時はBGMを変更する
+			if (this.sceneName == SceneName.Epilogue.ToString () && this.touchCount == 2) {
+				AudioManager.Instance.PlayBGM ("BGM_Epilogue2", 0.5f);
+			} 
 		});  
 
-		this.timeElapsed = 0 - this.prologueFadeOutTime;
-		//エピローグの2番目の画像のときはさらにtimeElapsedを引く
-		if (this.sceneName == SceneName.Epilogue.ToString () && this.touchCount == 1) {
-			this.timeElapsed -= this.prologuePageTime;
-		} 
+		this.timeElapsed = 0 - time1 - time2;
 	}
 }
