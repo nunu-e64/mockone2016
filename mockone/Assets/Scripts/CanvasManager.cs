@@ -35,6 +35,8 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 	private bool isClear;
 	private float isClearTime;
 	private GameObject player;
+	private GameObject seigenJikan1;
+	private GameObject seigenJikan2;
 
 	//GameStart用Hash
 	private int pingPongCount = 0;
@@ -45,6 +47,8 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 		this.isClear = false;
 		this.isClearTime = 0;
 		this.player = GameObject.Find ("Player");
+		this.seigenJikan1 = GameObject.Find ("SeigenJikan1");
+		this.seigenJikan2 = GameObject.Find ("SeigenJikan2");
 
 		debugStageNumber.GetComponent<Text> ().text = GameManager.Instance.GetActiveSceneName ();
 
@@ -152,6 +156,9 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 			}
 			//プレイヤーの判定をなくす
 			this.player.GetComponent<MovePlayer> ().SetIsClear (true);
+			//制限時間を元に戻す
+			seigenJikan1.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, 0);
+			seigenJikan2.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, 0);
 			break;
 		default:
 			break;
