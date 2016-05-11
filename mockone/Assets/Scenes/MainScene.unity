@@ -260,6 +260,7 @@ GameObject:
   - 4: {fileID: 153076826}
   - 212: {fileID: 153076828}
   - 58: {fileID: 153076827}
+  - 114: {fileID: 153076829}
   m_Layer: 8
   m_Name: Star (2)
   m_TagString: Star
@@ -325,6 +326,17 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &153076829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 153076825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf6a81c02d0342a2ad842ff00875486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &276308913
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,6 +885,10 @@ Prefab:
     - target: {fileID: 472806, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 172198, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 89e0dd566f070495b86ad206738e8961, type: 2}
@@ -1560,7 +1576,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: dd0c7665f848c444bb46ba7e59ea8548, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fff411b1a2c1f4eb88dba747dccd6774, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1742,6 +1758,10 @@ Prefab:
     - target: {fileID: 489088, guid: 50ec86500a9cb458fa975b249d31cf86, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 157724, guid: 50ec86500a9cb458fa975b249d31cf86, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50ec86500a9cb458fa975b249d31cf86, type: 2}
@@ -2469,6 +2489,10 @@ Prefab:
     - target: {fileID: 487290, guid: 3bbe29605889f488b809b65eea2d6b80, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 131890, guid: 3bbe29605889f488b809b65eea2d6b80, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3bbe29605889f488b809b65eea2d6b80, type: 2}
