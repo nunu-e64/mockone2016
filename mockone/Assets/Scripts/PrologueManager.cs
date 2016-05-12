@@ -32,7 +32,7 @@ public class PrologueManager : MonoBehaviour {
 		this.timeElapsed = 0 - ScreenFadeManager.Instance.GetFadeOutTime ();
 		this.touchCount = 0;
 		this.sceneName = GameManager.Instance.GetActiveSceneName ();
-		AudioManager.Instance.PlayBGM ((this.sceneName==SceneName.Prologue.ToString() ? "BGM_Prologue" : "BGM_Epilogue"), 0.5f);
+		AudioManager.Instance.PlayBGM ((this.sceneName==SceneName.Prologue.ToString() ? "BGM_Prologue" : "BGM_Epilogue"), 0.8f);
 	}
 	
 	// Update is called once per frame

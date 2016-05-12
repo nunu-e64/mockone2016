@@ -119,6 +119,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9cd331b587d904c94832fd861b471517, type: 3}
   - {fileID: 8300000, guid: f9fdb7c76412d4ce0b348b94efe6873a, type: 3}
   - {fileID: 8300000, guid: 35d7eb1f023ab4d5aacda2c48a0ea4b8, type: 3}
+  - {fileID: 8300000, guid: 88df9c2bf59294fbbbfb587f132cc764, type: 3}
+  - {fileID: 8300000, guid: 6a8405e9cd08848228eb699f359f4aca, type: 3}
   MaxSE: 100
 --- !u!1001 &100100000
 Prefab:
