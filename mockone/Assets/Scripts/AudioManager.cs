@@ -67,6 +67,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
 		}
 
 		source.clip = this.seDict[seName];
+		source.pitch = 1;
 		source.Play();
 	}
 
