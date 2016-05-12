@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class MovePlayer : MonoBehaviour {
 
@@ -288,6 +289,7 @@ public class MovePlayer : MonoBehaviour {
 						Reflect (this.transform.position - other.transform.position);
 					} else {
 						hitStop = 0.5f;
+						BlastedMonster ();
 					}
 				} else {
 					AudioManager.Instance.PlaySE ("SE_ImpactStar");
@@ -327,11 +329,6 @@ public class MovePlayer : MonoBehaviour {
 					SetActionState (ActionState.FLOATING);
 				}
 			}
-		} else if (other.CompareTag(GameManager.GOAL_TAG)) {
-			this.playerRigidbody.velocity = Vector2.up;
-			this.finishStrong ();
-			this.SetActionState (ActionState.RELEASE);
-			CanvasManager.Instance.SetLogo (GameManager.GameState.CLEAR);
 		} else if (other.CompareTag(GameManager.CANDY_TAG)) {
 			AudioManager.Instance.PlaySE ("SE_GetItem");
 			hpBar.Recover ();
@@ -383,4 +380,45 @@ public class MovePlayer : MonoBehaviour {
 		this.touchArea.SetActive (active);
 	}
 
+	void BlastedMonster() {
+		var monsterObjects = GameObject.FindGameObjectsWithTag (GameManager.MONSTER_TAG);
+		foreach (var monster in monsterObjects) {
+			if (!(monster.GetComponent<Monster> ().hasBlasted)) {
+				return;
+			}
+		}
+
+		//モンスター全滅
+		GameManager.Instance.gameState = GameManager.GameState.CLEAR;
+		StartCoroutine(DelayMethod(1.0f, ()=>{
+			Debug.Log("OpenGate");
+			OpenGate();
+		}));
+
+		StartCoroutine (DelayMethod (2.5f, () => {
+			Debug.Log("AppearClearLogo");
+			AppearClearLogo();
+		}));
+	}
+
+	IEnumerator DelayMethod(float waitTime, Action action) {
+		yield return new WaitForSeconds(waitTime);
+		action();
+	}
+
+	void OpenGate() {
+		var gateStars = GameObject.FindObjectsOfType<GateStar> ();
+		foreach (var gateStar in gateStars) {
+			gateStar.OpenGate (1.0f);
+		}
+
+		//prepare clear logo
+		CanvasManager.Instance.SetLogo (GameManager.GameState.CLEAR);
+	}
+
+	void AppearClearLogo() {
+		this.playerRigidbody.velocity = Vector2.up;
+		this.finishStrong ();
+//		this.SetActionState (ActionState.RELEASE);
+	}
 }

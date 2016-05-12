@@ -23,11 +23,11 @@ public class StageManager : MonoBehaviour {
 
 	void Update() {
 		//もし敵が全滅していればゴールを表示
-		foreach (var monster in monsters) {
-			if (!monster.hasBlasted) {
-				return;
-			}
-		}
-		goal.SetActive (true);
+//		foreach (var monster in monsters) {
+//			if (!monster.hasBlasted) {
+//				return;
+//			}
+//		}
+//		goal.SetActive (true);
 	}
 }
