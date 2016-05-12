@@ -22,14 +22,7 @@ public class TouchObject : MonoBehaviour {
 		this.isAvailable = true;
 		this.isSetEffect = false;
 		this.isSphireToEffect = false;
-		this.grow.transform.parent = null;
-
-		//Hashの生成
-		this.hash = new Hashtable ();
-		this.hash.Add ("x", 0);
-		this.hash.Add ("time", 2);
-		//this.hash.Add ("loopType", "pingPong");
-		//this.hash.Add ("easeType", iTween.EaseType.easeInOutSine);  
+		this.grow.transform.parent = null; 
 	}
 	
 	// Update is called once per frame
