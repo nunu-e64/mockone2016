@@ -15,7 +15,6 @@ public class TouchObject : MonoBehaviour {
 	private	bool isAvailable = false;
 	private bool isSetEffect  = false;
 	private bool isSphireToEffect  = false;
-	private Hashtable hash;
 
 	// Use this for initialization
 	void Start () {
