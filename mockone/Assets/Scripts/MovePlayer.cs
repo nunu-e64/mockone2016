@@ -390,7 +390,7 @@ public class MovePlayer : MonoBehaviour {
 
 		//モンスター全滅
 		GameManager.Instance.gameState = GameManager.GameState.CLEAR;
-		StartCoroutine(DelayMethod(1.5f, ()=>{
+		StartCoroutine(DelayMethod(1.0f, ()=>{
 			Debug.Log("OpenGate");
 			OpenGate();
 		}));
