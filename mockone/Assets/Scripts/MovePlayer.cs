@@ -389,10 +389,15 @@ public class MovePlayer : MonoBehaviour {
 		}
 
 		//モンスター全滅
-//		GameManager.Instance.clearState = GameManager.ClearState.HAS_BLASTED_ALL_MONSTERS;
 		GameManager.Instance.gameState = GameManager.GameState.CLEAR;
-		StartCoroutine(DelayMethod(0.5f, ()=>{
+		StartCoroutine(DelayMethod(1.5f, ()=>{
+			Debug.Log("OpenGate");
 			OpenGate();
+		}));
+
+		StartCoroutine (DelayMethod (2.5f, () => {
+			Debug.Log("AppearClearLogo");
+			AppearClearLogo();
 		}));
 	}
 
@@ -404,18 +409,16 @@ public class MovePlayer : MonoBehaviour {
 	void OpenGate() {
 		var gateStars = GameObject.FindObjectsOfType<GateStar> ();
 		foreach (var gateStar in gateStars) {
-			gateStar.OpenGate (0.5f);
+			gateStar.OpenGate (1.0f);
 		}
 
-		StartCoroutine (DelayMethod (0.5f, () => {
-			AppearClearLogo();
-		}));
+		//prepare clear logo
+		CanvasManager.Instance.SetLogo (GameManager.GameState.CLEAR);
 	}
 
 	void AppearClearLogo() {
 		this.playerRigidbody.velocity = Vector2.up;
 		this.finishStrong ();
-		this.SetActionState (ActionState.RELEASE);
-		CanvasManager.Instance.SetLogo (GameManager.GameState.CLEAR);
+//		this.SetActionState (ActionState.RELEASE);
 	}
 }
