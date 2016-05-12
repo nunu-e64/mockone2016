@@ -49,7 +49,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
 		this.SEList.ForEach(se => addClipDict(this.seDict,se));
 	}
 
-	public void PlaySE(string seName)
+	public void PlaySE(string seName, float volume = 1.0f, bool loop = false)
 	{
 		if(!this.seDict.ContainsKey(seName)) throw new ArgumentException(seName + " not found","seName");
 
@@ -67,12 +67,23 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
 		}
 
 		source.clip = this.seDict[seName];
+		source.volume = volume;
+		source.pitch = 1.0f;
+		source.loop = loop;
 		source.Play();
 	}
 
 	public void StopSE()
 	{
 		this.seSources.ForEach(s => s.Stop());
+	}
+
+	public void StopSE (string seName) {
+		foreach (var source in this.seSources) {
+			if (source.clip.name == seName) {
+				source.Stop();
+			}
+		}
 	}
 
 	public void PlayBGM (string bgmName, float volume = 1.0f, bool loop = true)

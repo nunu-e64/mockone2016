@@ -134,7 +134,7 @@ public class MovePlayer : MonoBehaviour {
 				this.strong = true;
 				AudioManager.Instance.PlaySE ("SE_ChangeGravyColor");
 			} else if (!this.strong && this.aroundTime < AROUND_BORDER_TIME) {
-				AudioManager.Instance.SetSEPitch("SE_Around", Mathf.Lerp(1, 3, this.aroundTime / this.AROUND_BORDER_TIME));
+				AudioManager.Instance.SetSEPitch ("SE_Around2", Mathf.Lerp(1, 3.0f, this.aroundTime / this.AROUND_BORDER_TIME));
 			}
 			this.GoAround ();
 		}
@@ -178,7 +178,7 @@ public class MovePlayer : MonoBehaviour {
 			this.remainReflectable = 0;
 			break;
 		case ActionState.RELEASE:
-			this.SetActiveTouchArea(false);	//タップエリア削除
+			this.SetActiveTouchArea (false);	//タップエリア削除
 			if (this.touchObject) {
 				this.touchObject.GetComponent<TouchObject> ().Reset ();
 				this.touchObject = null;
@@ -196,12 +196,13 @@ public class MovePlayer : MonoBehaviour {
 					AudioManager.Instance.PlaySE ("SE_ByuunWeak");
 					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_LOW;
 				}
-				SetActionState(ActionState.NONE);
+				SetActionState (ActionState.NONE);
 			}
+			AudioManager.Instance.StopSE ("SE_Around2");
 			break;
 		case ActionState.AROUND:
 			this.SetActiveTouchArea(false); //タップエリア削除
-			AudioManager.Instance.PlaySE ("SE_Around");
+			AudioManager.Instance.PlaySE ("SE_Around2", 0.15f, true);
 			this.playerRigidbody.velocity = Vector2.zero;
 			this.actionState = ActionState.AROUND;
 			this.aroundTime = 0.0f;
