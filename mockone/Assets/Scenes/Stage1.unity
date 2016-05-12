@@ -1651,18 +1651,6 @@ Prefab:
       propertyPath: hpBar
       value: 
       objectReference: {fileID: 1154686181}
-    - target: {fileID: 21299214, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
-      propertyPath: m_Color.r
-      value: 0.2835208
-      objectReference: {fileID: 0}
-    - target: {fileID: 21299214, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
-      propertyPath: m_Color.g
-      value: 0.2974824
-      objectReference: {fileID: 0}
-    - target: {fileID: 21299214, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
-      propertyPath: m_Color.b
-      value: 0.33823532
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7557fdc76e761467dbb52da8b1434c17, type: 2}
   m_IsPrefabParent: 0
