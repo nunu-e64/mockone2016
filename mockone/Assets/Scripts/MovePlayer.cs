@@ -22,6 +22,7 @@ public class MovePlayer : MonoBehaviour {
 	private bool strong;	//強ビューン状態
 	private int remainReflectable;	//残り反射可能回数
 	private bool isClear;
+	private int crackCount;
 
 	public bool alive{get; set;}
 
@@ -93,6 +94,7 @@ public class MovePlayer : MonoBehaviour {
 		this.strong = false;
 		this.remainReflectable = 0;
 		this.SetActiveTouchArea (false);
+		this.crackCount = 0;
 	}
 
 	// Update is called once per frame
@@ -161,6 +163,7 @@ public class MovePlayer : MonoBehaviour {
 		if (_touchObject != null)
 		{
 			this.touchObject = _touchObject;
+			this.crackCount = 0;
 		}
 
 		switch (_actionState) {
@@ -256,7 +259,9 @@ public class MovePlayer : MonoBehaviour {
 
 		}else if (other.CompareTag (GameManager.CRACK_TAG)) {
 			if (this.strong) {
+				this.crackCount ++;
 				AudioManager.Instance.PlaySE ("SE_BlastMonster");
+				AudioManager.Instance.SetSEPitch ("SE_BlastMonster", this.crackCount);
 				other.GetComponent<Crack> ().Hp--;
 				if (other.GetComponent<Crack> ().Hp <= 0) {
 					//破壊
