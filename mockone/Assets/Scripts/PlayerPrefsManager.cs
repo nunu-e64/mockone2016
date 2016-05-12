@@ -42,8 +42,8 @@ public class PlayerPrefsManager : SingletonMonoBehaviour<PlayerPrefsManager> {
 	public void SetClearStage () {
 		string stageName = GameManager.Instance.GetActiveSceneName ();
 		int stageNameLength = stageName.Length;
-		int score = int.Parse (stageName.Substring(stageNameLength - 1, 1));
-		if (score > this.GetClearStage ()) {
+		int score = -1;
+		if (int.TryParse(stageName.Substring(stageNameLength - 1, 1),out score) && score > this.GetClearStage ()) {
 			PlayerPrefs.SetInt(CLEAR_STAGE, score);
 			PlayerPrefs.Save();
 		}
