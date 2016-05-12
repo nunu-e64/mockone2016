@@ -30,7 +30,7 @@ public class TitleManager : MonoBehaviour {
 	void Start () {
 		this.timeElapsed = 0;
 		this.index = 0;
-		AudioManager.Instance.PlayBGM ("BGM_Title", 1, false);
+		AudioManager.Instance.PlayBGM ("BGM_Title", 0.7f, false);
 
 		//Character
 		Hashtable hash = new Hashtable ();
