@@ -41,6 +41,7 @@ public class HpBar : MonoBehaviour {
 		this.seigenJikan1 = GameObject.Find ("SeigenJikan1");
 		this.seigenJikan2 = GameObject.Find ("SeigenJikan2");
 		this.colorJudge = 1;
+		AudioManager.Instance.SetBGMPitch (1);
 	}
 
 	void Update () {

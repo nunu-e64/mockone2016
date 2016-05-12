@@ -50,9 +50,8 @@ public class TouchObject : MonoBehaviour {
 			Instantiate (sphireToEffect, transform.position, Quaternion.identity);
 		}
 		this.grow.GetComponent<ParticleSystem> ().startColor = new Color(1, 1, 1, 0);
-		//this.grow.GetComponent<ParticleSystem> ().
-		//iTween.ScaleTo (this.grow, this.hash);
-		Destroy (this.grow, 2);
+
+		Destroy (this.grow, 1); //TODO 1秒でエフェクトフェードアウトしてほしい
 		Destroy (gameObject); //TODO: アニメーション再生->アニメーション終了時にDestroy
 	}
 
