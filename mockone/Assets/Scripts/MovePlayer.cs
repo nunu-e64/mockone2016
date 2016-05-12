@@ -136,7 +136,7 @@ public class MovePlayer : MonoBehaviour {
 				this.strong = true;
 				AudioManager.Instance.PlaySE ("SE_ChangeGravyColor");
 			} else if (!this.strong && this.aroundTime < AROUND_BORDER_TIME) {
-				AudioManager.Instance.SetSEPitch("SE_Around", Mathf.Lerp(1, 3, this.aroundTime / this.AROUND_BORDER_TIME));
+				AudioManager.Instance.SetSEPitch ("SE_Around2", Mathf.Lerp(0.7f, 7.0f, this.aroundTime / this.AROUND_BORDER_TIME));
 			}
 			this.GoAround ();
 		}
@@ -181,7 +181,7 @@ public class MovePlayer : MonoBehaviour {
 			this.remainReflectable = 0;
 			break;
 		case ActionState.RELEASE:
-			this.SetActiveTouchArea(false);	//タップエリア削除
+			this.SetActiveTouchArea (false);	//タップエリア削除
 			if (this.touchObject) {
 				this.touchObject.GetComponent<TouchObject> ().Reset ();
 				this.touchObject = null;
@@ -199,12 +199,13 @@ public class MovePlayer : MonoBehaviour {
 					AudioManager.Instance.PlaySE ("SE_ByuunWeak");
 					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_LOW;
 				}
-				SetActionState(ActionState.NONE);
+				SetActionState (ActionState.NONE);
 			}
+			AudioManager.Instance.StopSE ("SE_Around2");
 			break;
 		case ActionState.AROUND:
 			this.SetActiveTouchArea(false); //タップエリア削除
-			AudioManager.Instance.PlaySE ("SE_Around");
+			AudioManager.Instance.PlaySE ("SE_Around2", 0.15f, true);
 			this.playerRigidbody.velocity = Vector2.zero;
 			this.actionState = ActionState.AROUND;
 			this.aroundTime = 0.0f;
@@ -316,7 +317,7 @@ public class MovePlayer : MonoBehaviour {
 				this.mainCamera.GetComponent<MainCamera> ().Up();
 				this.finishStrong ();
 				playerRigidbody.velocity = Vector2.zero;
-				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y + other.transform.localScale.y / 2.0f), 0.5f);
+				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y + 2.0f * (other.transform.localScale.y / 2.0f)), 0.5f);
 				SetActionState (ActionState.NONE);
 
 				//Animation Restart
@@ -398,11 +399,12 @@ public class MovePlayer : MonoBehaviour {
 		StartCoroutine(DelayMethod(1.0f, ()=>{
 			Debug.Log("OpenGate");
 			OpenGate();
+			GoUp();
 		}));
 
-		StartCoroutine (DelayMethod (2.5f, () => {
-			Debug.Log("AppearClearLogo");
-			AppearClearLogo();
+		StartCoroutine (DelayMethod (2.0f, () => {
+			//prepare clear logo
+			CanvasManager.Instance.SetLogo (GameManager.GameState.CLEAR);
 		}));
 	}
 
@@ -416,12 +418,10 @@ public class MovePlayer : MonoBehaviour {
 		foreach (var gateStar in gateStars) {
 			gateStar.OpenGate (1.0f);
 		}
-
-		//prepare clear logo
-		CanvasManager.Instance.SetLogo (GameManager.GameState.CLEAR);
 	}
 
-	void AppearClearLogo() {
+	void GoUp() {
+		SetIsClear (true);
 		this.playerRigidbody.velocity = Vector2.up;
 		this.finishStrong ();
 //		this.SetActionState (ActionState.RELEASE);

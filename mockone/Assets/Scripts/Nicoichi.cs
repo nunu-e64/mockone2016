@@ -14,6 +14,9 @@ public class Nicoichi : Monster {
 
 	private float animationTime = 0.0f;
 
+	[SerializeField]
+	private GameObject monsterLight;
+
 	// Use this for initialization
 	new void Start () {
 		base.Start ();
@@ -57,6 +60,9 @@ public class Nicoichi : Monster {
 			if (buddy.hasKnockDowned) {
 				base.Dead (hitDirection);
 				buddy.Dead (hitDirection);
+				if (monsterLight != null && monsterLight.activeSelf) {
+					monsterLight.SetActive (true);
+				}
 			}
 		}
 		return hasBlasted;
