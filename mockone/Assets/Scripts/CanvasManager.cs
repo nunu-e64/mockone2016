@@ -66,7 +66,7 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 
 		//一時停止
 		stopButton.GetComponent<Button> ().onClick.AddListener (() => {
-			AudioManager.Instance.PlaySE("SE_Pause");
+			AudioManager.Instance.PlaySE("SE_Pause", 0.5f);
 			stopModal.SetActive (true);
 			Hashtable hash = new Hashtable ();
 			hash.Add ("x", 100);
@@ -82,7 +82,7 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 		});
 		//ゲーム画面に戻る
 		backButton.GetComponent<Button> ().onClick.AddListener (() => {
-			AudioManager.Instance.PlaySE ("SE_Ok");
+			AudioManager.Instance.PlaySE ("SE_Ok", 0.5f);
 			stopModal.SetActive (false);
 			Time.timeScale = 1;
 		});
@@ -91,7 +91,7 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 			retryButton[i].GetComponent<Button> ().onClick.AddListener (() => {
 				AudioManager.Instance.StopBGM ();
 				AudioManager.Instance.StopSE ();
-				AudioManager.Instance.PlaySE ("SE_Ok");
+				AudioManager.Instance.PlaySE ("SE_Ok", 0.5f);
 				GameManager.Instance.ReloadScene ();
 				Time.timeScale = 1;
 			});
@@ -99,7 +99,7 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 		//Nextステージ
 		nextButton.GetComponent<Button> ().onClick.AddListener (() => {
 			AudioManager.Instance.StopSE ();
-			AudioManager.Instance.PlaySE ("SE_Ok");
+			AudioManager.Instance.PlaySE ("SE_Ok", 0.5f);
 			GameManager.Instance.NextScene ();
 		});
 		//ステージセレクト
@@ -107,7 +107,7 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 			stageSelectButton[i].GetComponent<Button> ().onClick.AddListener (() => {
 				AudioManager.Instance.StopSE ();
 				AudioManager.Instance.StopBGM ();
-				AudioManager.Instance.PlaySE ("SE_Ok");
+				AudioManager.Instance.PlaySE ("SE_Ok", 0.5f);
 				GameManager.Instance.ChangeScene (GameManager.SceneName.StageSelect.ToString ());
 				Time.timeScale = 1;
 			});
@@ -131,7 +131,7 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 		switch (_gameState) {
 		case GameManager.GameState.GAME_START:
 			AudioManager.Instance.StopSE ();
-			AudioManager.Instance.PlaySE ("SE_StageStart");
+			AudioManager.Instance.PlaySE ("SE_StageStart", 0.3f);
 			this.gameStartLogo.SetActive (true);
 			this.game.SetActive (true);
 			iTween.ScaleTo (this.game, this.hash);
@@ -141,7 +141,7 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 			break;
 		case GameManager.GameState.GAME_OVER:
 			AudioManager.Instance.StopBGM ();
-			AudioManager.Instance.PlaySE ("SE_GameOver");
+			AudioManager.Instance.PlaySE ("SE_GameOver", 0.7f);
 			this.gameOverLogo.SetActive (true);
 			//制限時間を元に戻す
 			seigenJikan1.GetComponent<SpriteRenderer> ().color = new Color(1, 1, 1, 0);
@@ -150,7 +150,7 @@ public class CanvasManager : SingletonMonoBehaviour<CanvasManager>
 		case GameManager.GameState.CLEAR:
 			PlayerPrefsManager.Instance.SetClearStage ();
 			AudioManager.Instance.StopBGM ();
-			AudioManager.Instance.PlaySE ("SE_Clear");
+			AudioManager.Instance.PlaySE ("SE_Clear", 0.8f);
 			this.goalEffect.SetActive (true);
 			this.isClear = true;
 			//ラストステージの時はNextだけ表示

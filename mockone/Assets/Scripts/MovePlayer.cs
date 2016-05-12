@@ -249,7 +249,6 @@ public class MovePlayer : MonoBehaviour {
 			return;
 
 		if (other.CompareTag (GameManager.STAR_TAG)) {
-			AudioManager.Instance.PlaySE ("SE_Impact");
 			if (this.strong) {
 				Reflect (this.transform.position - other.transform.position);
 			} else {
@@ -260,18 +259,17 @@ public class MovePlayer : MonoBehaviour {
 
 		}else if (other.CompareTag (GameManager.CRACK_TAG)) {
 			if (this.strong) {
-				this.crackCount ++;
-				AudioManager.Instance.PlaySE ("SE_BlastMonster");
-				AudioManager.Instance.SetSEPitch ("SE_BlastMonster", this.crackCount);
 				other.GetComponent<Crack> ().Hp--;
 				if (other.GetComponent<Crack> ().Hp <= 0) {
 					//破壊
+					this.crackCount ++;
+					AudioManager.Instance.PlaySE ("SE_ImpactStar2");
+					AudioManager.Instance.SetSEPitch ("SE_ImpactStar2", this.crackCount);
 					other.GetComponent<Crack>().Dead();
 				} else {
 					Reflect (this.transform.position - other.transform.position);
 				}
 			} else {
-				AudioManager.Instance.PlaySE ("SE_Impact");
 				this.transform.position = other.transform.position + (this.transform.position - other.transform.position).normalized * ((other.transform.localScale.x / 2) + this.playerRadius);
 				Reflect (this.transform.position - other.transform.position);
 				SetActionState (ActionState.FLOATING);
@@ -279,10 +277,8 @@ public class MovePlayer : MonoBehaviour {
 
 		} else if (other.CompareTag (GameManager.METEO_TAG)) {
 			if (this.strong) {
-				AudioManager.Instance.PlaySE ("SE_Impact");
 				Reflect (this.transform.position - other.transform.position);
 			} else {
-				AudioManager.Instance.PlaySE ("SE_ImpactStar");
 				Dead ();
 			}
 
@@ -290,21 +286,19 @@ public class MovePlayer : MonoBehaviour {
 			Monster monster = other.GetComponent<Monster> ();
 			if (!monster.hasBlasted) {
 				if (this.strong) {
-					AudioManager.Instance.PlaySE ("SE_BlastMonster");
 					if (!(monster.Dead (this.playerRigidbody.velocity.normalized))) {
 						Reflect (this.transform.position - other.transform.position);
 					} else {
+						AudioManager.Instance.PlaySE ("SE_ImpactStar");
 						hitStop = 0.5f;
 						BlastedMonster ();
 					}
 				} else {
-					AudioManager.Instance.PlaySE ("SE_ImpactStar");
 					Dead ();
 				}
 			}
 
 		} else if (other.CompareTags (GameManager.WALL_HORIZONTAL_TAG, GameManager.WALL_VERTICAL_TAG)) {
-			AudioManager.Instance.PlaySE ("SE_Impact");
 			if (this.strong && this.remainReflectable > 0) {
 				Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
 			} else {
@@ -327,7 +321,6 @@ public class MovePlayer : MonoBehaviour {
 
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_DOWN_TAG)) {
 			if (transform.position.y - other.gameObject.transform.position.y > 0) {
-				AudioManager.Instance.PlaySE ("SE_Impact");
 				if (this.strong && this.remainReflectable > 0) {
 					Reflect (new Vector2(0, 1));
 				} else {
@@ -336,7 +329,7 @@ public class MovePlayer : MonoBehaviour {
 				}
 			}
 		} else if (other.CompareTag(GameManager.CANDY_TAG)) {
-			AudioManager.Instance.PlaySE ("SE_GetItem");
+			AudioManager.Instance.PlaySE ("SE_GetItem", 0.5f);
 			hpBar.Recover ();
 			Destroy (other.gameObject);
 		}
@@ -344,6 +337,8 @@ public class MovePlayer : MonoBehaviour {
 
 	public void Dead() {
 		if (this.alive) {
+			AudioManager.Instance.StopSE ();
+			AudioManager.Instance.PlaySE ("SE_Dead3");
 			this.alive = false;
 			var obj = GameObject.Instantiate (explosion, this.transform.position, this.transform.localRotation) as GameObject;
 			obj.GetComponent<DestroyEffect> ().isGameOver = true;
@@ -360,6 +355,7 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	void Reflect(Vector2 _normalVector) {
+		AudioManager.Instance.PlaySE ("SE_Impact");
 		this.playerRigidbody.velocity = Vector2.Reflect (this.playerRigidbody.velocity, _normalVector.normalized);
 		remainReflectable--;
 		Debug.Log ("<color=green>remainReflectable: " + remainReflectable + "</color>");
