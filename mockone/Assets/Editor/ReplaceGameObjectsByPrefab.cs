@@ -58,6 +58,7 @@ public class ReplaceGameObject : EditorWindow
                     {
                         newObj.transform.parent = selObj.transform.parent;
                         newObj.transform.position = selObj.transform.position;
+												newObj.transform.localScale = selObj.transform.localScale;
                         newObj.transform.rotation = selObj.transform.rotation;
                         delList.Add(selObj);
                     }
