@@ -311,7 +311,7 @@ public class MovePlayer : MonoBehaviour {
 				this.mainCamera.GetComponent<MainCamera> ().Up();
 				this.finishStrong ();
 				playerRigidbody.velocity = Vector2.zero;
-				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y + other.transform.localScale.y / 2.0f), 0.5f);
+				iTween.MoveTo (this.gameObject, new Vector2 (this.transform.position.x, other.transform.position.y + 2.0f * (other.transform.localScale.y / 2.0f)), 0.5f);
 				SetActionState (ActionState.NONE);
 
 				//Animation Restart
@@ -393,11 +393,12 @@ public class MovePlayer : MonoBehaviour {
 		StartCoroutine(DelayMethod(1.0f, ()=>{
 			Debug.Log("OpenGate");
 			OpenGate();
+			GoUp();
 		}));
 
-		StartCoroutine (DelayMethod (2.5f, () => {
-			Debug.Log("AppearClearLogo");
-			AppearClearLogo();
+		StartCoroutine (DelayMethod (2.0f, () => {
+			//prepare clear logo
+			CanvasManager.Instance.SetLogo (GameManager.GameState.CLEAR);
 		}));
 	}
 
@@ -411,12 +412,10 @@ public class MovePlayer : MonoBehaviour {
 		foreach (var gateStar in gateStars) {
 			gateStar.OpenGate (1.0f);
 		}
-
-		//prepare clear logo
-		CanvasManager.Instance.SetLogo (GameManager.GameState.CLEAR);
 	}
 
-	void AppearClearLogo() {
+	void GoUp() {
+		SetIsClear (true);
 		this.playerRigidbody.velocity = Vector2.up;
 		this.finishStrong ();
 //		this.SetActionState (ActionState.RELEASE);
