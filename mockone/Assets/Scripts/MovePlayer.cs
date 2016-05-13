@@ -42,11 +42,15 @@ public class MovePlayer : MonoBehaviour {
 	private GameObject shockEffect;
 	[SerializeField]
 	private GameObject shockEffectStrong;
+	[SerializeField]
+	private GameObject strongEffect;
 
 	private GameObject touchArea;
 	public bool hasTouchIntervalPassed { set; private get;}
 	private float hitStop = 0;
 	private float strongTime = 0;
+
+	private Vector3 collisionPosition;
 
 	public enum ActionState {
 		NONE,		//ステージ開始状態、カメラ移動時、ビューン中
@@ -102,6 +106,14 @@ public class MovePlayer : MonoBehaviour {
 	void Update () {
 		//ビューン状態に応じた色とエフェクト
 		if (this.strong) {
+			if (this.collisionPosition != null) {
+				if (Vector3.Distance (transform.position, this.collisionPosition) >= 10.0f) {
+					this.SetLifeTime (0.5f);
+					this.collisionPosition = new Vector3(1000, 1000, 0);
+				} else {
+					this.SetLifeTime (Mathf.Lerp (0.0f, 0.5f, Vector3.Distance (transform.position, this.collisionPosition) / 6.0f));
+				}
+			}
 			this.GetComponent<SpriteRenderer> ().color = new Color (255 / 255.0f, 170 / 255.0f, 70 / 255.0f, 1);
 			this.effects [0].SetActive (false);
 			this.effects [1].SetActive (true);
@@ -169,6 +181,7 @@ public class MovePlayer : MonoBehaviour {
 
 		switch (_actionState) {
 		case ActionState.MOVE:
+			this.SetLifeTime (0.5f);
 			//強ビューン終了
 			this.finishStrong ();
 			//タップエリア削除
@@ -251,6 +264,8 @@ public class MovePlayer : MonoBehaviour {
 
 		if (other.CompareTag (GameManager.STAR_TAG)) {
 			if (this.strong) {
+				this.collisionPosition = other.transform.position;
+				this.SetLifeTime (0);
 				Reflect (this.transform.position - other.transform.position);
 			} else {
 				this.transform.position = other.transform.position + (this.transform.position - other.transform.position).normalized * ((other.transform.localScale.x / 2) + this.playerRadius);
@@ -260,6 +275,8 @@ public class MovePlayer : MonoBehaviour {
 
 		}else if (other.CompareTag (GameManager.CRACK_TAG)) {
 			if (this.strong) {
+				//this.collisionPosition = other.transform.position;
+				//this.SetLifeTime (0);
 				other.GetComponent<Crack> ().Hp--;
 				if (other.GetComponent<Crack> ().Hp <= 0) {
 					//破壊
@@ -278,6 +295,8 @@ public class MovePlayer : MonoBehaviour {
 
 		} else if (other.CompareTag (GameManager.METEO_TAG)) {
 			if (this.strong) {
+				this.collisionPosition = other.transform.position;
+				this.SetLifeTime (0);
 				Reflect (this.transform.position - other.transform.position);
 			} else {
 				Dead ();
@@ -288,6 +307,8 @@ public class MovePlayer : MonoBehaviour {
 			if (!monster.hasBlasted) {
 				if (this.strong) {
 					if (!(monster.Dead (this.playerRigidbody.velocity.normalized))) {
+						this.collisionPosition = other.transform.position;
+						this.SetLifeTime (0);
 						Reflect (this.transform.position - other.transform.position);
 					} else {
 						AudioManager.Instance.PlaySE ("SE_ImpactStar");
@@ -301,6 +322,8 @@ public class MovePlayer : MonoBehaviour {
 
 		} else if (other.CompareTags (GameManager.WALL_HORIZONTAL_TAG, GameManager.WALL_VERTICAL_TAG)) {
 			if (this.strong && this.remainReflectable > 0) {
+				this.collisionPosition = other.transform.position;
+				this.SetLifeTime (0);
 				Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
 			} else {
 				Reflect (other.CompareTag(GameManager.WALL_HORIZONTAL_TAG) ? new Vector2(1, 0) : new Vector2(0, 1));
@@ -323,6 +346,8 @@ public class MovePlayer : MonoBehaviour {
 		} else if (other.CompareTag (GameManager.WALL_CAMERA_DOWN_TAG)) {
 			if (transform.position.y - other.gameObject.transform.position.y > 0) {
 				if (this.strong && this.remainReflectable > 0) {
+					this.collisionPosition = other.transform.position;
+					this.SetLifeTime (0);
 					Reflect (new Vector2(0, 1));
 				} else {
 					Reflect (new Vector2(0, 1));
@@ -368,6 +393,7 @@ public class MovePlayer : MonoBehaviour {
 
 	void finishStrong() {
 		strong = false;
+		this.collisionPosition = new Vector3(1000, 1000, 0);
 		this.GetComponent<SpriteRenderer> ().sprite = this.defaultImage;
 		if (playerRigidbody.velocity.sqrMagnitude > 0) {
 			playerRigidbody.velocity = playerRigidbody.velocity.normalized * SPEED_LOW;
@@ -422,5 +448,9 @@ public class MovePlayer : MonoBehaviour {
 		this.playerRigidbody.velocity = Vector2.up;
 		this.finishStrong ();
 //		this.SetActionState (ActionState.RELEASE);
+	}
+
+	void SetLifeTime(float lifeTime) {
+		this.strongEffect.GetComponent<ParticleSystem> ().startLifetime = lifeTime;
 	}
 }
