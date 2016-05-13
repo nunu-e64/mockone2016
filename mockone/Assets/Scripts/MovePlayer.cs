@@ -264,8 +264,11 @@ public class MovePlayer : MonoBehaviour {
 				if (other.GetComponent<Crack> ().Hp <= 0) {
 					//破壊
 					this.crackCount ++;
-					AudioManager.Instance.PlaySE ("SE_ImpactStar2");
-					AudioManager.Instance.SetSEPitch ("SE_ImpactStar2", this.crackCount);
+					//AudioManager.Instance.PlaySE ("SE_ImpactStar2");
+					//AudioManager.Instance.SetSEPitch ("SE_ImpactStar2", this.crackCount);
+					//SE_BlastMonster
+					AudioManager.Instance.PlaySE ("SE_BlastMonster");
+					AudioManager.Instance.SetSEPitch ("SE_BlastMonster", this.crackCount);
 					other.GetComponent<Crack>().Dead();
 				} else {
 					Reflect (this.transform.position - other.transform.position);
