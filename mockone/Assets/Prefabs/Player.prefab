@@ -222,6 +222,7 @@ MonoBehaviour:
   strongImage: {fileID: 21300000, guid: 8bf1b6adc649d47a7b17b4d3952e8e79, type: 3}
   shockEffect: {fileID: 184202, guid: 581d6406a2e614e46a189097ed11d5a5, type: 2}
   shockEffectStrong: {fileID: 124572, guid: 9f58c59840fa9424f98500ec5122e36a, type: 2}
+  strongEffect: {fileID: 126346}
 --- !u!198 &19846688
 ParticleSystem:
   m_ObjectHideFlags: 1
