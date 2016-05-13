@@ -24,8 +24,8 @@ public class Ugoku : Monster {
 	private float SECOND_SIZE = 2.0f;	//移動半径もしくは移動距離の半分
 	[SerializeField]
 	private float SECOND_SPEED = 5.0f;
-	[SerializeField, Space(10)]	
-	private bool isFirst = true;	//DEBUG: for パラメータ調整
+
+	private bool isFirst = true;
 
 	private MoveStyle moveStyle;
 	private float size;
