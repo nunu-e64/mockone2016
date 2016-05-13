@@ -56,6 +56,7 @@ MonoBehaviour:
   PLAYER_SPIN_SPEED: 1
   PLAYER_SPIN_ROTATE: 2
   DRAWING_ACCELERATION: 0.1
+  BYUUN_TIME: 1
   fadeInTime: 0.5
   fadeOutTime: 0.5
 --- !u!114 &11446226
