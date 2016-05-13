@@ -24,8 +24,8 @@ public class Ugoku : Monster {
 	private float SECOND_SIZE = 2.0f;	//移動半径もしくは移動距離の半分
 	[SerializeField]
 	private float SECOND_SPEED = 5.0f;
-	[SerializeField, Space(10)]	
-	private bool isFirst = true;	//DEBUG: for パラメータ調整
+
+	private bool isFirst = true;
 
 	private MoveStyle moveStyle;
 	private float size;
@@ -80,22 +80,16 @@ public class Ugoku : Monster {
 		switch (moveStyle) {
 		case MoveStyle.LEFT_CIRCLE:
 			return new Vector3 (x, y, 0);
-			break;
 		case MoveStyle.RIGHT_CIRCLE:
 			return new Vector3 (x, -y, 0);
-			break;
 		case MoveStyle.HORIZONTAL:
 			return new Vector3 (y, 0, 0);
-			break;
 		case MoveStyle.VERTICAL:
 			return new Vector3 (0, y, 0);
-			break;
 		case MoveStyle.NANAME_RIGHTTOP:
 			return new Vector3 (y, y, 0);
-			break;
 		case MoveStyle.NANAME_LEFTTOP:
 			return new Vector3 (y, -y, 0);
-			break;
 		}
 		return Vector3.zero;
 	}
