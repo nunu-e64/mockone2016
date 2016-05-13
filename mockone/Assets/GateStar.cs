@@ -8,7 +8,7 @@ public class GateStar : MonoBehaviour {
 	}
 
 	public void OpenGate(float time) {
-		iTween.MoveBy (this.gameObject,  iTween.Hash("y", 1, "easeType", "easeOutExpo", "time", time));
-		iTween.FadeTo (this.gameObject, 0.0f, time);
+		iTween.MoveBy (this.gameObject,  iTween.Hash("y", 0.5, "easeType", "easeOutExpo", "time", time));
+		iTween.FadeTo (this.gameObject, iTween.Hash("amount", 0.0f, "time", time, "easeType", "easeOutExpo"));
 	}
 }

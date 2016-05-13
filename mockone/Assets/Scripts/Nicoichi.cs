@@ -61,7 +61,7 @@ public class Nicoichi : Monster {
 				base.Dead (hitDirection);
 				buddy.Dead (hitDirection);
 				if (monsterLight != null && monsterLight.activeSelf) {
-					monsterLight.SetActive (true);
+					monsterLight.SetActive (false);
 				}
 			}
 		}
