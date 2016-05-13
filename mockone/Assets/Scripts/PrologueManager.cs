@@ -17,6 +17,8 @@ public class PrologueManager : MonoBehaviour {
 	private GameObject image;
 	[SerializeField]
 	private Sprite[] sprites;
+	[SerializeField]
+	private float soundVolume = 0.8f;
 
 	private float timeElapsed;
 	private int touchCount;
@@ -32,7 +34,7 @@ public class PrologueManager : MonoBehaviour {
 		this.timeElapsed = 0 - ScreenFadeManager.Instance.GetFadeOutTime ();
 		this.touchCount = 0;
 		this.sceneName = GameManager.Instance.GetActiveSceneName ();
-		AudioManager.Instance.PlayBGM ((this.sceneName==SceneName.Prologue.ToString() ? "BGM_Prologue" : "BGM_Epilogue"), 0.8f);
+		AudioManager.Instance.PlayBGM ((this.sceneName==SceneName.Prologue.ToString() ? "BGM_Prologue" : "BGM_Epilogue"), soundVolume);
 	}
 	
 	// Update is called once per frame
@@ -80,9 +82,14 @@ public class PrologueManager : MonoBehaviour {
 			this.image.GetComponent<Image> ().sprite = sprites[this.touchCount];
 			ScreenFadeManager.Instance.FadeOut (time2, Color.black, ()=> {}); 
 
+			//プロローグの8番目の画像の時はBGMを変更する
+			if (this.sceneName == SceneName.Prologue.ToString () && this.touchCount == 7) {
+				AudioManager.Instance.PlayBGM ("BGM_Prologue2", this.soundVolume);
+			} 
+
 			//エピローグの2番目の画像の時はBGMを変更する
 			if (this.sceneName == SceneName.Epilogue.ToString () && this.touchCount == 2) {
-				AudioManager.Instance.PlayBGM ("BGM_Epilogue2", 0.5f);
+				AudioManager.Instance.PlayBGM ("BGM_Epilogue2", this.soundVolume);
 			} 
 		});  
 
