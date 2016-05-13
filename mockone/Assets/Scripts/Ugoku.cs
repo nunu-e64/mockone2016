@@ -80,22 +80,16 @@ public class Ugoku : Monster {
 		switch (moveStyle) {
 		case MoveStyle.LEFT_CIRCLE:
 			return new Vector3 (x, y, 0);
-			break;
 		case MoveStyle.RIGHT_CIRCLE:
 			return new Vector3 (x, -y, 0);
-			break;
 		case MoveStyle.HORIZONTAL:
 			return new Vector3 (y, 0, 0);
-			break;
 		case MoveStyle.VERTICAL:
 			return new Vector3 (0, y, 0);
-			break;
 		case MoveStyle.NANAME_RIGHTTOP:
 			return new Vector3 (y, y, 0);
-			break;
 		case MoveStyle.NANAME_LEFTTOP:
 			return new Vector3 (y, -y, 0);
-			break;
 		}
 		return Vector3.zero;
 	}
