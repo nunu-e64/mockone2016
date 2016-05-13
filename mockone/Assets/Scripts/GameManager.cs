@@ -41,6 +41,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager> {
 	[System.NonSerialized]
 	public GameState gameState;
 
+	public float BYUUN_TIME = 0.8f;
+
 	public float fadeInTime = 0.5f; 
 	public float fadeOutTime = 0.5f;
 

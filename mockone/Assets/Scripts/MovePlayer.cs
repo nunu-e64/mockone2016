@@ -195,7 +195,7 @@ public class MovePlayer : MonoBehaviour {
 					remainReflectable = MAX_REFLECT_TIMES;
 					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_HIGH;
 					this.GetComponent<SpriteRenderer> ().sprite = this.strongImage;
-					strongTime = 1.0f;
+					strongTime = GameManager.Instance.BYUUN_TIME;
 				} else {
 					AudioManager.Instance.PlaySE ("SE_ByuunWeak");
 					this.playerRigidbody.velocity = this.playerRigidbody.velocity.normalized * this.SPEED_LOW;
@@ -264,8 +264,8 @@ public class MovePlayer : MonoBehaviour {
 				if (other.GetComponent<Crack> ().Hp <= 0) {
 					//破壊
 					this.crackCount ++;
-					AudioManager.Instance.PlaySE ("SE_ImpactStar2");
-					AudioManager.Instance.SetSEPitch ("SE_ImpactStar2", this.crackCount);
+					AudioManager.Instance.PlaySE ("SE_BlastMonster");
+					AudioManager.Instance.SetSEPitch ("SE_BlastMonster", this.crackCount);
 					other.GetComponent<Crack>().Dead();
 				} else {
 					Reflect (this.transform.position - other.transform.position);
